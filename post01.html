@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>wxPython From Scratch &mdash; wxPythonFromScratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPythonFromScratch  documentation" href="index.html"/>
+        <link rel="prev" title="wxPython From Scratch" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPythonFromScratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">wxPython From Scratch</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">wxPython From Scratch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-i-am-writing-this-blog">Why I am writing this blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-choose-wx-python">Why choose wx python?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPythonFromScratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>wxPython From Scratch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post01.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="wxpython-from-scratch">
+<h1>wxPython From Scratch<a class="headerlink" href="#wxpython-from-scratch" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>wxPython; my way</div></blockquote>
+<div class="section" id="why-i-am-writing-this-blog">
+<h2>Why I am writing this blog<a class="headerlink" href="#why-i-am-writing-this-blog" title="Permalink to this headline">¶</a></h2>
+<p>I taught myself to write gui applications in wxPython; a sometimes painful experience.I wished I’d have had this guide by my side when I started. It would have save many hours of trial and error. Here,  I want to share with others what little wisdom I have amassed in the process.</p>
+</div>
+<div class="section" id="why-choose-wx-python">
+<h2>Why choose wx python?<a class="headerlink" href="#why-choose-wx-python" title="Permalink to this headline">¶</a></h2>
+<p>I assume that you are already committed to using python to develop applications and that you now need or want to develop gui applications. There is a “native” python gui framework, tkinter, but on my initial investigation I felt that wxPython looked better. I freely admit that I might have been wrong about that. That said, wxPython does have all of the necessary widgets that I want and, in my opinion, looks great on linux, Windows and OSX.
+Prerequisites</p>
+<p>I am assuming that you have downloaded wxPython and that you have a working knowledge of Python; in particular Object programming techniques including class definition, inheritance and Python’s treatment for a function or method call as an object.</p>
+<div class="section" id="getting-started">
+<h3>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<p>I’ve already used the “technical” term widgets so lets’ define a few terms used by wxPython:</p>
+<blockquote>
+<div>widget: an element of gui programming, like a label, a button or a text box;
+frame: the rectangular window that contains all of the gui elements, (in fact it is usually called a window outside of wxPython (see this wiki article)). It usually has a title bar with control buttons, an area to display panels, and optionally a menu bar, a tool bar and a status bar;
+panel: an area on the frame that contains widgets. For most simple gui applications you will have one panel and it will cover the whole frame.</div></blockquote>
+<p>Fig 1. A basic frame</p>
+<blockquote>
+<div>Figure 1. show a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. Before we look at how this was constructed, let’s first consider the wxPython main loop.</div></blockquote>
+</div>
+<div class="section" id="the-wxpython-main-loop">
+<h3>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h3>
+<p>A moments thought will convince you that a gui application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
+<p>The most basic code for a wxPython loop is:</p>
+<blockquote>
+<div><p>import wx
+screen_app = wx.App()
+main_frame = MainFrame()
+screen_app.MainLoop()</p>
+<p>in the first  line we import the wxPython module;
+then, we create am instance of a wx application (wx.App);
+thirdly, we create an instance of a wx Frame (see below);
+and finally we start the wx main loop (app.MainLoop).</p>
+</div></blockquote>
+<p>These four lines sum up the whole application; all of the complexity and wizardry is involved in creating the frame.</p>
+</div>
+<div class="section" id="the-wxpython-frame">
+<h3>The wxPython Frame<a class="headerlink" href="#the-wxpython-frame" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>In this section we will see how to create the minimal frame shown above. Later articles will take this simple basis and build more complex solutions.</div></blockquote>
+<p>The following code is sufficient to create the frame shown above. Remember, we have called the frame MainFrame and so we create a class of that name that inherits the class wx.Frame:</p>
+<dl class="docutils">
+<dt>class MainFrame(wx.Frame):</dt>
+<dd><dl class="first last docutils">
+<dt>def __init__(self):</dt>
+<dd>wx.Frame.__init__(self, None, title=”Demonstrate wxPython Frame”)
+self.Show()</dd>
+</dl>
+</dd>
+</dl>
+<p>In this snippet, we have:</p>
+<blockquote>
+<div>defined the class MainFrame which inherits wx.Frame;
+defined the dunder-init method for the class;
+called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;
+called the Show method for the frame.</div></blockquote>
+<p>And that’s it. In eight lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>The most basic basic element of a gui program running wxPython is the Frame. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its Show method. The full code is presented below:</p>
+<p>import wx
+class MainFrame(wx.Frame):
+def __init__(self):
+wx.Frame.__init__(self, None, title=”Demonstrate wxPython Frame”)
+self.Show()</p>
+<p>if __name__ == “__main__”:
+screen_app = wx.App()
+main_frame = MainFrame()
+screen_app.MainLoop()</p>
+<p>In the next post I will elaborate on the way that I suggest that code for wxPython is organised and I will show how to create a label and introduce the concept of a sizer.</p>
+<p>Next &gt;&gt;&gt;</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="wxPython From Scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
