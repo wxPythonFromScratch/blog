@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Drive builder &mdash; wxPythonFromScratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPythonFromScratch  documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPythonFromScratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Drive builder</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#users">Users</a></li>
+<li><a class="reference internal" href="#new-drives">New drives</a></li>
+<li><a class="reference internal" href="#saving-opening-and-deleting-drives">Saving, opening and deleting drives</a><ul>
+<li><a class="reference internal" href="#opening-a-saved-drive">Opening a saved drive</a></li>
+<li><a class="reference internal" href="#saving-a-drive">Saving a drive</a></li>
+<li><a class="reference internal" href="#save-an-existing-drive-under-a-different-name">Save an existing drive under a different name</a></li>
+<li><a class="reference internal" href="#deleting-drives">Deleting drives</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#drive-information">Drive information</a></li>
+<li><a class="reference internal" href="#board-manipulation">Board manipulation</a><ul>
+<li><a class="reference internal" href="#editing-a-boards-in-a-drive">Editing a boards in a drive</a></li>
+<li><a class="reference internal" href="#changing-the-order-of-boards-in-a-drive">Changing the order of boards in a drive</a></li>
+<li><a class="reference internal" href="#deleting-a-board-from-a-drive">Deleting a board from a drive</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPythonFromScratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Drive builder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="drive-builder">
+<h1>Drive builder<a class="headerlink" href="#drive-builder" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Drive Builder is a software package that allows the user to create, edit and save a set of bridge boards. The boards are saved in a file which can be used, for example, to interact with the i-Dealer board dealing machine or by a teacher to save a set of hands for lessons.</p>
+<p>The user has control over the number of boards dealt in a drive and can select random boards or boards generated according to selected criterea.</p>
+</div>
+<div class="section" id="users">
+<h2>Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<p>The system comes with a default user. If the sytem will be used by more than one user, it might be sensible to set up different users. The system stores, against each user, the default path to the drive files, the criterea used to generate drives and whether or not to confirm exit if changes have been made to a drive.</p>
+</div>
+<div class="section" id="new-drives">
+<h2>New drives<a class="headerlink" href="#new-drives" title="Permalink to this headline">¶</a></h2>
+<p>To generate a new drive click on the ‘Generate’ button or use Menu&gt;File&gt;New. A drive will be generated using the criterea selected by the user.</p>
+</div>
+<div class="section" id="saving-opening-and-deleting-drives">
+<h2>Saving, opening and deleting drives<a class="headerlink" href="#saving-opening-and-deleting-drives" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="opening-a-saved-drive">
+<h3>Opening a saved drive<a class="headerlink" href="#opening-a-saved-drive" title="Permalink to this headline">¶</a></h3>
+<p>Click on Menu&gt;File&gt;Open. A dialog will open allowing you to select the drive.</p>
+</div>
+<div class="section" id="saving-a-drive">
+<h3>Saving a drive<a class="headerlink" href="#saving-a-drive" title="Permalink to this headline">¶</a></h3>
+<p>Click on Menu&gt;File&gt;Save. A ‘Save’ dialog will appear with a default name for the drive based on the date and time of creation. Change this name if required to something more meaningful. Drives are saved with the extension <strong>‘drv</strong>.</p>
+</div>
+<div class="section" id="save-an-existing-drive-under-a-different-name">
+<h3>Save an existing drive under a different name<a class="headerlink" href="#save-an-existing-drive-under-a-different-name" title="Permalink to this headline">¶</a></h3>
+<p>Click on Menu&gt;File&gt;SaveAs. A ‘Save as’ dialog will appear. Enter the new name for the drive.</p>
+</div>
+<div class="section" id="deleting-drives">
+<h3>Deleting drives<a class="headerlink" href="#deleting-drives" title="Permalink to this headline">¶</a></h3>
+<p>The system does not hae a facility to delete drives. Should you wish to delete a drive, locate the drive file and use your system’s normal method for deleting files.</p>
+</div>
+</div>
+<div class="section" id="drive-information">
+<h2>Drive information<a class="headerlink" href="#drive-information" title="Permalink to this headline">¶</a></h2>
+<p>Each board in the drive is listed in <strong>order</strong> with a default <strong>description</strong>. The remaining columns show:</p>
+<p><strong>shapes</strong>: the shape of each of the four hands on the board in the order N, E, S, W.</p>
+<p><strong>max length</strong>: the longest suit in any hand on the board.</p>
+<p><strong>points</strong>: the high card points in each hand.</p>
+<p><strong>max points</strong>: the high card points in the strongest hand on the board.</p>
+</div>
+<div class="section" id="board-manipulation">
+<h2>Board manipulation<a class="headerlink" href="#board-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>Note changes made to a drive are not saved to file unless you explicitely ‘Save’ the drive (Menu&gt;File&gt;Save).</p>
+<div class="section" id="editing-a-boards-in-a-drive">
+<h3>Editing a boards in a drive<a class="headerlink" href="#editing-a-boards-in-a-drive" title="Permalink to this headline">¶</a></h3>
+<p>The cards in each hand of a board can be changed by using the board editor. To enter the board editor double click on the board that you wish to edit in the board list, right click on the mouse and select ‘edit’ in the context menu.</p>
+</div>
+<div class="section" id="changing-the-order-of-boards-in-a-drive">
+<h3>Changing the order of boards in a drive<a class="headerlink" href="#changing-the-order-of-boards-in-a-drive" title="Permalink to this headline">¶</a></h3>
+<p>Select the board that you wish to move in the board list. Right click on the mouse and a menu will appear; select ‘move up’ or ‘move down’ as appropriate.</p>
+</div>
+<div class="section" id="deleting-a-board-from-a-drive">
+<h3>Deleting a board from a drive<a class="headerlink" href="#deleting-a-board-from-a-drive" title="Permalink to this headline">¶</a></h3>
+<p>Select the board that you wish to delete in the board list; ight click on the mouse and a menu will appear; select ‘delete’; the board will be removed.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
