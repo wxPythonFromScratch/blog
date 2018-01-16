@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Text box, button and events &mdash; wxPython From Scratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="Using BoxSizers to create complex layouts" href="post04.html"/>
+        <link rel="prev" title="Adding a panel and a label" href="post02.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">The StaticBox, Check-boxes, getting and setting values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPython From Scratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Text box, button and events</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post03.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="text-box-button-and-events">
+<h1>Text box, button and events<a class="headerlink" href="#text-box-button-and-events" title="Permalink to this headline">¶</a></h1>
+<p>In the last post we saw how to abstract a panel, created a label and used sizers to ensure that everything fitted.</p>
+<p>Here, we will cover creating more widgets, look again at sizers and borders, and how to deal with user generated events: in this case the mouse click on a button.</p>
+<div class="section" id="a-text-box">
+<h2>A text box<a class="headerlink" href="#a-text-box" title="Permalink to this headline">¶</a></h2>
+<p>The code required to create a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html">text box</a> (called a TextCtrl in wxPython) is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This makes a TextCtrl of default size (enough to enter six “m”s and high enough for one line of text).</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/textbox_01.png"><img alt="A TextCtrl" src="_images/textbox_01.png" style="width: 112px; height: 74px;" /></a>
+</div>
+<p>Fig 1. A TextCtrl</p>
+<p>We can adjust the size by defining the relevant argument at instantiation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This TextCtrl will be wider; the -1 value for height retains the default value, which is optimised for a single line.</p>
+</div>
+<div class="section" id="a-button">
+<h2>A button<a class="headerlink" href="#a-button" title="Permalink to this headline">¶</a></h2>
+<p>Placing a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Button.html">button</a> on the panel is simlar to the other widgets we have seen so far:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case I have used a wxPython <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html">StandardID</a> to define the  button appearance; it applies the text “Cancel” and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/button_01.png"><img alt="A button" src="_images/button_01.png" style="width: 112px; height: 74px;" /></a>
+</div>
+<p>Fig 2. A button</p>
+<p>The advantvantage of using wxPython IDs is that you will get a consistent look over your application, provide multi-lingual support, and is generally compatible with other applications. It would have been possible to create the button using the <em>label</em> argument:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This would not have created the icon on the button, and would not provide multi-lingual support.</p>
+</div>
+<div class="section" id="placing-the-widgets-in-the-sizer">
+<h2>Placing the widgets in the sizer<a class="headerlink" href="#placing-the-widgets-in-the-sizer" title="Permalink to this headline">¶</a></h2>
+<p>In the previous post we placed the label in the sizer and gave it a border to enhance it appearance. When we add more items to the sizer, we need to think a little more about the borders. As we are using a vertical BoxSizer, the items will be placed one above the other. If we gave each widget a border of say 10 pixels, on all four sides, there would be 20 pixels between each widget. To avoid this, we can add borders to selected sides as shown in the following code:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
+         <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_cancel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that I have selected to add a border to just the left, right, and bottom of the TextCtrl and the button. The various flags are separated by the pipe symbol “|”. The widgets have been placed in the vertical BoxSizer and will appear in the order that they have been added, starting at the top. The widgets are evenly spaced and aligned left within the sizer which has expanded to accommodate the widest element. (Remember that the code in the frame ensures that the frame always expands to fit the contents of the panel.)</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/vertical_01.png"><img alt="widgets in a sizer" src="_images/vertical_01.png" style="width: 180px; height: 150px;" /></a>
+</div>
+<p>Fig 3. Three widgets in a vertical sizer</p>
+</div>
+<div class="section" id="the-click-button-event">
+<h2>The click button event<a class="headerlink" href="#the-click-button-event" title="Permalink to this headline">¶</a></h2>
+<p>Many user actions can be <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/events_overview.html">detected</a> by wxPython and action taken as appropriate. To introduce this concept, consider what heppens when you move the mouse over the button and left-click on the mouse. If you do this at this stage the button will react to show that it has been clicked, but we have not yet programmed any behaviour. To do this we need to <em>bind</em> the event to a method in the program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_cancel_click</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This line uses the <em>Bind</em> method for the button passing in the type of the event (in this case the left button click on the mouse, identified by “wx.EVT_BUTTON”), and the method to be called (“self.on_cmd_cancel_click”)when the event takes place.</p>
+<p>In this case I will simply <em>quit</em> Python when the event binding is initiated:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_cmd_cancel_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">del</span> <span class="n">event</span>
+    <span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Every event is passed as an argument to the relevant bound method. This is a wxPython object that contains information about the event that has initiated the call. In this case it is not required and so it has been deleted. Finally, the Python <em>quit</em> method is invoked.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this posting we have seen how to create a TextCtrl and a buuton. They have been placed in a sizer with appropriate borders. Finally we have bound the click event of the button with a method:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
+         <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+         <span class="n">cmd_cancel</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_cancel_click</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_cancel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_cancel_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the next posting we will see how BoxSizers can be used to create more complex layouts.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="post04.html" class="btn btn-neutral float-right" title="Using BoxSizers to create complex layouts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="post02.html" class="btn btn-neutral" title="Adding a panel and a label" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

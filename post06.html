@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RadioButtons and the GridBagSizer &mdash; wxPython From Scratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="prev" title="Check-boxes, getting and setting values, abstrcting panels" href="post05.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post03.html">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">Check-boxes, getting and setting values, abstrcting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-gridbagsizer">The GridBagSizer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPython From Scratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>RadioButtons and the GridBagSizer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post06.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="radiobuttons-and-the-gridbagsizer">
+<h1>RadioButtons and the GridBagSizer<a class="headerlink" href="#radiobuttons-and-the-gridbagsizer" title="Permalink to this headline">¶</a></h1>
+<p>In this post we will ivestigate two ways to create and organise a set of <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.RadioButton.html">RadioButtons</a>: firstly using a StaticBox and then using a specialist widget, the <a class="reference external" href="ps://wxpython.org/Phoenix/docs/html/wx.RadioBox.html">RadioBox</a>. Later I will introduce the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.GridBagSizer.html">GridBagSizer</a>. This is the most powerful of all the sizers and allows for greatest control over widget placement.</p>
+<div class="section" id="the-radiobutton">
+<h2>The RadioButton<a class="headerlink" href="#the-radiobutton" title="Permalink to this headline">¶</a></h2>
+<p>It is conventional in GUI applications to use RadioButtons to select an item from a set of mutually exclusive choices; it is also usual to ensure that at least one of the choices is always selected.</p>
+<p>To create a single RadioButton:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is almost identical to the CheckBox code in the last post. However, wxPython provides a special widget to contain RadioButtons: the RadioBox, and in a RadioBox we do not need to create the buttons explicitely.</p>
+<p>Firstly, this is how the buttons would be created in its own panel using just a StaticBox:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">)</span>
+ <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+ <span class="n">parent</span><span class="o">.</span><span class="n">rb_colours</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+ <span class="k">for</span> <span class="n">colour</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">:</span>
+     <span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+     <span class="n">rb_colour</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
+     <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">rb_colour</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">parent</span><span class="o">.</span><span class="n">rb_colours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rb_colour</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>And this is how it can be create using the RadioBox in the MainPanel:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="bp">self</span><span class="o">.</span><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">,</span>
+                                     <span class="n">choices</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">colours</span><span class="p">,</span>
+                                     <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RA_SPECIFY_ROWS</span><span class="p">)</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>This way we do not have to create a list of radioButtons or even the buttons themselves. Note that the flag “wx.RA_SPECIFY_ROWS”, creates a column of buttons. Both sets of code create the same output.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/radiobuttons_01.png"><img alt="RadioButtons" src="_images/radiobuttons_01.png" style="width: 92px; height: 136px;" /></a>
+</div>
+<p>Fig 1. RadioButtons</p>
+<p>The wx.EVT_RADIOBOX is triggered whenever one of the buttons is clicked. The RadioBox’s <em>GetSelection()</em> function returns the index on the <em>choices</em> list that has been selected. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_rb_colour_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+    <span class="k">del</span> <span class="n">event</span>
+    <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colours</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-gridbagsizer">
+<h2>The GridBagSizer<a class="headerlink" href="#the-gridbagsizer" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The <em>GridBagSizer</em> splits the panel into a grid, and widgets can be placed on the grid by giving a position argument (row, column). In the following example, I have placed three labels on the grid:</div></blockquote>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lbl_heading</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Heading&quot;</span><span class="p">)</span>
+ <span class="n">lbl_column_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column one&quot;</span><span class="p">)</span>
+ <span class="n">lbl_column_two</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column two&quot;</span><span class="p">)</span>
+
+ <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+ <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_heading</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALIGN_CENTER</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_column_one</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_column_two</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+ <span class="n">This</span> <span class="n">creates</span><span class="p">:</span>
+
+         \<span class="n">includegraphics</span><span class="p">[</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">]{</span><span class="n">gridbagsizer_01</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that:</p>
+<ol class="arabic simple">
+<li>I have added the <strong>span</strong> argument to the <em>Heading</em> label. In this case it spans one row and two columns;</li>
+<li>the GridBagSizer itself takes two arguments when it is created. These represent the <em>internal</em> borders that will be used in the sizer; the external borders still need to be defined.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="post05.html" class="btn btn-neutral" title="Check-boxes, getting and setting values, abstrcting panels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

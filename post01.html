@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started: the frame &mdash; wxPythonFromScratch  documentation</title>
+  <title>Getting started: the frame &mdash; wxPython From Scratch  documentation</title>
   
 
   
@@ -28,15 +28,18 @@
   
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
-
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
   
 
   
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="wxPythonFromScratch  documentation" href="index.html"/>
-        <link rel="prev" title="wxPython From Scratch" href="intro.html"/> 
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="Adding a panel and a label" href="post02.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -55,7 +58,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> wxPythonFromScratch
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
           
 
           
@@ -87,14 +90,63 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">wxPython From Scratch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started: the frame</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-wxpython-main-loop">The wxPython main loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-wxpython-frame">The wxPython Frame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post03.html">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">Check-boxes, getting and setting values, abstrcting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
             
@@ -109,14 +161,16 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">wxPythonFromScratch</a>
+          <a href="index.html">wxPython From Scratch</a>
         
       </nav>
 
 
       
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -160,70 +214,93 @@
             
   <div class="section" id="getting-started-the-frame">
 <h1>Getting started: the frame<a class="headerlink" href="#getting-started-the-frame" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>Lets’ define a few terms used by wxPython:</p>
-<ol class="arabic simple">
-<li>widget: an element of gui programming, like a label, a button or a text box;</li>
-<li>frame: the rectangular window that contains all of the gui elements, (in fact it is usually called a window outside of wxPython (see this wiki article)). It usually has a title bar with control buttons, an area to display panels, and optionally a menu bar, a tool bar and a status bar;</li>
-<li>panel: an area on the frame that contains widgets. For most simple gui applications you will have one panel and it will cover the whole frame.</li>
-</ol>
-<p>![alt text](images/basic_frame.png “A basic frame”)</p>
-<p>Fig 1. A basic frame</p>
-<blockquote>
-<div>Figure 1. show a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. Before we look at how this was constructed, let’s first consider the wxPython main loop.</div></blockquote>
+<p>Let’s define a few terms used by wxPython:</p>
+<dl class="docutils">
+<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Frame.html">frame</a>:</dt>
+<dd>the rectangular window that contains all of the GUI elements, (in fact it is usually called a window outside of wxPython (see this wiki <a class="reference external" href="https://en.wikipedia.org/wiki/Window_(computing)">article</a>)). It usually has a title bar with control buttons, an area to display panels, and optionally a menu bar, a tool bar and a status bar;</dd>
+<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/gallery.html">widget</a>:</dt>
+<dd>an element of GUI programming, like a label, a button or, a text box;</dd>
+<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Panel.html">panel</a>:</dt>
+<dd>an area on the frame that contains widgets. For most simple GUI applications you will have one panel and it will cover the whole frame.</dd>
+</dl>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/frame_01.png"><img alt="A basic frame" src="_images/frame_01.png" style="width: 400px; height: 250px;" /></a>
 </div>
+<p>Fig 1. A basic frame</p>
+<p>Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. (It is created by wxPython using the default size 400x250.) Before we look at how this was constructed, let’s first consider the wxPython main loop.</p>
 <div class="section" id="the-wxpython-main-loop">
-<h2>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h2>
-<p>A moments thought will convince you that a gui application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
-<p>The most basic code for a wxPython loop is:</p>
-<blockquote>
-<div><p>import wx
-screen_app = wx.App()
-main_frame = MainFrame()
-screen_app.MainLoop()</p>
-<p>in the first  line we import the wxPython module;
-then, we create am instance of a wx application (wx.App);
-thirdly, we create an instance of a wx Frame (see below);
-and finally we start the wx main loop (app.MainLoop).</p>
-</div></blockquote>
-<p>These four lines sum up the whole application; all of the complexity and wizardry is involved in creating the frame.</p>
+<span id="main-loop"></span><h2>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h2>
+<p>A moments thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
+<p>In wxPython the loop is handled by the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.App.html">wx.APP</a> class. The most basic code for a wxPython loop is:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">wx</span>
+<span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+<span class="n">main_frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First frame&quot;</span><span class="p">)</span>
+<span class="n">main_frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+<span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>and I have used this to code produce the frame shown in Figure 1.</p>
+<ol class="arabic simple">
+<li>In the first  line we import the wxPython module;</li>
+<li>then, we create an instance of a wx application (wx.App);</li>
+<li>thirdly, we create an instance of a wx Frame (see below);</li>
+<li>then tell the system to show the frame;</li>
+<li>and finally we start the wx main loop (app.MainLoop).</li>
+</ol>
+<p>These five lines sum up the whole application; all of the complexity and wizardry is involved in creating the frame.</p>
 </div>
 <div class="section" id="the-wxpython-frame">
 <h2>The wxPython Frame<a class="headerlink" href="#the-wxpython-frame" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>In this section we will see how to create the minimal frame shown above. Later articles will take this simple basis and build more complex solutions.</div></blockquote>
-<p>The following code is sufficient to create the frame shown above. Remember, we have called the frame MainFrame and so we create a class of that name that inherits the class wx.Frame:</p>
-<dl class="docutils">
-<dt>class MainFrame(wx.Frame):</dt>
-<dd><dl class="first last docutils">
-<dt>def __init__(self):</dt>
-<dd>wx.Frame.__init__(self, None, title=”Demonstrate wxPython Frame”)
-self.Show()</dd>
-</dl>
-</dd>
-</dl>
+<p>In this section we will see how to abstract the frame into its own class. Later articles will take this simple basis and build more complex solutions.</p>
+<p>The following code takes the frame definition and places it in a class that inherits the class wx.Frame:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
 <p>In this snippet, we have:</p>
-<blockquote>
-<div>defined the class MainFrame which inherits wx.Frame;
-defined the dunder-init method for the class;
-called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;
-called the Show method for the frame.</div></blockquote>
-<p>And that’s it. In eight lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
+<ol class="arabic simple">
+<li>defined the class MainFrame which inherits wx.Frame;</li>
+<li>defined the dunder-init method for the class;</li>
+<li>called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;</li>
+<li>called the <em>Show</em> method for the frame.</li>
+</ol>
+<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame.</p>
+<p>And that’s it. In a few lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>The most basic basic element of a gui program running wxPython is the Frame. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its Show method. The full code is presented below:</p>
-<p>import wx
-class MainFrame(wx.Frame):
-def __init__(self):
-wx.Frame.__init__(self, None, title=”Demonstrate wxPython Frame”)
-self.Show()</p>
-<p>if __name__ == “__main__”:
-screen_app = wx.App()
-main_frame = MainFrame()
-screen_app.MainLoop()</p>
-<p>In the next post I will elaborate on the way that I suggest that code for wxPython is organised and I will show how to create a label and introduce the concept of a sizer.</p>
+<p>The most basic basic element of a GUI program running wxPython is the <em>frame</em>. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its <em>Show</em> method. The full code is presented below:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">wx</span>
+<span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+    <span class="n">main_frame</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Abstracted frame&quot;</span><span class="p">)</span>
+    <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the next post I will elaborate on the way that I suggest that code for wxPython is organised. I will show how to create a label and introduce the concept of a sizer.</p>
 </div>
 </div>
 
@@ -237,8 +314,10 @@ screen_app.MainLoop()</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="post02.html" class="btn btn-neutral float-right" title="Adding a panel and a label" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="intro.html" class="btn btn-neutral" title="wxPython From Scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -247,7 +326,7 @@ screen_app.MainLoop()</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Jeff Watkins.
+        &copy; Copyright 2018, Jeff Watkins.
 
     </p>
   </div>
@@ -270,6 +349,7 @@ screen_app.MainLoop()</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -287,14 +367,13 @@ screen_app.MainLoop()</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

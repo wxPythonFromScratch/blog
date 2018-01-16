@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Check-boxes, getting and setting values, abstrcting panels &mdash; wxPython From Scratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="RadioButtons and the GridBagSizer" href="post06.html"/>
+        <link rel="prev" title="Using BoxSizers to create complex layouts" href="post04.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post03.html">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Check-boxes, getting and setting values, abstrcting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPython From Scratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Check-boxes, getting and setting values, abstrcting panels</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post05.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="check-boxes-getting-and-setting-values-abstrcting-panels">
+<h1>Check-boxes, getting and setting values, abstrcting panels<a class="headerlink" href="#check-boxes-getting-and-setting-values-abstrcting-panels" title="Permalink to this headline">¶</a></h1>
+<p>In previous postings we gave seen how to create various widgets and how to organise their layout using BoxSizers. In this post we will look at a special case of laying out widgets: the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticBox.html">StaticBox</a> and the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticBoxSizer.html">StaticBoxSizer</a>. A StaticBox is surrounded by a border that has an optional label and is useful for creating a logical grouping of widgets (see Figure 1.). The StaticBoxSizer is a special case of a BoxSizer designed to fit within the StaticBox.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/staticbox_02.png"><img alt="StaticBox with check boxes" src="_images/staticbox_02.png" style="width: 330px; height: 110px;" /></a>
+</div>
+<p>Fig 1. StaticBox with check boxes</p>
+<div class="section" id="creating-a-staticbox">
+<h2>Creating a StaticBox<a class="headerlink" href="#creating-a-staticbox" title="Permalink to this headline">¶</a></h2>
+<p>The code to produce a StaticBox and its StaticBoxSizer is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
+<span class="n">contact_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the STaticBox is created with a reference to the panel as its parent and the text for the label is passed through. On the other hand, the StaticBoxSizer uses the StaticBox as its parent. It is simplest to think of the StaticBoxSizer as sitting in the StaticBox. Using the panel code here:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
+         <span class="n">contact_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">contact_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>we get an empty StaticTextBox with its label:</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/staticbox_01.png"><img alt="Empty StaticBox" src="_images/staticbox_01.png" style="width: 143px; height: 70px;" /></a>
+</div>
+<p>Fig 2. Empty StaticBox</p>
+</div>
+<div class="section" id="the-checkbox">
+<h2>The CheckBox<a class="headerlink" href="#the-checkbox" title="Permalink to this headline">¶</a></h2>
+<p>To make a single <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.CheckBox.html">CheckBox</a> the code follows the pattern for other widgets:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can see that the parent of the CheckBox is the StaticBox, and I’ve given the CheckBox its label and a name (which will be useful when we come to perform some action if the CheckBox is clicked).</p>
+</div>
+<div class="section" id="binding-a-method-to-the-checkbox-click">
+<h2>Binding a method to the CheckBox click<a class="headerlink" href="#binding-a-method-to-the-checkbox-click" title="Permalink to this headline">¶</a></h2>
+<p>As I indicated above, the StaticBox is intended to organise logically related widgets. Here I have three, and it makes sense to hold them in a list:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
+ <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home phone&quot;</span><span class="p">,</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>
+ <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
+     <span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">contact</span><span class="p">)</span>
+     <span class="n">cb_contact</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_CHECKBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cb_contact_click</span><span class="p">)</span>
+     <span class="n">contact_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here, I have created an empty list to hold the CheckBoxes and created a list of strings that will be used as the labels (and names) of the CheckBoxes. Then, in a loop, the CheckBoxes as created (using the StaticBox as their parent), each one bound to the same event which will be triggered when the user clicks on the CheckBox, and the CheckBoxes are added to the StaticBoxSizer and then appended to the list of CheckBoxes.</p>
+<p>When this code is inserted into the panel creation code, it produces the frame shown in Figure 1.</p>
+</div>
+<div class="section" id="retrieving-the-value-of-a-widget">
+<h2>Retrieving the value of a widget<a class="headerlink" href="#retrieving-the-value-of-a-widget" title="Permalink to this headline">¶</a></h2>
+<p>From the user’s point of view, a CheckBox is either checked or not and wxPython interprets these values as <em>True</em> and <em>False</em> respectively. In the following snippet I show the code that I have written to handle the user clicking on one of the CheckBoxes. It loops through the list of CheckBoxes, finds which are checked using the <em>GetValue</em> function, and generates and prints an appropriate string using the <em>GetName</em> function to retrieve the CheckBoxes name:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_cb_contact_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="k">del</span> <span class="n">event</span>
+     <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+     <span class="k">for</span> <span class="n">cb_contact</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="p">:</span>
+         <span class="k">if</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetValue</span><span class="p">():</span>
+             <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">contact_string</span><span class="p">,</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetName</span><span class="p">()])</span>
+     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Contact methods: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contact_string</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="abstracting-widgets-to-their-own-panel">
+<h2>Abstracting widgets to their own panel<a class="headerlink" href="#abstracting-widgets-to-their-own-panel" title="Permalink to this headline">¶</a></h2>
+<p>As you can see, the code for creating the set of CheckBoxes is getting quite lengthy, and as it is all related to one aspect of the panel, it makes sense to abstract it to a panel of its own:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">ContactPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home phone&quot;</span><span class="p">,</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>
+         <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
+             <span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">contact</span><span class="p">)</span>
+             <span class="n">cb_contact</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_CHECKBOX</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cb_contact_click</span><span class="p">)</span>
+             <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>This greatly simplifies the coding of the MainPanel:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">contact_panel</span> <span class="o">=</span> <span class="n">ContactPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contact_panel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this post we have seen how to use a more complex widget: a StaticBox, which is used with a StaticBoxSizer. We have placed  a number of related CheckBoxes into the StaticBox and seen how we can retrieve the value of the widgets. Finally, we have abstracted the code related to a logically related set of widgets to a separate panel. This has made the code easier to read and, ultimately, simpler to mainatain. The complete code for the main panel and its children is:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">contact_panel</span> <span class="o">=</span> <span class="n">ContactPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contact_panel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">on_cb_contact_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+         <span class="k">for</span> <span class="n">cb_contact</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contact_panel</span><span class="o">.</span><span class="n">cb_contacts</span><span class="p">:</span>
+             <span class="k">if</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetValue</span><span class="p">():</span>
+                 <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">contact_string</span><span class="p">,</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetName</span><span class="p">()])</span>
+         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Contact methods: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contact_string</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+
+
+ <span class="k">class</span> <span class="nc">ContactPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home phone&quot;</span><span class="p">,</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>
+         <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
+             <span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">contact</span><span class="p">)</span>
+             <span class="n">cb_contact</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_CHECKBOX</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cb_contact_click</span><span class="p">)</span>
+             <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the next post I will look at the RadioButton and introduce the most flexible of wxPython’s sizers: the GridBagSizer</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="post06.html" class="btn btn-neutral float-right" title="RadioButtons and the GridBagSizer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="post04.html" class="btn btn-neutral" title="Using BoxSizers to create complex layouts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
