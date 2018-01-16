@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Check-boxes, getting and setting values, abstrcting panels &mdash; wxPython From Scratch  documentation</title>
+  <title>Check-boxes, getting and setting values, abstracting panels &mdash; wxPython From Scratch  documentation</title>
   
 
   
@@ -132,7 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Check-boxes, getting and setting values, abstrcting panels</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Check-boxes, getting and setting values, abstracting panels</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-staticbox">Creating a StaticBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
@@ -146,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
             
@@ -192,7 +193,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Check-boxes, getting and setting values, abstrcting panels</li>
+      <li>Check-boxes, getting and setting values, abstracting panels</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -211,8 +212,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="check-boxes-getting-and-setting-values-abstrcting-panels">
-<h1>Check-boxes, getting and setting values, abstrcting panels<a class="headerlink" href="#check-boxes-getting-and-setting-values-abstrcting-panels" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="check-boxes-getting-and-setting-values-abstracting-panels">
+<h1>Check-boxes, getting and setting values, abstracting panels<a class="headerlink" href="#check-boxes-getting-and-setting-values-abstracting-panels" title="Permalink to this headline">¶</a></h1>
 <p>In previous postings we gave seen how to create various widgets and how to organise their layout using BoxSizers. In this post we will look at a special case of laying out widgets: the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticBox.html">StaticBox</a> and the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticBoxSizer.html">StaticBoxSizer</a>. A StaticBox is surrounded by a border that has an optional label and is useful for creating a logical grouping of widgets (see Figure 1.). The StaticBoxSizer is a special case of a BoxSizer designed to fit within the StaticBox.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/staticbox_02.png"><img alt="StaticBox with check boxes" src="_images/staticbox_02.png" style="width: 330px; height: 110px;" /></a>
@@ -225,7 +226,7 @@
 <span class="n">contact_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the STaticBox is created with a reference to the panel as its parent and the text for the label is passed through. On the other hand, the StaticBoxSizer uses the StaticBox as its parent. It is simplest to think of the StaticBoxSizer as sitting in the StaticBox. Using the panel code here:</p>
+<p>Note that the StaticBox is created with a reference to the panel as its parent and the text for the label is passed through. On the other hand, the StaticBoxSizer uses the StaticBox as its parent. It is simplest to think of the StaticBoxSizer as sitting in the StaticBox. Using the panel code here:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
