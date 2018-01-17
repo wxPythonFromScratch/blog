@@ -62,7 +62,7 @@ The *value* argument consists of a string that will appear in the combobox befor
 Using spacers
 -------------
 
-The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a `crude way <post04.html#spacers>`_ of forcing the frame to accomodate more space. Here will use a more subtle method to achive a common requirement.
+The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a `crude way <post04.html#spacers>`_ of forcing the frame to accomodate more space. Here we will use a more subtle method to achieve a common requirement.
 
 In the following frame the *Quit* button is placed in a horizontal BoxSizer with the *Print* button. I think the *Quit* button would look better aligned to the right.
 
