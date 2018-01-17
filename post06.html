@@ -272,17 +272,15 @@
 <h2>The GridBagSizer<a class="headerlink" href="#the-gridbagsizer" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>The <em>GridBagSizer</em> splits the panel into a grid, and widgets can be placed on the grid by giving a position argument (row, column). In the following example, I have placed three labels on the grid:</div></blockquote>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lbl_heading</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Heading&quot;</span><span class="p">)</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lbl_heading</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Heading&quot;</span><span class="p">)</span>
  <span class="n">lbl_column_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column one&quot;</span><span class="p">)</span>
  <span class="n">lbl_column_two</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column two&quot;</span><span class="p">)</span>
 
@@ -291,14 +289,13 @@
  <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_column_one</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
  <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_column_two</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
  <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
-
- <span class="n">This</span> <span class="n">creates</span><span class="p">:</span>
 </pre></div>
 </td></tr></table></div>
+<p>This creates:</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/gridbagsizer_01.png"><img alt="GridBagSizer" src="_images/gridbagsizer_01.png" style="width: 204px; height: 88px;" /></a>
 </div>
-<p>Fig 1. A GridBagSizer</p>
+<p>Fig 2. A GridBagSizer</p>
 <p>Note that:</p>
 <ol class="arabic simple">
 <li>I have added the <strong>span</strong> argument to the <em>Heading</em> label. In this case it spans one row and two columns;</li>
