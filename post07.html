@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The ListBox, ComboBox and spacers &mdash; wxPython From Scratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="Index" href="contents_index.html"/>
+        <link rel="prev" title="RadioButtons and the GridBagSizer" href="post06.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post03.html">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">Check-boxes, getting and setting values, abstracting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The ListBox, ComboBox and spacers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-listbox">The ListBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-event-object">The Event object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-combobox">The ComboBox</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#using-spacers">Using spacers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPython From Scratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>The ListBox, ComboBox and spacers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post07.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-listbox-combobox-and-spacers">
+<h1>The ListBox, ComboBox and spacers<a class="headerlink" href="#the-listbox-combobox-and-spacers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-listbox">
+<h2>The ListBox<a class="headerlink" href="#the-listbox" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.ListBox.html">ListBox</a> is a widget that presents a list of strings and allows the user to select one or more items.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/listbox_01.png"><img alt="ListBox" src="_images/listbox_01.png" style="width: 346px; height: 238px;" /></a>
+</div>
+<p>Fig 1. A ListBox</p>
+<p>Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">))</span>
+ <span class="n">lst_cities</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_LISTBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_lst_cities_click</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Two arguments have been provided: the <em>size</em> and <em>choices</em>. The choices argument is a list of strings.</p>
+</div>
+<div class="section" id="the-event-object">
+<h2>The Event object<a class="headerlink" href="#the-event-object" title="Permalink to this headline">¶</a></h2>
+<p>When an event is triggered an <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Event.html">Event</a> object is delivered to the bound method. One very useful method of the event object is <em>GetEventObject</em>. This returns a reference to the specific widget that has initiated the event. This means that not only can we obtain information about the widget, but the same method can be bound to many widgets and we can infer which one has called the bound method.</p>
+<p>In this case, I have obtained a reference to the listbox and then used its <em>GetSelection</em> method which returns the index of the selected item.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_lst_cities_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetEventObject</span><span class="p">()</span>
+     <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">[</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-combobox">
+<h2>The ComboBox<a class="headerlink" href="#the-combobox" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.ComboBox.html">ComboBox</a> is a combination of a text box and a listbox. It presents at first as a textbox with an arrow on the right hand side. When clicked, the list appears. It will drop down if there is room on the screen (it will extend beyond the frame), otherwise it will pop upwards.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/combobox_01.png"><img alt="ComboBox" src="_images/combobox_01.png" style="width: 162px; height: 439px;" /></a>
+</div>
+<p>Fig 2. A ComboBox</p>
+<p>Again the code takes a familiar form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <em>value</em> argument consists of a string that will appear in the combobox before a selection is made.</p>
+</div>
+</div>
+<div class="section" id="using-spacers">
+<h1>Using spacers<a class="headerlink" href="#using-spacers" title="Permalink to this headline">¶</a></h1>
+<p>The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a <a class="reference external" href="post04.html#spacers">crude way</a> of forcing the frame to accomodate more space. Here will use a more subtle method to achive a common requirement.</p>
+<p>In the following frame the <em>Quit</em> button is placed in a horizontal BoxSizer with the <em>Print</em> button. I think the <em>Quit</em> button would look better aligned to the right.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/buttons_01.png"><img alt="A frame with buttons" src="_images/buttons_01.png" style="width: 227px; height: 113px;" /></a>
+</div>
+<p>Fig 3. A frame with buttons</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>     <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
+     <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+     <span class="n">cmd_print</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_PRINT</span><span class="p">)</span>
+     <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+
+     <span class="n">name_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+     <span class="n">name_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">name_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">)</span>
+
+     <span class="n">button_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+     <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_print</span><span class="p">)</span>
+     <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">)</span>
+
+     <span class="n">main_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+     <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">name_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
+<p>As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>box_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>     <span class="n">button_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+     <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_print</span><span class="p">)</span>
+     <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proportion</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+     <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">)</span>
+
+     <span class="n">main_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+     <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">name_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+     <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/buttons_02.png"><img alt="Aligned buttons" src="_images/buttons_02.png" style="width: 227px; height: 113px;" /></a>
+</div>
+<p>Fig 4. Aligned buttons</p>
+</div>
+<div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>In this post we have seen how to implement two more widgets, the list box and combobox. I have also discussed a more subtle use of sizers to improve the placing of widgets on the frame. In the next post I will create a larger application from all of these elements to show how code can be organised to simplify coding and maintenance.</p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contents_index.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="post06.html" class="btn btn-neutral" title="RadioButtons and the GridBagSizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
