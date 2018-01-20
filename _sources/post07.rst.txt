@@ -96,7 +96,7 @@ Fig 3. A frame with buttons
 
 In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.
 
-I do think the *Quit* button would look better aligned to the right. As I don't know the width taken up by the *name_sizer* I cannot place a fixed width spacer in the *button_sizer*. This is where the *proportion*  and *wx.EXPAND* flags come in. I will add a spacer (of zero width and zero height) to the *button_sizer* between the two buttons and set the *proportion* argument to 1. Then, add the *wx.EXPAND* flag to the *button_sizer* and we achieve the effect I wanted: the *box_sizer* expands to fit the whole width of the *main_sizer* and the spacer expands, pushing the *Quit* button to the right.
+I do think the *Quit* button would look better aligned to the right. As I don't know the width taken up by the *name_sizer* I cannot place a fixed width spacer in the *button_sizer*. This is where the *proportion*  and *wx.EXPAND* flags come in. I will add a spacer (of zero width and zero height) to the *button_sizer* between the two buttons and set the *proportion* argument to 1. Then, add the *wx.EXPAND* flag to the *button_sizer* and we achieve the effect I wanted: the *button_sizer* expands to fit the whole width of the *main_sizer* and the spacer expands, pushing the *Quit* button to the right.
 
 
 .. code-block:: python

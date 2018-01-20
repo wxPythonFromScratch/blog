@@ -305,7 +305,7 @@
 </div>
 <p>Fig 3. A frame with buttons</p>
 <p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
-<p>I do think the <em>Quit</em> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>box_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
+<p>I do think the <em>Quit</em> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
