@@ -266,7 +266,7 @@
 <div class="section" id="using-spacers">
 <h2>Using spacers<a class="headerlink" href="#using-spacers" title="Permalink to this headline">¶</a></h2>
 <p>The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a <a class="reference external" href="post04.html#spacers">crude way</a> of forcing the frame to accomodate more space. Here we will use a more subtle method to achieve a common requirement.</p>
-<p>In the following frame the <em>Quit</em> button is placed in a horizontal BoxSizer with the <em>Print</em> button. I think the <em>Quit</em> button would look better aligned to the right.</p>
+<p>In the following frame the <em>Quit</em> button is placed in a horizontal BoxSizer with the <em>Print</em> button.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -305,7 +305,7 @@
 </div>
 <p>Fig 3. A frame with buttons</p>
 <p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
-<p>As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>box_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
+<p>I do think the <em>Quit</em> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>box_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
