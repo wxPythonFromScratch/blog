@@ -101,7 +101,7 @@ Fig 2. A Frame with menu bar
 Menu items
 ++++++++++
 
-Menu items will drop down when the mouse is clicked on a menu. Typically, there will be many menu items associated with a menu. To start with I will create a single item for the **File** menu: the **Open** menu item.  A *menu item* is an instance of the  *wx.MenuItem* class. It has the menu as its parent and, like a button, can be given and ID or a label; in this case I will use an ID:
+Menu items will drop down when the mouse is clicked on a menu. Typically, there will be many menu items associated with a menu. To start with I will create a single item for the **File** menu: the **Open** menu item.  A *menu item* is an instance of the  *wx.MenuItem* class. It has the menu as its parent and, like a button, can be given a `StandardID <https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html>`_ or a label; in this case I will use a StandardID:
 
 .. code-block:: python
    :linenos:
