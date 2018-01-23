@@ -45,6 +45,12 @@ Index
 
 `Main loop <post01.html#the-wxpython-main-loop>`_
 
+`Menu bar <post08.html#a-menu-bar>`_
+
+`Menu items <post08.html#menu-items>`_
+
+`Menus <post08.html#menus>`_
+
 ----
 
 `Panel <post02.html#a-panel>`_
@@ -64,6 +70,8 @@ Index
 `Spacers revisited <post07.html#using-spacers>`_
 
 `StaticBox <post05.html#creating-a-staticbox>`_
+
+`Status bar <post08.html#a-status-bar>`_
 
 ----
 
