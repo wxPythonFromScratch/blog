@@ -1,6 +1,6 @@
 Adding a panel and a label
 ==========================
-We saw the last post how to create  and display a frame in wxPython. The most robust way to add widgets to your project, for portable applications, is first to create a `panel <https://wxpython.org/Phoenix/docs/html/wx.Panel.html>`_ and then add the widgets to the panel.
+We saw in the last post how to create  and display a frame in wxPython. The most robust way to add widgets to your project is first to create a `panel <https://wxpython.org/Phoenix/docs/html/wx.Panel.html>`_ and then add the widgets to the panel. In my experience, this ensures that the results are reproducable on Linux, Windows and Mac.
 
 A panel
 -------

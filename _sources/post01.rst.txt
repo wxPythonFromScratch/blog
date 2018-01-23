@@ -55,7 +55,7 @@ The wxPython Frame
 
 In this section we will see how to abstract the frame into its own class. Later articles will take this simple basis and build more complex solutions.
 
-The following code takes the frame definition and places it in a class that inherits the class wx.Frame:
+The following code takes the frame definition and places it in a class that inherits wx.Frame:
 
 .. code-block:: python
    :linenos:
@@ -98,4 +98,4 @@ The most basic basic element of a GUI program running wxPython is the *frame*. A
        screen_app.MainLoop()
 
 
-In the next post I will elaborate on the way that I suggest that code for wxPython is organised. I will show how to create a label and introduce the concept of a sizer.
+In the next post I will show how to create a label and introduce the concept of a sizer and I will elaborate on the way that I suggest that code for wxPython is organised.
