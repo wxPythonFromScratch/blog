@@ -18,7 +18,7 @@ To produce a panel, create an instance of *wx.Panel* using a reference to the fr
             panel = wx.Panel(self)
             self.Show()
 
-As there will (usually) be many widgets used in the application, it makes sense to abtract the *panel* into its own class. This has the advantage that we will separate into its own class code for: the creation, display, and events relating to widgets. This will reduce the complexity of code in the *frame* and deliver separation of concerns: the user experience from other processing.
+As there will (usually) be many widgets used in the application, it makes sense to abtract the *panel* into its own class. This has the advantage that we will separate into its own class all of the code for the creation, display, and events relating to its widgets. This will reduce the complexity of code in the *frame* and deliver separation of concerns: the user experience from other processing.
 
 To achieve this, I will create a *panel* class that inherits wx.Panel and calls its dunder-init method:
 
@@ -52,7 +52,7 @@ The simplest sizer is the *BoxSizer*. This allows us to place items side by side
 A label
 -------
 
-Finally we can add some widgets to the panel. The first will be a `label <https://wxpython.org/Phoenix/docs/html/wx.StaticText.html>`_ (called *StaticText* within wxPython). The code to produce the label is to create an instance of the wx.StaticText class. We need to pass to it its parent, in this case the panel, and the text that is to appear on the label:
+Finally we can add some widgets to the panel. The first will be a label (called `StaticText <https://wxpython.org/Phoenix/docs/html/wx.StaticText.html>`_ within wxPython). To produce the label we need to create an instance of the wx.StaticText class. We pass to it its parent, in this case the panel, and the text that is to appear on the label:
 
 .. code-block:: python
 
@@ -79,7 +79,7 @@ Let's now create the sizer and put the label into it. The code for this is:
 
 Note that we have:
 
-1. created a BoxSizer, in this case the widgets will be placed one above the other in it;
+1. created a BoxSizer, in this case the widgets will be placed one above the other;
 2. added the label to the sizer;
 3. assigned the sizer to the panel.
 
@@ -105,7 +105,7 @@ So far the frame frame still looks as it did in Figure 1. One of the things that
 
     sizer.Add(lbl_hello, flag=wx.ALL, border=10)
 
-The *flag* argument tells the system to place the *border* of 10 pixels on the top, bottom, left and right of the widget. The frame has now changed subtly:
+The `flag <https://wxpython.org/Phoenix/docs/html/wx.Sizer.html#phoenix-title-sizer-flags>`_ argument tells the system to place the *border* of 10 pixels on the top, bottom, left and right of the widget. The frame has now changed subtly:
 
 .. figure:: /images/frame_04.png
    :height: 250

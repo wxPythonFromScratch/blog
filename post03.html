@@ -28,7 +28,9 @@
   
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   
-
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
   
 
   
@@ -88,9 +90,28 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Text box, button and events</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-text-box">A text box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-button">A button</a></li>
@@ -99,9 +120,54 @@
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post05.html">The StaticBox, Check-boxes, getting and setting values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">Check-boxes, getting and setting values, abstracting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post07.html">The ListBox, ComboBox and spacers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-listbox">The ListBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-event-object">The Event object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-combobox">The ComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#using-spacers">Using spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post08.html">A menu bar and status bar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-menu-bar">A menu bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#constructing-a-menu-bar">Constructing a menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menus">Menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menu-items">Menu items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-status-bar">A Status bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post08.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
             
@@ -123,7 +189,9 @@
 
       
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -171,7 +239,7 @@
 <p>Here, we will cover creating more widgets, look again at sizers and borders, and how to deal with user generated events: in this case the mouse click on a button.</p>
 <div class="section" id="a-text-box">
 <h2>A text box<a class="headerlink" href="#a-text-box" title="Permalink to this headline">¶</a></h2>
-<p>The code required to create a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html">text box</a> (called a TextCtrl in wxPython) is:</p>
+<p>The code required to create a <em>text box</em> (called a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html">TextCtrl</a> in wxPython) is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -184,7 +252,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This TextCtrl will be wider; the -1 value for height retains the default value, which is optimised for a single line.</p>
+<p>This TextCtrl will now have a width of 150, The -1 value for height retains the default value; this is optimised for a single line of text.</p>
 </div>
 <div class="section" id="a-button">
 <h2>A button<a class="headerlink" href="#a-button" title="Permalink to this headline">¶</a></h2>
@@ -335,6 +403,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -352,14 +421,13 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

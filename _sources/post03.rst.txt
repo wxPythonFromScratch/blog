@@ -8,7 +8,7 @@ Here, we will cover creating more widgets, look again at sizers and borders, and
 A text box
 ----------
 
-The code required to create a `text box <https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html>`_ (called a TextCtrl in wxPython) is:
+The code required to create a *text box* (called a `TextCtrl <https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html>`_ in wxPython) is:
 
 .. code-block:: python
 
@@ -31,7 +31,7 @@ We can adjust the size by defining the relevant argument at instantiation:
 
     txt_name = wx.TextCtrl(self, size=(150, -1))
 
-This TextCtrl will be wider; the -1 value for height retains the default value, which is optimised for a single line.
+This TextCtrl will now have a width of 150, The -1 value for height retains the default value; this is optimised for a single line of text.
 
 A button
 --------

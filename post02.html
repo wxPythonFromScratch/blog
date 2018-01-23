@@ -251,7 +251,7 @@
          <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>As there will (usually) be many widgets used in the application, it makes sense to abtract the <em>panel</em> into its own class. This has the advantage that we will separate into its own class code for: the creation, display, and events relating to widgets. This will reduce the complexity of code in the <em>frame</em> and deliver separation of concerns: the user experience from other processing.</p>
+<p>As there will (usually) be many widgets used in the application, it makes sense to abtract the <em>panel</em> into its own class. This has the advantage that we will separate into its own class all of the code for the creation, display, and events relating to its widgets. This will reduce the complexity of code in the <em>frame</em> and deliver separation of concerns: the user experience from other processing.</p>
 <p>To achieve this, I will create a <em>panel</em> class that inherits wx.Panel and calls its dunder-init method:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -285,7 +285,7 @@
 </div>
 <div class="section" id="a-label">
 <h2>A label<a class="headerlink" href="#a-label" title="Permalink to this headline">¶</a></h2>
-<p>Finally we can add some widgets to the panel. The first will be a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticText.html">label</a> (called <em>StaticText</em> within wxPython). The code to produce the label is to create an instance of the wx.StaticText class. We need to pass to it its parent, in this case the panel, and the text that is to appear on the label:</p>
+<p>Finally we can add some widgets to the panel. The first will be a label (called <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticText.html">StaticText</a> within wxPython). To produce the label we need to create an instance of the wx.StaticText class. We pass to it its parent, in this case the panel, and the text that is to appear on the label:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">lbl_hello</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -304,7 +304,7 @@
 </td></tr></table></div>
 <p>Note that we have:</p>
 <ol class="arabic simple">
-<li>created a BoxSizer, in this case the widgets will be placed one above the other in it;</li>
+<li>created a BoxSizer, in this case the widgets will be placed one above the other;</li>
 <li>added the label to the sizer;</li>
 <li>assigned the sizer to the panel.</li>
 </ol>
@@ -331,7 +331,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_hello</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <em>flag</em> argument tells the system to place the <em>border</em> of 10 pixels on the top, bottom, left and right of the widget. The frame has now changed subtly:</p>
+<p>The <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Sizer.html#phoenix-title-sizer-flags">flag</a> argument tells the system to place the <em>border</em> of 10 pixels on the top, bottom, left and right of the widget. The frame has now changed subtly:</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/frame_04.png"><img alt="A frame with label" src="_images/frame_04.png" style="width: 400px; height: 250px;" /></a>
 </div>
