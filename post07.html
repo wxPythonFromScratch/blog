@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
-        <link rel="next" title="Index" href="contents_index.html"/>
+        <link rel="next" title="A menu bar and status bar" href="post08.html"/>
         <link rel="prev" title="RadioButtons and the GridBagSizer" href="post06.html"/> 
 
   
@@ -155,6 +155,37 @@
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="post08.html">A menu bar and status bar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-menu-bar">A menu bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#constructing-a-menu-bar">Constructing a menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menus">Menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menu-items">Menu items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-status-bar">A Status bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post09.html">Building a larger application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-layout">The layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-code">The code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-frame">The frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#summary">Summary</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
@@ -230,7 +261,7 @@
 <a class="reference internal image-reference" href="_images/listbox_01.png"><img alt="ListBox" src="_images/listbox_01.png" style="width: 346px; height: 238px;" /></a>
 </div>
 <p>Fig 1. A ListBox</p>
-<p>Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern:</p>
+<p>Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern (<a class="reference external" href="snippets/listbox.py">listbox.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">))</span>
  <span class="n">lst_cities</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_LISTBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_lst_cities_click</span><span class="p">)</span>
@@ -261,12 +292,12 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <em>value</em> argument consists of a string that will appear in the combobox before a selection is made.</p>
+<p>The <em>value</em> argument consists of a string that will appear in the combobox before a selection is made (<a class="reference external" href="snippets/combobox.py">combobox.py</a>).</p>
 </div>
 <div class="section" id="using-spacers">
 <h2>Using spacers<a class="headerlink" href="#using-spacers" title="Permalink to this headline">¶</a></h2>
 <p>The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a <a class="reference external" href="post04.html#spacers">crude way</a> of forcing the frame to accomodate more space. Here we will use a more subtle method to achieve a common requirement.</p>
-<p>In the following frame the <em>Quit</em> button is placed in a horizontal BoxSizer with the <em>Print</em> button.</p>
+<p>In the following frame the <strong>Quit</strong> button is placed in a horizontal <em>BoxSizer</em> with the <strong>Print</strong> button.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -305,7 +336,7 @@
 </div>
 <p>Fig 3. A frame with buttons</p>
 <p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
-<p>I do think the <em>Quit</em> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <em>Quit</em> button to the right.</p>
+<p>I do think the <strong>Quit</strong> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <strong>Quit</strong> button to the right (<a class="reference external" href="snippets/spacers.py">spacers.py</a>).</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -344,7 +375,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contents_index.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="post08.html" class="btn btn-neutral float-right" title="A menu bar and status bar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="post06.html" class="btn btn-neutral" title="RadioButtons and the GridBagSizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

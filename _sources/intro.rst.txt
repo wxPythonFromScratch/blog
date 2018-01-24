@@ -18,7 +18,9 @@ I have chosen to assume that the reader knows nothing about wxPython. A few web 
 
 This series of postings is not intended to cover all aspects of wxPython programming and should not be considered as a reference document. Instead, I hope you will read, follow and implement for yourself the I give examples in detail and in sequence. Each posting should take no more than 30 minutes, and so, if you pace youself over a week, you will gain an mastery of wxPython in very little time. You will really understand how to use it and not just parrot recipes from examples.
 
-I have followed the `Style Guide for wxPython code <https://wiki.wxpython.org/wxPython%20Style%20Guide>`_ and `PEP8 <https://www.python.org/dev/peps/pep-0008/>`_ (except on line length) wherever possible; I apologise for any lapses.
+I have followed the `Style Guide for wxPython code <https://wiki.wxpython.org/wxPython%20Style%20Guide>`_ and `PEP8 <https://www.python.org/dev/peps/pep-0008/>`_ (except on line length and docstrings) wherever possible; I apologise for any lapses.
+
+The code for each topic can be downloaded. A link is provided at the appropriate point on each post.
 
 Prerequisites
 +++++++++++++

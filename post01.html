@@ -164,9 +164,28 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="post08.html#a-status-bar">A Status bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post08.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post09.html">Building a larger application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-layout">The layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-code">The code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-frame">The frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#summary">Summary</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
@@ -245,30 +264,30 @@
 <dd>an area on the frame that contains widgets. For most simple GUI applications you will have one panel and it will cover the whole frame.</dd>
 </dl>
 <div class="align-center figure">
-<a class="reference internal image-reference" href="_images/frame_01.png"><img alt="A basic frame" src="_images/frame_01.png" style="width: 400px; height: 250px;" /></a>
+<a class="reference internal image-reference" href="_images/raw_frame.png"><img alt="A basic frame" src="_images/raw_frame.png" style="width: 400px; height: 250px;" /></a>
 </div>
 <p>Fig 1. A basic frame</p>
 <p>Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. (It is created by wxPython using the default size 400x250.) Before we look at how this was constructed, let’s first consider the wxPython main loop.</p>
 <div class="section" id="the-wxpython-main-loop">
 <span id="main-loop"></span><h2>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h2>
 <p>A moments thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
-<p>In wxPython the loop is handled by the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.App.html">wx.APP</a> class. The most basic code for a wxPython loop is:</p>
+<p>In wxPython the loop is handled by the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.App.html">wx.APP</a> class. The most basic code for a wxPython loop is (<a class="reference external" href="snippets/raw_frame.py">raw_frame.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">wx</span>
-<span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-<span class="n">main_frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First frame&quot;</span><span class="p">)</span>
-<span class="n">main_frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
-<span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+ <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+ <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw frame&quot;</span><span class="p">)</span>
+ <span class="n">MAIN_FRAME</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+ <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>and I have used this to code produce the frame shown in Figure 1.</p>
 <ol class="arabic simple">
 <li>In the first  line we import the wxPython module;</li>
 <li>then, we create an instance of a wx application (wx.App);</li>
-<li>thirdly, we create an instance of a wx Frame (see below);</li>
+<li>thirdly, we create an instance of a wx Frame (see below). The <em>None</em> argument is for the frame’s parent: in this case there is none;</li>
 <li>then tell the system to show the frame;</li>
 <li>and finally we start the wx main loop (app.MainLoop).</li>
 </ol>
@@ -289,17 +308,17 @@
 </td></tr></table></div>
 <p>In this snippet, we have:</p>
 <ol class="arabic simple">
-<li>defined the class MainFrame which inherits wx.Frame;</li>
+<li>defined the class <strong>MainFrame</strong> which inherits <em>wx.Frame</em>;</li>
 <li>defined the dunder-init method for the class;</li>
 <li>called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;</li>
-<li>called the <em>Show</em> method for the frame.</li>
+<li>called the <strong>Show</strong> method for the frame.</li>
 </ol>
-<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame.</p>
+<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame. One use is the ability to set the frame’s title in wxPython loop code stub which condenses the frame’s initialisation argument list.</p>
 <p>And that’s it. In a few lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>The most basic basic element of a GUI program running wxPython is the <em>frame</em>. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its <em>Show</em> method. The full code is presented below:</p>
+<p>The most basic basic element of a GUI program running wxPython is the <em>frame</em>. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its <strong>Show</strong> method. The full code is presented below (<a class="reference external" href="snippets/basic_frame.py">basic_frame.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -309,16 +328,20 @@
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">wx</span>
-<span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-    <span class="n">main_frame</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Abstracted frame&quot;</span><span class="p">)</span>
-    <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+
+ <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Basic frame&quot;</span><span class="p">)</span>
+     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>In the next post I will show how to create a label and introduce the concept of a sizer and I will elaborate on the way that I suggest that code for wxPython is organised.</p>

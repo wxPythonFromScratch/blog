@@ -132,7 +132,7 @@ Note that here, I have not only created the menu item, but bound it to a method 
 
 Fig 3. A menu with a menu item
 
-Creating more menus and more menu items is simply a case of repeating the above steps.
+Creating more menus and more menu items is simply a case of repeating the above steps (`menu.py <snippets/menu.py>`_).
 
 A Status bar
 ------------
@@ -157,7 +157,7 @@ To set the text, use the **SetStatusText** method:
 
 Fig 4. A frame with a status bar
 
-The full code for this frame is:
+The full code for this frame is (`menu.py <snippets/menu.py>`_):
 
 .. code-block:: python
    :linenos:
@@ -176,6 +176,6 @@ The full code for this frame is:
         screen_app.MainLoop()
 
 Summary
-=======
+-------
 
-In this post I have described the use of two widgets that are linked directly to the frame: the menu bar and the status bar. In the next post I will create a larger application from many of the elements that we have seen so far and show how code can be organised to simplify coding and maintenance.
+In this post I have described the use of two widgets that are linked directly to the frame: the menu bar and the status bar (`menu.py <snippets/menu.py>`_). In the next post I will create a larger application from many of the elements that we have seen so far and show how code can be organised to simplify coding and maintenance.

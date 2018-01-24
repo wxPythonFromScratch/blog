@@ -144,7 +144,7 @@ Fig 5. Frame with sizer
 
 Summary
 -------
-In this post we have seen how to use horizontal and vertical BoxSizers. We have placed one sizer within another and considered how we might adjust borders to keep a consistent look. Finally we have used some flags to adjust the alignment of widgets with sizers. The code for the panel is now:
+In this post we have seen how to use horizontal and vertical BoxSizers. We have placed one sizer within another and considered how we might adjust borders to keep a consistent look. Finally we have used some flags to adjust the alignment of widgets with sizers. The code for the panel is now (`widgets.py <snippets/widgets.py>`_):
 
 .. code-block:: python
    :linenos:

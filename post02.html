@@ -164,9 +164,28 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="post08.html#a-status-bar">A Status bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post08.html#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post09.html">Building a larger application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-layout">The layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#the-code">The code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-frame">The frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post09.html#summary">Summary</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
 </ul>
 
@@ -239,7 +258,7 @@
 <div class="section" id="a-panel">
 <h2>A panel<a class="headerlink" href="#a-panel" title="Permalink to this headline">¶</a></h2>
 <p>A panel is simply a space on which widgets can be placed. (You can have more than one panel on a frame (e.g. a split window).)</p>
-<p>To produce a panel, create an instance of <em>wx.Panel</em> using a reference to the frame as its parent window (see line 4 below):</p>
+<p>To produce a <em>panel</em>, create an instance of <em>wx.Panel</em> using a reference to the frame as its parent window (see line 4 below) (<a class="reference external" href="snippets/raw_panel.py">raw_panel.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -252,7 +271,7 @@
 </pre></div>
 </td></tr></table></div>
 <p>As there will (usually) be many widgets used in the application, it makes sense to abtract the <em>panel</em> into its own class. This has the advantage that we will separate into its own class all of the code for the creation, display, and events relating to its widgets. This will reduce the complexity of code in the <em>frame</em> and deliver separation of concerns: the user experience from other processing.</p>
-<p>To achieve this, I will create a <em>panel</em> class that inherits wx.Panel and calls its dunder-init method:</p>
+<p>To achieve this, I will create a <em>panel</em> class that inherits wx.Panel and calls its dunder-init method (<a class="reference external" href="snippets/basic_panel.py">basic_panel.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -285,7 +304,7 @@
 </div>
 <div class="section" id="a-label">
 <h2>A label<a class="headerlink" href="#a-label" title="Permalink to this headline">¶</a></h2>
-<p>Finally we can add some widgets to the panel. The first will be a label (called <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticText.html">StaticText</a> within wxPython). To produce the label we need to create an instance of the wx.StaticText class. We pass to it its parent, in this case the panel, and the text that is to appear on the label:</p>
+<p>Finally we can add some widgets to the panel. The first will be a <em>label</em> (called <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StaticText.html">StaticText</a> within wxPython). To produce the label we need to create an instance of the wx.StaticText class. We pass to it its parent, in this case the panel, and the text that is to appear on the label:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">lbl_hello</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -327,7 +346,7 @@
 </div>
 <div class="section" id="adding-a-border-to-a-widget">
 <h2>Adding a border to a widget<a class="headerlink" href="#adding-a-border-to-a-widget" title="Permalink to this headline">¶</a></h2>
-<p>So far the frame frame still looks as it did in Figure 1. One of the things that we can do with sizers is to add space around the widgets. In this case, we might want some space between the label and the edge of the frame. This is done when we add the widget to the sizer. For example:</p>
+<p>So far the frame still looks as it did in Figure 1. One of the things that we can do with sizers is to add space around the widgets. In this case, we might want some space between the label and the edge of the frame. This is done when we add the widget to the sizer. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_hello</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -352,8 +371,8 @@
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>We have seen how to create a panel and how to abstract it to its own class. I have introduced the concept of the sizer and shown how it can be used to add borders around widgets and to fit the frame to its contants.</p>
-<p>The full code is now:</p>
+<p>We have seen how to create a panel and how to abstract it to its own class. I have introduced the concept of the sizer and shown how it can be used to add borders around widgets and to fit the frame to its contents.</p>
+<p>The full code is now (<a class="reference external" href="snippets/label.py">label.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3

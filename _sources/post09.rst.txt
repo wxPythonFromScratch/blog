@@ -1,0 +1,636 @@
+Building a larger application
+=============================
+
+So far, I have concentrated on creating one or two widgets and placing them in a sizer on the panel. In this post I will look at the challenges involved in implementing a more complex layout and structuring the code for maintainability, readability and reuseability.
+
+The application that I want to construct is shown in Fig 1. I will concentrate on placing the widgets in the correct location and in organising the code. The application specific code behind the GUI is relatively straightforward and I will not take up space on describing that.
+
+
+.. figure:: /images/booking_01.png
+   :height: 401
+   :width: 704
+   :alt: A frame for hotel bookings
+   :figclass: align-center
+
+Fig 1. A frame for hotel bookings
+
+The layout
+----------
+
+The first stage in implementing a GUI requirement is to decide on how the widgets are to be layed out. In Fig 2., I have divided the screen into regions do demonstrate how a GridBagSizer could be used to create the gross pattern.
+
+
+.. figure:: /images/booking_02.png
+   :height: 401
+   :width: 704
+   :alt: Boundaries for GridBagSizer
+   :figclass: align-center
+
+Fig 2. Boundaries for GridBagSizer
+
+1. The top left cell (cell (0, 0)) contains personal details (the `PersonPanel <#the-person-panel>`_);
+2. the top right (cell (0, 1)) contains a horizontal *BoxSizer* for the room preferences (the `ExtrasPanel <#the-extras-panel>`_ and the `RoomPanel <#the-room-panel>`_ );
+3. the middle left (cell (1, 0) contains the city selection, (`the CityPanel <#the-city-panel>`_);
+4. the middle right (cell(1, 1)) the `DatePanel <#the-date-panel>`_;
+5. the bottom row (cells(2, 0) and (2, 1)) holds the `ButtonPanel <#the-button-panel>`_.
+
+All of the text boxes in the top left cell are left-aligned, and so it makes sense to place these boxes and their labels in their own *GridBagSizer*.
+
+The room preference widgets are in separate StaticBoxes which can be placed in a horizontal *BoxSizer*.
+
+The city selection is in a StaticBox, as are the date fields.
+
+The buttons can be placed in a horizontal *BoxSizer* which will need to span two columns in the  main *GridBagSizer*.
+
+The code
+--------
+
+I will build up the code for the application in incremental steps and prsent the full code for the application at then of the post.
+
+The frame
++++++++++
+
+We will start with a basic frame:
+
+
+.. code-block:: python
+   :linenos:
+
+    from datetime import datetime
+    import wx
+
+
+    class MainFrame(wx.Frame):
+       def __init__(self, *args, **kwargs):
+           wx.Frame.__init__(self, *args, **kwargs)
+           self.Show()
+
+
+    if __name__ == "__main__":
+        SCREEN_APP = wx.App()
+        MAIN_FRAME = MainFrame()
+        SCREEN_APP.MainLoop()
+
+I have imported *datetime* from *datetime*. This will be used in the `DatePanel <#the-date-panel>`_
+
+The menu bar
+++++++++++++
+
+I will add a menu bar to the basic frame . To simplify the code, I have only used two *menus* and three *menu items* in the **File** menu:
+
+
+.. code-block:: python
+   :linenos:
+
+    class MainFrame(wx.Frame):
+        def __init__(self, *args, **kwargs):
+            wx.Frame.__init__(self, *args, **kwargs)
+            self.SetMenuBar(MenuBar())
+            self.Show()
+
+
+    class MenuBar(wx.MenuBar):
+        def __init__(self):
+            wx.MenuBar.__init__(self)
+            file_menu = FileMenu()
+            help_menu = HelpMenu()
+            self.Append(file_menu, '&File')
+            self.Append(help_menu, '&Help')
+
+
+    class FileMenu(wx.Menu):
+        def __init__(self):
+            wx.Menu.__init__(self)
+            clear_menu_item = wx.MenuItem(self, wx.ID_CLEAR)
+            save_menu_item = wx.MenuItem(self, wx.ID_SAVE)
+            quit_menu_item = wx.MenuItem(self, wx.ID_EXIT)
+            self.AppendItem(clear_menu_item)
+            self.AppendItem(save_menu_item)
+            self.AppendItem(quit_menu_item)
+
+
+    class HelpMenu(wx.Menu):
+        def __init__(self):
+            wx.Menu.__init__(self)
+
+The status bar
+++++++++++++++
+
+The code to implement the status bar is quite straightforward:
+
+.. code-block:: python
+   :linenos:
+
+    class MainFrame(wx.Frame):
+        def __init__(self, *args, **kwargs):
+            wx.Frame.__init__(self, *args, **kwargs)
+            self.SetMenuBar(MenuBar())
+            self.status_bar = self.CreateStatusBar()
+            self.status_bar.SetStatusText('New client')
+            self.Show()
+
+The panel
++++++++++
+
+Next, I will create the main panel and place it in its sizer in the frame:
+
+.. code-block:: python
+   :linenos:
+
+    class MainFrame(wx.Frame):
+        def __init__(self, *args, **kwargs):
+            wx.Frame.__init__(self, *args, **kwargs)
+            panel = MainPanel()
+            self.SetMenuBar(MenuBar())
+            self.status_bar = self.CreateStatusBar()
+            self.status_bar.SetStatusText('New client')
+            sizer = wx.BoxSizer()
+            sizer.Add(panel)
+            self.SetSizerAndFit(sizer)
+            self.Show()
+
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            wx.Panel.__init__(self, *args, **kwargs)
+            sizer = wx.GridBagSizer(5, 5)
+            sizer.Add((200, 100), pos=(0, 0))
+            self.SetSizer(sizer)
+
+I have created the *GridBagSizer* and added a dummy spacer, (200, 100), so that we can see that all is well.
+
+The person panel
+++++++++++++++++
+
+I am going to create the three text boxes and labels relating to name and email address in a panel of their own called **PersonPanel**. This panel's sizer will be a *GridBagSizer* with three rows and two columns.
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            wx.Panel.__init__(self, *args, **kwargs)
+            sizer = wx.GridBagSizer(5, 5)
+            self.person_panel = PersonPanel()
+
+            sizer = wx.GridBagSizer(10, 10)
+            sizer.Add(self.person_panel, pos=(0, 0), flag=wx.TOP|wx.LEFT, border=10)
+            self.SetSizer(sizer)
+
+
+    class PersonPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            wx.Panel.__init__(self, *args, **kwargs)
+            lbl_first_name = wx.StaticText(self, label="First name")
+            lbl_last_name = wx.StaticText(self, label="Last name")
+            lbl_email = wx.StaticText(self, label="Email")
+            self.txt_first_name = wx.TextCtrl(self, size=(150, -1))
+            self.txt_last_name = wx.TextCtrl(self, size=(150, -1))
+            self.txt_email = wx.TextCtrl(self, size=(250, -1))
+            sizer = wx.GridBagSizer(5, 5)
+            sizer.Add(lbl_first_name, pos=(0, 0))
+            sizer.Add(lbl_last_name, pos=(1, 0))
+            sizer.Add(lbl_email, pos=(2, 0))
+            sizer.Add(self.txt_first_name, pos=(0, 1))
+            sizer.Add(self.txt_last_name, pos=(1, 1))
+            sizer.Add(self.txt_email, pos=(2, 1))
+            self.SetSizer(sizer)
+
+There is nothing new here, but note that I have created the text boxes as class wide variables. This is essential when we come to handling the values in these fields programatically in the **MainPanel**.
+
+The extras panel
+++++++++++++++++
+
+The room panel is a simple panel that contains a *StaticBox* and the three *checkboxes*.
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            ...
+            self.extras_list = ["Breakfast", "Newpaper", "Flowers"]
+            self.extras_panel = ExtrasPanel(self)
+            ...
+
+
+    class ExtrasPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            extras_box = wx.StaticBox(self, label="Extras")
+            sizer = wx.StaticBoxSizer(extras_box, wx.VERTICAL)
+            self.cb_extras_list = []
+            cb_extras_list = []
+            for extras in parent.extras_list:
+                cb_extras = wx.CheckBox(extras_box, label=extras, name=extras)
+                cb_extras_list.append(cb_extras)
+                sizer.Add(cb_extras, flag=wx.ALL, border=0)
+                self.cb_extras_list.append(cb_extras)
+            self.SetSizer(sizer)
+
+Note that here, for convenience in this posting, I have defined the *extras_list* in the **MainPanel**. The coding in the **ExtrasPanel** is very similar that used when we covered `checkboxes <post05.html#the-checkbox>`_.
+
+The room panel
+++++++++++++++
+
+This panel contains a *RadioBox*. The code for this was `covered earlier <post06.html#the-radiobutton>`_:
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            ...
+            self.room_types = ["Single", "Twin", "Double"]
+            self.room_panel = RoomPanel(self)
+
+            preferences_sizer = wx.BoxSizer(wx.HORIZONTAL)
+            preferences_sizer.Add(self.extras_panel, flag= wx.RIGHT, border=10)
+            preferences_sizer.Add(self.room_panel)
+            ...
+            sizer.Add(preferences_sizer, pos=(0, 1), flag=wx.TOP, border=10)
+            ...
+
+
+    class RoomPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            self.room_box = wx.RadioBox(self, label="Room",
+                                        choices=parent.room_types,
+                                        style=wx.RA_SPECIFY_ROWS)
+            sizer = wx.BoxSizer(wx.HORIZONTAL)
+            sizer.Add(self.room_box)
+            self.SetSizer(sizer)
+
+Here, the **ExtrasPanel** and **RoomPanel** have been placed in a horizontal *BoxSizer* and then added to the *GridBagSizer* in first row and second column.
+
+The city panel
+++++++++++++++
+
+The code to create a *listbox* has already been `seen <post07.html#the-listbox>`_. I have created a panel to contain the cities listbox:
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            ...
+            self.cities = sorted(["London", "Birmingham", "Glasgow", "Leeds", ...])
+            ...
+            self.city_panel = CityPanel(self)
+            ...
+            sizer.Add(self.city_panel, pos=(1, 0), flag=wx.LEFT, border=10)
+            ...
+
+
+    class CityPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            city_box = wx.StaticBox(self, label="Destination")
+            sizer = wx.StaticBoxSizer(city_box, wx.HORIZONTAL)
+            self.lst_cities = wx.ListBox(self, size=(300, 150), choices=parent.cities)
+            sizer.Add(self.lst_cities)
+            self.SetSizer(sizer)
+
+The date panel
+++++++++++++++
+
+In this application, the date is selected by three `comboboxes <post07.html#the-combobox>`_ placed in a horizontal *BoxSizer*:
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            ...
+            self.days = [str(day) for day in range(1, 32)]
+            this_year = datetime.now().year
+            self.years = [str(year) for year in range(this_year, this_year+10)]
+            self.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            ...
+            self.date_panel = DatePanel(self)
+            ...
+            sizer.Add(self.date_panel, pos=(1, 1), flag=wx.RIGHT, border=10)
+            ...
+
+
+    class DatePanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            date_box = wx.StaticBox(self, label="Booking date")
+            sizer = wx.StaticBoxSizer(date_box, wx.HORIZONTAL)
+            self.cmb_day = wx.ComboBox(self, size=(100, -1), choices=parent.days)
+            self.cmb_month = wx.ComboBox(self, size=(100, -1), choices=parent.months)
+            self.cmb_year = wx.ComboBox(self, size=(100, -1), choices=parent.years)
+            sizer.Add(self.cmb_day, flag=wx.ALL, border=10)
+            sizer.Add(self.cmb_month, flag=wx.TOP|wx.BOTTOM, border=10)
+            sizer.Add(self.cmb_year, flag=wx.ALL, border=10)
+            self.SetSizer(sizer)
+
+The button panel
+++++++++++++++++
+
+The last widgets that we need to place on the panel are the *buttons*. Following the `spacer technique <post07.html#using-spacers>`_ for aligning the buttons demonstrated earlier:
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            ...
+            button_panel = ButtonPanel(self)
+            ...
+            sizer.Add(button_panel, pos=(2, 0), span=(1, 2),
+                        flag=wx.LEFT|wx.BOTTOM|wx.RIGHT|wx.EXPAND,
+                        border=10)
+            ...
+
+
+    class ButtonPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            cmd_clear = wx.Button(self, wx.ID_CLEAR)
+            cmd_save = wx.Button(self, wx.ID_SAVE)
+            cmd_quit = wx.Button(self, wx.ID_EXIT)
+
+            cmd_clear.Bind(wx.EVT_BUTTON, parent.on_cmd_clear_click)
+            cmd_save.Bind(wx.EVT_BUTTON, parent.on_cmd_save_click)
+            cmd_quit.Bind(wx.EVT_BUTTON, parent.on_cmd_quit_click)
+
+            sizer = wx.BoxSizer(wx.HORIZONTAL)
+            sizer.Add(cmd_clear)
+            sizer.Add(cmd_save)
+            sizer.Add((0, 0), proportion=1)
+            sizer.Add(cmd_quit, flag=wx.ALIGN_RIGHT)
+            self.SetSizer(sizer)
+
+As I want the button sizer to take the whole horizontal width of the *GridBagSizer*, I have spanned two columns.
+
+Handling events
++++++++++++++++
+
+I have bound the buttons to methods defined in the **ButtonPanel**'s parent, i.e. the **MainPanel**. The code for the **Save** button has not been attempted here because that will depend on the implementation of the data in the larger system.
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        ...
+        def on_cmd_clear_click(self, event):
+            del event
+            self.clear_controls()
+
+        def on_cmd_save_click(self, event):
+            del event
+            print('Save button pressed')
+
+        def on_cmd_quit_click(self, event):
+            del event
+            quit()
+
+The **clear_controls** method is defined within the **MainPanel**. It is called when the **Clear** button is clicked and when the panel is created to ensure a consistent state.
+
+.. code-block:: python
+   :linenos:
+
+    class MainPanel(wx.Panel):
+        ...
+        def clear_controls(self):
+            self.person_panel.txt_first_name.SetValue('')
+            self.person_panel.txt_last_name.SetValue('')
+            self.person_panel.txt_email.SetValue('')
+            for cb_extra in self.extras_panel.cb_extras_list:
+                cb_extra.SetValue(False)
+            self.room_panel.room_box.SetSelection(0)
+            self.city_panel.lst_cities.SetSelection(0)
+            self.city_panel.lst_cities.SetSelection(-1)
+            self.date_panel.cmb_day.SetValue('Day')
+            self.date_panel.cmb_month.SetValue('Month')
+            self.date_panel.cmb_year.SetValue('Year')
+
+Summary
+-------
+
+In this post I have used many of the elements covered in earlier posts to create a larger and more complex application. I have paid attention to structuring the code to optimise the three pillars of sound programming in Python: readability, maintainability and reusability. The complete code for the application follows.
+
+In the next post I will cover dialogs.
+
+.. code-block:: python
+   :linenos:
+
+    from datetime import datetime
+    import wx
+
+
+    class MainFrame(wx.Frame):
+        def __init__(self, *args, **kwargs):
+            wx.Frame.__init__(self, *args, **kwargs)
+            panel = MainPanel(self)
+            self.SetMenuBar(MenuBar())
+            self.status_bar = self.CreateStatusBar()
+            self.status_bar.SetStatusText('New client')
+            sizer = wx.BoxSizer()
+            sizer.Add(panel)
+            self.SetSizerAndFit(sizer)
+            self.Show()
+
+
+    class MenuBar(wx.MenuBar):
+        def __init__(self):
+            wx.MenuBar.__init__(self)
+            file_menu = FileMenu()
+            help_menu = HelpMenu()
+            self.Append(file_menu, '&File')
+            self.Append(help_menu, '&Help')
+
+
+    class FileMenu(wx.Menu):
+        def __init__(self):
+            wx.Menu.__init__(self)
+            clear_menu_item = wx.MenuItem(self, wx.ID_CLEAR)
+            save_menu_item = wx.MenuItem(self, wx.ID_SAVE)
+            quit_menu_item = wx.MenuItem(self, wx.ID_EXIT)
+            self.AppendItem(clear_menu_item)
+            self.AppendItem(save_menu_item)
+            self.AppendItem(quit_menu_item)
+
+
+    class HelpMenu(wx.Menu):
+        def __init__(self):
+            wx.Menu.__init__(self)
+
+
+    class MainPanel(wx.Panel):
+        def __init__(self, *args, **kwargs):
+            wx.Panel.__init__(self, *args, **kwargs)
+            self.days = [str(day) for day in range(1, 32)]
+            this_year = datetime.now().year
+            self.years = [str(year) for year in range(this_year, this_year+10)]
+            self.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            self.extras_list = ["Breakfast", "Newpaper", "Flowers"]
+            self.room_types = ["Single", "Twin", "Double"]
+            cities_raw = ["London", "Birmingham", "Glasgow", "Leeds", "Bristol",
+                          "Liverpool", "Manchester", "Sheffield", "Edinburgh",
+                          "Cardiff", "Leicester", "Stoke-on-Trent", "Bradford",
+                          "Coventry", "Nottingham", "Kingston-upon-Hull",
+                          "Belfast", "Newcastle-upon-Tyne", "Sunderland",
+                          "Brighton", "Derby", "Plymouth", "Wolverhampton",
+                          "Southampton", "Swansea ", "Salford", "Portsmouth",
+                          "Milton Keynes", "Aberdeen", "Reading", "Northampton",
+                          "Luton", "Swindon", "Warrington", "Dudley", "York"]
+            self.cities = sorted(cities_raw)
+
+            self.person_panel = PersonPanel(self)
+            self.extras_panel = ExtrasPanel(self)
+            self.room_panel = RoomPanel(self)
+            self.city_panel = CityPanel(self)
+            self.date_panel = DatePanel(self)
+            button_panel = ButtonPanel(self)
+
+            preferences_sizer = wx.BoxSizer(wx.HORIZONTAL)
+            preferences_sizer.Add(self.extras_panel, flag=wx.RIGHT, border=10)
+            preferences_sizer.Add(self.room_panel)
+            sizer = wx.GridBagSizer(10, 10)
+            sizer.Add(self.person_panel, pos=(0, 0), flag=wx.TOP|wx.LEFT, border=10)
+            sizer.Add(preferences_sizer, pos=(0, 1), flag=wx.TOP, border=10)
+            sizer.Add(self.city_panel, pos=(1, 0), flag=wx.LEFT, border=10)
+            sizer.Add(self.date_panel, pos=(1, 1), flag=wx.RIGHT, border=10)
+            sizer.Add(button_panel, pos=(2, 0), span=(1, 2),
+                      flag=wx.LEFT|wx.BOTTOM|wx.RIGHT|wx.EXPAND,
+                      border=10)
+            self.SetSizer(sizer)
+            self.clear_controls()
+
+        def clear_controls(self):
+            self.person_panel.txt_first_name.SetValue('')
+            self.person_panel.txt_last_name.SetValue('')
+            self.person_panel.txt_email.SetValue('')
+            for cb_extra in self.extras_panel.cb_extras_list:
+                cb_extra.SetValue(False)
+            self.room_panel.room_box.SetSelection(0)
+            self.city_panel.lst_cities.SetSelection(0)
+            self.city_panel.lst_cities.SetSelection(-1)
+            self.date_panel.cmb_day.SetValue('Day')
+            self.date_panel.cmb_month.SetValue('Month')
+            self.date_panel.cmb_year.SetValue('Year')
+
+        def on_cmd_clear_click(self, event):
+            del event
+            self.clear_controls()
+
+        def on_cmd_save_click(self, event):
+            del event
+            print('First name: %s' % self.person_panel.txt_first_name.GetValue())
+            print('Last name: %s' % self.person_panel.txt_first_name.GetValue())
+            print('Email: %s' % self.person_panel.txt_first_name.GetValue())
+            for index, cb_extra in enumerate(self.extras_panel.cb_extras_list):
+                print(self.extras_list[index]+': %s' % str(cb_extra.GetValue()))
+            print('Room type: %s' % self.room_types[self.room_panel.room_box.GetSelection()])
+            print('City: %s' % self.cities[self.city_panel.lst_cities.GetSelection()])
+            date_string = 'Date: {day} {month} {year}'
+            print(date_string.format(day=self.date_panel.cmb_day.GetValue(),
+                                     month=self.date_panel.cmb_month.GetValue(),
+                                     year=self.date_panel.cmb_year.GetValue()))
+            print('----------------')
+            self.clear_controls()
+
+        @staticmethod
+        def on_cmd_quit_click(event):
+            del event
+            quit()
+
+
+    class PersonPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            lbl_first_name = wx.StaticText(self, label="First name")
+            lbl_last_name = wx.StaticText(self, label="Last name")
+            lbl_email = wx.StaticText(self, label="Email")
+            self.txt_first_name = wx.TextCtrl(self, size=(150, -1))
+            self.txt_last_name = wx.TextCtrl(self, size=(150, -1))
+            self.txt_email = wx.TextCtrl(self, size=(250, -1))
+            sizer = wx.GridBagSizer(5, 5)
+            sizer.Add(lbl_first_name, pos=(0, 0))
+            sizer.Add(lbl_last_name, pos=(1, 0))
+            sizer.Add(lbl_email, pos=(2, 0))
+            sizer.Add(self.txt_first_name, pos=(0, 1))
+            sizer.Add(self.txt_last_name, pos=(1, 1))
+            sizer.Add(self.txt_email, pos=(2, 1))
+            self.SetSizer(sizer)
+
+
+    class ExtrasPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            extras_box = wx.StaticBox(self, label="Extras")
+            sizer = wx.StaticBoxSizer(extras_box, wx.VERTICAL)
+            self.cb_extras_list = []
+            cb_extras_list = []
+            for extras in parent.extras_list:
+                cb_extras = wx.CheckBox(extras_box, label=extras, name=extras)
+                cb_extras_list.append(cb_extras)
+                sizer.Add(cb_extras, flag=wx.ALL, border=0)
+                self.cb_extras_list.append(cb_extras)
+            self.SetSizer(sizer)
+
+
+    class RoomPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            self.room_box = wx.RadioBox(self, label="Room",
+                                        choices=parent.room_types,
+                                        style=wx.RA_SPECIFY_ROWS)
+            sizer = wx.BoxSizer(wx.HORIZONTAL)
+            sizer.Add(self.room_box)
+            self.SetSizer(sizer)
+
+
+    class CityPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            city_box = wx.StaticBox(self, label="Destination")
+            sizer = wx.StaticBoxSizer(city_box, wx.HORIZONTAL)
+            self.lst_cities = wx.ListBox(self, size=(300, 150), choices=parent.cities)
+            sizer.Add(self.lst_cities)
+            self.SetSizer(sizer)
+
+
+    class DatePanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            date_box = wx.StaticBox(self, label="Booking date")
+            sizer = wx.StaticBoxSizer(date_box, wx.HORIZONTAL)
+            self.cmb_day = wx.ComboBox(self, size=(100, -1), choices=parent.days)
+            self.cmb_month = wx.ComboBox(self, size=(100, -1), choices=parent.months)
+            self.cmb_year = wx.ComboBox(self, size=(100, -1), choices=parent.years)
+            sizer.Add(self.cmb_day, flag=wx.ALL, border=10)
+            sizer.Add(self.cmb_month, flag=wx.TOP|wx.BOTTOM, border=10)
+            sizer.Add(self.cmb_year, flag=wx.ALL, border=10)
+            self.SetSizer(sizer)
+
+
+    class ButtonPanel(wx.Panel):
+        def __init__(self, parent, *args, **kwargs):
+            wx.Panel.__init__(self, parent, *args, **kwargs)
+            cmd_clear = wx.Button(self, wx.ID_CLEAR)
+            cmd_save = wx.Button(self, wx.ID_SAVE)
+            cmd_quit = wx.Button(self, wx.ID_EXIT)
+
+            cmd_clear.Bind(wx.EVT_BUTTON, parent.on_cmd_clear_click)
+            cmd_save.Bind(wx.EVT_BUTTON, parent.on_cmd_save_click)
+            cmd_quit.Bind(wx.EVT_BUTTON, parent.on_cmd_quit_click)
+
+            sizer = wx.BoxSizer(wx.HORIZONTAL)
+            sizer.Add(cmd_clear)
+            sizer.Add(cmd_save)
+            sizer.Add((0, 0), proportion=1)
+            sizer.Add(cmd_quit, flag=wx.ALIGN_RIGHT)
+            self.SetSizer(sizer)
+
+
+    if __name__ == "__main__":
+        SCREEN_APP = wx.App()
+        MAIN_FRAME = MainFrame(None, title="Hotel booking")
+        SCREEN_APP.MainLoop()

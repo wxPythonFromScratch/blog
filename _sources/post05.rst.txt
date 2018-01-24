@@ -131,7 +131,7 @@ This greatly simplifies the coding of the MainPanel:
 Summary
 -------
 
-In this post we have seen how to use a more complex widget: a StaticBox, which is used with a StaticBoxSizer. We have placed  a number of related CheckBoxes into the StaticBox and seen how we can retrieve the value of the widgets. Finally, we have abstracted the code related to a logically related set of widgets to a separate panel. This has made the code easier to read and, ultimately, simpler to mainatain. The complete code for the main panel and its children is:
+In this post we have seen how to use a more complex widget: a StaticBox, which is used with a StaticBoxSizer. We have placed  a number of related CheckBoxes into the StaticBox and seen how we can retrieve the value of the widgets. Finally, we have abstracted the code related to a logically related set of widgets to a separate panel. This has made the code easier to read and, ultimately, simpler to maintain. The complete code for the main panel and its children is (`staticbox.py <snippets/staticbox.py>`_):
 
 .. code-block:: python
    :linenos:

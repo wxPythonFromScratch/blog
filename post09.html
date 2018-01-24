@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building a larger application &mdash; wxPython From Scratch  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+  
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="Index" href="contents_index.html"/>
+        <link rel="prev" title="A menu bar and status bar" href="post08.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> wxPython From Scratch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-panel">A panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#sizers">Sizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#a-label">A label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#adding-a-border-to-a-widget">Adding a border to a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#placing-the-panel-in-a-sizer">Placing the panel in a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post03.html">Text box, button and events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-text-box">A text box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#a-button">A button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#the-click-button-event">The click button event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post03.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post04.html">Using BoxSizers to create complex layouts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#horizontal-alignment">Horizontal alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#a-sizer-within-a-sizer">A sizer within a sizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#alignment-within-a-sizer">Alignment within a sizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-centrally">Align centrally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post04.html#align-right">Align right</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#spacers">Spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post05.html">Check-boxes, getting and setting values, abstracting panels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#creating-a-staticbox">Creating a StaticBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post06.html">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-radiobutton">The RadioButton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#the-gridbagsizer">The GridBagSizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post06.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post07.html">The ListBox, ComboBox and spacers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-listbox">The ListBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-event-object">The Event object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#the-combobox">The ComboBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#using-spacers">Using spacers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post07.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post08.html">A menu bar and status bar</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-menu-bar">A menu bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#constructing-a-menu-bar">Constructing a menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menus">Menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post08.html#menu-items">Menu items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#a-status-bar">A Status bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post08.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building a larger application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-layout">The layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-code">The code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-frame">The frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-menu-bar">The menu bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-status-bar">The status bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-panel">The panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-person-panel">The person panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-extras-panel">The extras panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-room-panel">The room panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-city-panel">The city panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-date-panel">The date panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-events">Handling events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">wxPython From Scratch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Building a larger application</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post09.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-a-larger-application">
+<h1>Building a larger application<a class="headerlink" href="#building-a-larger-application" title="Permalink to this headline">¶</a></h1>
+<p>So far, I have concentrated on creating one or two widgets and placing them in a sizer on the panel. In this post I will look at the challenges involved in implementing a more complex layout and structuring the code for maintainability, readability and reuseability.</p>
+<p>The application that I want to construct is shown in Fig 1. I will concentrate on placing the widgets in the correct location and in organising the code. The application specific code behind the GUI is relatively straightforward and I will not take up space on describing that.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/booking_01.png"><img alt="A frame for hotel bookings" src="_images/booking_01.png" style="width: 704px; height: 401px;" /></a>
+</div>
+<p>Fig 1. A frame for hotel bookings</p>
+<div class="section" id="the-layout">
+<h2>The layout<a class="headerlink" href="#the-layout" title="Permalink to this headline">¶</a></h2>
+<p>The first stage in implementing a GUI requirement is to decide on how the widgets are to be layed out. In Fig 2., I have divided the screen into regions do demonstrate how a GridBagSizer could be used to create the gross pattern.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/booking_02.png"><img alt="Boundaries for GridBagSizer" src="_images/booking_02.png" style="width: 704px; height: 401px;" /></a>
+</div>
+<p>Fig 2. Boundaries for GridBagSizer</p>
+<ol class="arabic simple">
+<li>The top left cell (cell (0, 0)) contains personal details (the <a class="reference external" href="#the-person-panel">PersonPanel</a>);</li>
+<li>the top right (cell (0, 1)) contains a horizontal <em>BoxSizer</em> for the room preferences (the <a class="reference external" href="#the-extras-panel">ExtrasPanel</a> and the <a class="reference external" href="#the-room-panel">RoomPanel</a> );</li>
+<li>the middle left (cell (1, 0) contains the city selection, (<a class="reference external" href="#the-city-panel">the CityPanel</a>);</li>
+<li>the middle right (cell(1, 1)) the <a class="reference external" href="#the-date-panel">DatePanel</a>;</li>
+<li>the bottom row (cells(2, 0) and (2, 1)) holds the <a class="reference external" href="#the-button-panel">ButtonPanel</a>.</li>
+</ol>
+<p>All of the text boxes in the top left cell are left-aligned, and so it makes sense to place these boxes and their labels in their own <em>GridBagSizer</em>.</p>
+<p>The room preference widgets are in separate StaticBoxes which can be placed in a horizontal <em>BoxSizer</em>.</p>
+<p>The city selection is in a StaticBox, as are the date fields.</p>
+<p>The buttons can be placed in a horizontal <em>BoxSizer</em> which will need to span two columns in the  main <em>GridBagSizer</em>.</p>
+</div>
+<div class="section" id="the-code">
+<h2>The code<a class="headerlink" href="#the-code" title="Permalink to this headline">¶</a></h2>
+<p>I will build up the code for the application in incremental steps and prsent the full code for the application at then of the post.</p>
+<div class="section" id="the-frame">
+<h3>The frame<a class="headerlink" href="#the-frame" title="Permalink to this headline">¶</a></h3>
+<p>We will start with a basic frame:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+ <span class="kn">import</span> <span class="nn">wx</span>
+
+
+ <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">()</span>
+     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>I have imported <em>datetime</em> from <em>datetime</em>. This will be used in the <a class="reference external" href="#the-date-panel">DatePanel</a></p>
+</div>
+<div class="section" id="the-menu-bar">
+<h3>The menu bar<a class="headerlink" href="#the-menu-bar" title="Permalink to this headline">¶</a></h3>
+<p>I will add a menu bar to the basic frame . To simplify the code, I have only used two <em>menus</em> and three <em>menu items</em> in the <strong>File</strong> menu:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">())</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+ <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">()</span>
+         <span class="n">help_menu</span> <span class="o">=</span> <span class="n">HelpMenu</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">file_menu</span><span class="p">,</span> <span class="s1">&#39;&amp;File&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">help_menu</span><span class="p">,</span> <span class="s1">&#39;&amp;Help&#39;</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">FileMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">clear_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CLEAR</span><span class="p">)</span>
+         <span class="n">save_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_SAVE</span><span class="p">)</span>
+         <span class="n">quit_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">clear_menu_item</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">save_menu_item</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">quit_menu_item</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">HelpMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-status-bar">
+<h3>The status bar<a class="headerlink" href="#the-status-bar" title="Permalink to this headline">¶</a></h3>
+<p>The code to implement the status bar is quite straightforward:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">())</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;New client&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-panel">
+<h3>The panel<a class="headerlink" href="#the-panel" title="Permalink to this headline">¶</a></h3>
+<p>Next, I will create the main panel and place it in its sizer in the frame:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">panel</span> <span class="o">=</span> <span class="n">MainPanel</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">())</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;New client&#39;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizerAndFit</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>I have created the <em>GridBagSizer</em> and added a dummy spacer, (200, 100), so that we can see that all is well.</p>
+</div>
+<div class="section" id="the-person-panel">
+<h3>The person panel<a class="headerlink" href="#the-person-panel" title="Permalink to this headline">¶</a></h3>
+<p>I am going to create the three text boxes and labels relating to name and email address in a panel of their own called <strong>PersonPanel</strong>. This panel’s sizer will be a <em>GridBagSizer</em> with three rows and two columns.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span> <span class="o">=</span> <span class="n">PersonPanel</span><span class="p">()</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">PersonPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">lbl_first_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">)</span>
+         <span class="n">lbl_last_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last name&quot;</span><span class="p">)</span>
+         <span class="n">lbl_email</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_first_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_last_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_email</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_first_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_last_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_email</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_first_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_last_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_email</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>There is nothing new here, but note that I have created the text boxes as class wide variables. This is essential when we come to handling the values in these fields programatically in the <strong>MainPanel</strong>.</p>
+</div>
+<div class="section" id="the-extras-panel">
+<h3>The extras panel<a class="headerlink" href="#the-extras-panel" title="Permalink to this headline">¶</a></h3>
+<p>The room panel is a simple panel that contains a <em>StaticBox</em> and the three <em>checkboxes</em>.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">extras_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Breakfast&quot;</span><span class="p">,</span> <span class="s2">&quot;Newpaper&quot;</span><span class="p">,</span> <span class="s2">&quot;Flowers&quot;</span><span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span> <span class="o">=</span> <span class="n">ExtrasPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="o">...</span>
+
+
+ <span class="k">class</span> <span class="nc">ExtrasPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">extras_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Extras&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">extras_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cb_extras_list</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">cb_extras_list</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="k">for</span> <span class="n">extras</span> <span class="ow">in</span> <span class="n">parent</span><span class="o">.</span><span class="n">extras_list</span><span class="p">:</span>
+             <span class="n">cb_extras</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">extras_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">extras</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">extras</span><span class="p">)</span>
+             <span class="n">cb_extras_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">)</span>
+             <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">cb_extras_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Note that here, for convenience in this posting, I have defined the <em>extras_list</em> in the <strong>MainPanel</strong>. The coding in the <strong>ExtrasPanel</strong> is very similar that used when we covered <a class="reference external" href="post05.html#the-checkbox">checkboxes</a>.</p>
+</div>
+<div class="section" id="the-room-panel">
+<h3>The room panel<a class="headerlink" href="#the-room-panel" title="Permalink to this headline">¶</a></h3>
+<p>This panel contains a <em>RadioBox</em>. The code for this was <a class="reference external" href="post06.html#the-radiobutton">covered earlier</a>:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Single&quot;</span><span class="p">,</span> <span class="s2">&quot;Twin&quot;</span><span class="p">,</span> <span class="s2">&quot;Double&quot;</span><span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span> <span class="o">=</span> <span class="n">RoomPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+         <span class="n">preferences_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">preferences_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">preferences_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span><span class="p">)</span>
+         <span class="o">...</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">preferences_sizer</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="o">...</span>
+
+
+ <span class="k">class</span> <span class="nc">RoomPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Room&quot;</span><span class="p">,</span>
+                                     <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">room_types</span><span class="p">,</span>
+                                     <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RA_SPECIFY_ROWS</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room_box</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Here, the <strong>ExtrasPanel</strong> and <strong>RoomPanel</strong> have been placed in a horizontal <em>BoxSizer</em> and then added to the <em>GridBagSizer</em> in first row and second column.</p>
+</div>
+<div class="section" id="the-city-panel">
+<h3>The city panel<a class="headerlink" href="#the-city-panel" title="Permalink to this headline">¶</a></h3>
+<p>The code to create a <em>listbox</em> has already been <a class="reference external" href="post07.html#the-listbox">seen</a>. I have created a panel to contain the cities listbox:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cities</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Birmingham&quot;</span><span class="p">,</span> <span class="s2">&quot;Glasgow&quot;</span><span class="p">,</span> <span class="s2">&quot;Leeds&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span> <span class="o">=</span> <span class="n">CityPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="o">...</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="o">...</span>
+
+
+ <span class="k">class</span> <span class="nc">CityPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">city_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Destination&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">city_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">cities</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lst_cities</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-date-panel">
+<h3>The date panel<a class="headerlink" href="#the-date-panel" title="Permalink to this headline">¶</a></h3>
+<p>In this application, the date is selected by three <a class="reference external" href="post07.html#the-combobox">comboboxes</a> placed in a horizontal <em>BoxSizer</em>:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)]</span>
+         <span class="n">this_year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">this_year</span><span class="p">,</span> <span class="n">this_year</span><span class="o">+</span><span class="mi">10</span><span class="p">)]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Jan&quot;</span><span class="p">,</span> <span class="s2">&quot;Feb&quot;</span><span class="p">,</span> <span class="s2">&quot;Mar&quot;</span><span class="p">,</span> <span class="s2">&quot;Apr&quot;</span><span class="p">,</span> <span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="s2">&quot;Jun&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Jul&quot;</span><span class="p">,</span> <span class="s2">&quot;Aug&quot;</span><span class="p">,</span> <span class="s2">&quot;Sep&quot;</span><span class="p">,</span> <span class="s2">&quot;Oct&quot;</span><span class="p">,</span> <span class="s2">&quot;Nov&quot;</span><span class="p">,</span> <span class="s2">&quot;Dec&quot;</span><span class="p">]</span>
+         <span class="o">...</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span> <span class="o">=</span> <span class="n">DatePanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="o">...</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="o">...</span>
+
+
+ <span class="k">class</span> <span class="nc">DatePanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">date_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Booking date&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">date_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_day</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_year</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">years</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_day</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_month</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_year</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="the-button-panel">
+<h3>The button panel<a class="headerlink" href="#the-button-panel" title="Permalink to this headline">¶</a></h3>
+<p>The last widgets that we need to place on the panel are the <em>buttons</em>. Following the <a class="reference external" href="post07.html#using-spacers">spacer technique</a> for aligning the buttons demonstrated earlier:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="o">...</span>
+         <span class="n">button_panel</span> <span class="o">=</span> <span class="n">ButtonPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="o">...</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                     <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span>
+                     <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="o">...</span>
+
+
+ <span class="k">class</span> <span class="nc">ButtonPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">cmd_clear</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CLEAR</span><span class="p">)</span>
+         <span class="n">cmd_save</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_SAVE</span><span class="p">)</span>
+         <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+
+         <span class="n">cmd_clear</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_clear_click</span><span class="p">)</span>
+         <span class="n">cmd_save</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_save_click</span><span class="p">)</span>
+         <span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_clear</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_save</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proportion</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALIGN_RIGHT</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>As I want the button sizer to take the whole horizontal width of the <em>GridBagSizer</em>, I have spanned two columns.</p>
+</div>
+<div class="section" id="handling-events">
+<h3>Handling events<a class="headerlink" href="#handling-events" title="Permalink to this headline">¶</a></h3>
+<p>I have bound the buttons to methods defined in the <strong>ButtonPanel</strong>’s parent, i.e. the <strong>MainPanel</strong>. The code for the <strong>Save</strong> button has not been attempted here because that will depend on the implementation of the data in the larger system.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="o">...</span>
+     <span class="k">def</span> <span class="nf">on_cmd_clear_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">clear_controls</span><span class="p">()</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_save_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Save button pressed&#39;</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>The <strong>clear_controls</strong> method is defined within the <strong>MainPanel</strong>. It is called when the <strong>Clear</strong> button is clicked and when the panel is created to ensure a consistent state.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="o">...</span>
+     <span class="k">def</span> <span class="nf">clear_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_first_name</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_last_name</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_email</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">cb_extra</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span><span class="o">.</span><span class="n">cb_extras_list</span><span class="p">:</span>
+             <span class="n">cb_extra</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span><span class="o">.</span><span class="n">room_box</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="o">.</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="o">.</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_day</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Day&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_month</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_year</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this post I have used many of the elements covered in earlier posts to create a larger and more complex application. I have paid attention to structuring the code to optimise the three pillars of sound programming in Python: readability, maintainability and reusability. The complete code for the application follows.</p>
+<p>In the next post I will cover dialogs.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+ <span class="kn">import</span> <span class="nn">wx</span>
+
+
+ <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">panel</span> <span class="o">=</span> <span class="n">MainPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">())</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;New client&#39;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">()</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizerAndFit</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+ <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">()</span>
+         <span class="n">help_menu</span> <span class="o">=</span> <span class="n">HelpMenu</span><span class="p">()</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">file_menu</span><span class="p">,</span> <span class="s1">&#39;&amp;File&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span><span class="n">help_menu</span><span class="p">,</span> <span class="s1">&#39;&amp;Help&#39;</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">FileMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">clear_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CLEAR</span><span class="p">)</span>
+         <span class="n">save_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_SAVE</span><span class="p">)</span>
+         <span class="n">quit_menu_item</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">clear_menu_item</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">save_menu_item</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">AppendItem</span><span class="p">(</span><span class="n">quit_menu_item</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">HelpMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)]</span>
+         <span class="n">this_year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">this_year</span><span class="p">,</span> <span class="n">this_year</span><span class="o">+</span><span class="mi">10</span><span class="p">)]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Jan&quot;</span><span class="p">,</span> <span class="s2">&quot;Feb&quot;</span><span class="p">,</span> <span class="s2">&quot;Mar&quot;</span><span class="p">,</span> <span class="s2">&quot;Apr&quot;</span><span class="p">,</span> <span class="s2">&quot;May&quot;</span><span class="p">,</span> <span class="s2">&quot;Jun&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Jul&quot;</span><span class="p">,</span> <span class="s2">&quot;Aug&quot;</span><span class="p">,</span> <span class="s2">&quot;Sep&quot;</span><span class="p">,</span> <span class="s2">&quot;Oct&quot;</span><span class="p">,</span> <span class="s2">&quot;Nov&quot;</span><span class="p">,</span> <span class="s2">&quot;Dec&quot;</span><span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">extras_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Breakfast&quot;</span><span class="p">,</span> <span class="s2">&quot;Newpaper&quot;</span><span class="p">,</span> <span class="s2">&quot;Flowers&quot;</span><span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Single&quot;</span><span class="p">,</span> <span class="s2">&quot;Twin&quot;</span><span class="p">,</span> <span class="s2">&quot;Double&quot;</span><span class="p">]</span>
+         <span class="n">cities_raw</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Birmingham&quot;</span><span class="p">,</span> <span class="s2">&quot;Glasgow&quot;</span><span class="p">,</span> <span class="s2">&quot;Leeds&quot;</span><span class="p">,</span> <span class="s2">&quot;Bristol&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Liverpool&quot;</span><span class="p">,</span> <span class="s2">&quot;Manchester&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheffield&quot;</span><span class="p">,</span> <span class="s2">&quot;Edinburgh&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Cardiff&quot;</span><span class="p">,</span> <span class="s2">&quot;Leicester&quot;</span><span class="p">,</span> <span class="s2">&quot;Stoke-on-Trent&quot;</span><span class="p">,</span> <span class="s2">&quot;Bradford&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Coventry&quot;</span><span class="p">,</span> <span class="s2">&quot;Nottingham&quot;</span><span class="p">,</span> <span class="s2">&quot;Kingston-upon-Hull&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Belfast&quot;</span><span class="p">,</span> <span class="s2">&quot;Newcastle-upon-Tyne&quot;</span><span class="p">,</span> <span class="s2">&quot;Sunderland&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Brighton&quot;</span><span class="p">,</span> <span class="s2">&quot;Derby&quot;</span><span class="p">,</span> <span class="s2">&quot;Plymouth&quot;</span><span class="p">,</span> <span class="s2">&quot;Wolverhampton&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Southampton&quot;</span><span class="p">,</span> <span class="s2">&quot;Swansea &quot;</span><span class="p">,</span> <span class="s2">&quot;Salford&quot;</span><span class="p">,</span> <span class="s2">&quot;Portsmouth&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Milton Keynes&quot;</span><span class="p">,</span> <span class="s2">&quot;Aberdeen&quot;</span><span class="p">,</span> <span class="s2">&quot;Reading&quot;</span><span class="p">,</span> <span class="s2">&quot;Northampton&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Luton&quot;</span><span class="p">,</span> <span class="s2">&quot;Swindon&quot;</span><span class="p">,</span> <span class="s2">&quot;Warrington&quot;</span><span class="p">,</span> <span class="s2">&quot;Dudley&quot;</span><span class="p">,</span> <span class="s2">&quot;York&quot;</span><span class="p">]</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cities</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">cities_raw</span><span class="p">)</span>
+
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span> <span class="o">=</span> <span class="n">PersonPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span> <span class="o">=</span> <span class="n">ExtrasPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span> <span class="o">=</span> <span class="n">RoomPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span> <span class="o">=</span> <span class="n">CityPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span> <span class="o">=</span> <span class="n">DatePanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">button_panel</span> <span class="o">=</span> <span class="n">ButtonPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+         <span class="n">preferences_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">preferences_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">preferences_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">preferences_sizer</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_panel</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                   <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span>
+                   <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">clear_controls</span><span class="p">()</span>
+
+     <span class="k">def</span> <span class="nf">clear_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_first_name</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_last_name</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_email</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">cb_extra</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span><span class="o">.</span><span class="n">cb_extras_list</span><span class="p">:</span>
+             <span class="n">cb_extra</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span><span class="o">.</span><span class="n">room_box</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="o">.</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="o">.</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">SetSelection</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_day</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Day&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_month</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_year</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_clear_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">clear_controls</span><span class="p">()</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_save_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;First name: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_first_name</span><span class="o">.</span><span class="n">GetValue</span><span class="p">())</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Last name: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_first_name</span><span class="o">.</span><span class="n">GetValue</span><span class="p">())</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Email: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">person_panel</span><span class="o">.</span><span class="n">txt_first_name</span><span class="o">.</span><span class="n">GetValue</span><span class="p">())</span>
+         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">cb_extra</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras_panel</span><span class="o">.</span><span class="n">cb_extras_list</span><span class="p">):</span>
+             <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extras_list</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">cb_extra</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()))</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Room type: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">room_types</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">room_panel</span><span class="o">.</span><span class="n">room_box</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;City: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">city_panel</span><span class="o">.</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+         <span class="n">date_string</span> <span class="o">=</span> <span class="s1">&#39;Date: {day} {month} {year}&#39;</span>
+         <span class="k">print</span><span class="p">(</span><span class="n">date_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_day</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(),</span>
+                                  <span class="n">month</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_month</span><span class="o">.</span><span class="n">GetValue</span><span class="p">(),</span>
+                                  <span class="n">year</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">date_panel</span><span class="o">.</span><span class="n">cmb_year</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()))</span>
+         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;----------------&#39;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">clear_controls</span><span class="p">()</span>
+
+     <span class="nd">@staticmethod</span>
+     <span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="n">quit</span><span class="p">()</span>
+
+
+ <span class="k">class</span> <span class="nc">PersonPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">lbl_first_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;First name&quot;</span><span class="p">)</span>
+         <span class="n">lbl_last_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Last name&quot;</span><span class="p">)</span>
+         <span class="n">lbl_email</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_first_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_last_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_email</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_first_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_last_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_email</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_first_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_last_name</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_email</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">ExtrasPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">extras_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Extras&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">extras_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cb_extras_list</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="n">cb_extras_list</span> <span class="o">=</span> <span class="p">[]</span>
+         <span class="k">for</span> <span class="n">extras</span> <span class="ow">in</span> <span class="n">parent</span><span class="o">.</span><span class="n">extras_list</span><span class="p">:</span>
+             <span class="n">cb_extras</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">extras_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">extras</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">extras</span><span class="p">)</span>
+             <span class="n">cb_extras_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">)</span>
+             <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">cb_extras_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_extras</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">RoomPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">room_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Room&quot;</span><span class="p">,</span>
+                                     <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">room_types</span><span class="p">,</span>
+                                     <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RA_SPECIFY_ROWS</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">room_box</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">CityPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">city_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Destination&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">city_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">cities</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lst_cities</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">DatePanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">date_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Booking date&quot;</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">date_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_day</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">cmb_year</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="n">parent</span><span class="o">.</span><span class="n">years</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_day</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_month</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmb_year</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">class</span> <span class="nc">ButtonPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">cmd_clear</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_CLEAR</span><span class="p">)</span>
+         <span class="n">cmd_save</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_SAVE</span><span class="p">)</span>
+         <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+
+         <span class="n">cmd_clear</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_clear_click</span><span class="p">)</span>
+         <span class="n">cmd_save</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_save_click</span><span class="p">)</span>
+         <span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_clear</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_save</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proportion</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALIGN_RIGHT</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Hotel booking&quot;</span><span class="p">)</span>
+     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contents_index.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="post08.html" class="btn btn-neutral" title="A menu bar and status bar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jeff Watkins.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>

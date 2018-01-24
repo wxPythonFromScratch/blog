@@ -14,7 +14,7 @@ A `ListBox <https://wxpython.org/Phoenix/docs/html/wx.ListBox.html>`_ is a widge
 
 Fig 1. A ListBox
 
-Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern:
+Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern (`listbox.py <snippets/listbox.py>`_):
 
 .. code-block:: python
    :linenos:
@@ -57,14 +57,14 @@ Again the code takes a familiar form:
 
     cmb_month = wx.ComboBox(self, size=(100, -1), value="Month", choices=parent.months)
 
-The *value* argument consists of a string that will appear in the combobox before a selection is made.
+The *value* argument consists of a string that will appear in the combobox before a selection is made (`combobox.py <snippets/combobox.py>`_).
 
 Using spacers
 -------------
 
 The general principle in wxPython is that a sizer will shrink (or grow) to fit the widgets that it contains. But there are occasions when  we need to commandeer space on the frame or we require the sizer to be a bit more flexible. Spacers can help and we have already seen a `crude way <post04.html#spacers>`_ of forcing the frame to accomodate more space. Here we will use a more subtle method to achieve a common requirement.
 
-In the following frame the *Quit* button is placed in a horizontal BoxSizer with the *Print* button.
+In the following frame the **Quit** button is placed in a horizontal *BoxSizer* with the **Print** button.
 
 .. code-block:: python
    :linenos:
@@ -96,7 +96,7 @@ Fig 3. A frame with buttons
 
 In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.
 
-I do think the *Quit* button would look better aligned to the right. As I don't know the width taken up by the *name_sizer* I cannot place a fixed width spacer in the *button_sizer*. This is where the *proportion*  and *wx.EXPAND* flags come in. I will add a spacer (of zero width and zero height) to the *button_sizer* between the two buttons and set the *proportion* argument to 1. Then, add the *wx.EXPAND* flag to the *button_sizer* and we achieve the effect I wanted: the *button_sizer* expands to fit the whole width of the *main_sizer* and the spacer expands, pushing the *Quit* button to the right.
+I do think the **Quit** button would look better aligned to the right. As I don't know the width taken up by the *name_sizer* I cannot place a fixed width spacer in the *button_sizer*. This is where the *proportion*  and *wx.EXPAND* flags come in. I will add a spacer (of zero width and zero height) to the *button_sizer* between the two buttons and set the *proportion* argument to 1. Then, add the *wx.EXPAND* flag to the *button_sizer* and we achieve the effect I wanted: the *button_sizer* expands to fit the whole width of the *main_sizer* and the spacer expands, pushing the **Quit** button to the right (`spacers.py <snippets/spacers.py>`_).
 
 
 .. code-block:: python

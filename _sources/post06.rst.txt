@@ -38,8 +38,8 @@ And this is how it can be create using the RadioBox in the MainPanel:
 
     self.colours = ["red", "green", "blue"]
     self.colour_box = wx.RadioBox(self, label="Colours",
-                                        choices=self.colours,
-                                        style=wx.RA_SPECIFY_ROWS)
+                                  choices=self.colours,
+                                  style=wx.RA_SPECIFY_ROWS)
     self.colour_box.Bind(wx.EVT_RADIOBOX, self.on_rb_colour_click)
 
 This way we do not have to create a list of radioButtons or even the buttons themselves. Note that the flag "wx.RA_SPECIFY_ROWS", creates a column of buttons. Both sets of code create the same output.
@@ -61,10 +61,12 @@ The wx.EVT_RADIOBOX is triggered whenever one of the buttons is clicked. The Rad
         del event
         print(self.colours[self.colour_box.GetSelection()])
 
+For the full code see `radiobox.py <snippets/radiobox.py>`_.
+
 The GridBagSizer
 ----------------
 
-    The *GridBagSizer* splits the panel into a grid, and widgets can be placed on the grid by giving a position argument (row, column). In the following example, I have placed three labels on the grid:
+    The *GridBagSizer* splits the panel into a grid, and widgets can be placed on the grid by giving a position argument (row, column). In the following example, I have placed three labels on the grid (`gridbagsizer.py <snippets/gridbagsizer.py>`_):
 
 .. code-block:: python
    :linenos:

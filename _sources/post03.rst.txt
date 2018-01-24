@@ -115,7 +115,7 @@ Every event is passed as an argument to the relevant bound method. This is a wxP
 Summary
 -------
 
-In this posting we have seen how to create a TextCtrl and a buuton. They have been placed in a sizer with appropriate borders. Finally we have bound the click event of the button with a method:
+In this posting we have seen how to create a TextCtrl and a buuton. They have been placed in a sizer with appropriate borders. Finally we have bound the click event of the button with a method (`widgets.py <widgets/label.py>`_):
 
 .. code-block:: python
    :linenos:
@@ -126,7 +126,7 @@ In this posting we have seen how to create a TextCtrl and a buuton. They have be
             lbl_name = wx.StaticText(self, label="Name:")
             txt_name = wx.TextCtrl(self, size=(150, -1))
             cmd_cancel = wx.Button(self, wx.ID_CANCEL)
-            cmd_cancel.Bind(wx.EVT_BUTTON,self.on_cmd_cancel_click)
+            cmd_cancel.Bind(wx.EVT_BUTTON, self.on_cmd_cancel_click)
             sizer = wx.BoxSizer(wx.VERTICAL)
             sizer.Add(lbl_name, flag=wx.ALL, border=10)
             sizer.Add(txt_name, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
