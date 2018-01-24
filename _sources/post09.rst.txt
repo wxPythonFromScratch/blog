@@ -412,7 +412,7 @@ The **clear_controls** method is defined within the **MainPanel**. It is called 
 Summary
 -------
 
-In this post I have used many of the elements covered in earlier posts to create a larger and more complex application. I have paid attention to structuring the code to optimise the three pillars of sound programming in Python: readability, maintainability and reusability. The complete code for the application follows.
+In this post I have used many of the elements covered in earlier posts to create a larger and more complex application. I have paid attention to structuring the code to optimise the three pillars of sound programming in Python: readability, maintainability and reusability. The complete code for the application follows  (`booking.py <snippets/booking.py>`_).
 
 In the next post I will cover dialogs.
 
