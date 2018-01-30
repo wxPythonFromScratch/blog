@@ -26,7 +26,7 @@ Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar,
 The wxPython main loop
 ----------------------
 
-A moments thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.
+A moment's thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.
 
 In wxPython the loop is handled by the `wx.APP <https://wxpython.org/Phoenix/docs/html/wx.App.html>`_ class. The most basic code for a wxPython loop is (`raw_frame.py <snippets/raw_frame.py>`_):
 
