@@ -18,7 +18,7 @@ class FileMenu(wx.Menu):
         wx.Menu.__init__(self)
         new_menu_item = wx.MenuItem(self, wx.ID_NEW)
         self.Bind(wx.EVT_MENU, self.on_new_menu_click, id=wx.ID_NEW)
-        self.AppendItem(new_menu_item)
+        self.Append(new_menu_item)
 
     def on_new_menu_click(self, event):
         del event

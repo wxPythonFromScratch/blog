@@ -30,9 +30,9 @@ class FileMenu(wx.Menu):
         clear_menu_item = wx.MenuItem(self, wx.ID_CLEAR)
         save_menu_item = wx.MenuItem(self, wx.ID_SAVE)
         quit_menu_item = wx.MenuItem(self, wx.ID_EXIT)
-        self.AppendItem(clear_menu_item)
-        self.AppendItem(save_menu_item)
-        self.AppendItem(quit_menu_item)
+        self.Append(clear_menu_item)
+        self.Append(save_menu_item)
+        self.Append(quit_menu_item)
 
 
 class HelpMenu(wx.Menu):
