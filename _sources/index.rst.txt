@@ -18,4 +18,5 @@ Welcome to wxPython From Scratch
    /post07
    /post08
    /post09
+   /post10
    /contents_index

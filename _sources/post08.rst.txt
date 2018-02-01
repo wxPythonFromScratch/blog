@@ -47,7 +47,7 @@ Let us start with a simple basic frame containing no panels or widgets:
 
     if __name__ == "__main__":
         screen_app = wx.App()
-        main_frame = MainFrame(None, title="Frame with menu and status panel")
+        main_frame = MainFrame(parent=None, title="Frame with menu and status panel")
         screen_app.MainLoop()
 
 In order to use a menu bar it is necessary to call the **SetMenuBar** method for the frame. The argument for this method must be an instance of a *wx.MenuBar* class.
@@ -115,7 +115,7 @@ Menu items will drop down when the mouse is clicked on a menu. Typically, there 
     class FileMenu(wx.Menu):
         def __init__(self, parent):
             wx.Menu.__init__(self)
-            new_menu_item = wx.MenuItem(self, wx.ID_NEW)
+            new_menu_item = wx.MenuItem(parentMenu=self, id=wx.ID_NEW)
             self.Bind(wx.EVT_MENU, self.on_new_menu_click, id=wx.ID_NEW)
             self.Append(new_menu_item)
 
@@ -172,7 +172,7 @@ The full code for this frame is (`menu.py <snippets/menu.py>`_):
 
     if __name__ == "__main__":
         screen_app = wx.App()
-        main_frame = MainFrame(None, title="Frame with status bar")
+        main_frame = MainFrame(parent=None, title="Frame with status bar")
         screen_app.MainLoop()
 
 Summary

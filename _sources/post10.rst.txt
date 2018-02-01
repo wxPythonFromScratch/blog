@@ -1,0 +1,65 @@
+Dialogs
+=======
+
+In previous postings we have seen how to construct a GUI application by creating its individual elements. A *Dialog* is a pre-fabricated screen that can be implemented within a GUI application.
+
+In this posting we will see, firstly, how to use a simple pop-up dialog, and then look in some more detail at a more powerful dialog: the *file open dialog*.
+
+A simple dialog
+---------------
+
+In order to demonstrate the use of a dialog, I will take the simple case of asking the user to confirm that they wish to close the frame. (I should say that it is considered good practise not to use this sort of dialog as they often annoy users ... "Are you sure?" ... "Are you really sure?" ... "Are you absolutely sure?" ...)
+
+I will use the `basic frame <post01.html#summary>`_ as a starting point, and bind the frame's close event to a method:
+
+.. code-block:: python
+   :linenos:
+
+    import wx
+
+
+    class MainFrame(wx.Frame):
+        def __init__(self, *args, **kwargs):
+            wx.Frame.__init__(self, *args, **kwargs)
+            self.Bind(wx.EVT_CLOSE, self.on_close_click)
+            self.Show()
+
+        def on_close_click(self, event):
+            print("Now closing")
+            quit()
+
+    if __name__ == "__main__":
+        SCREEN_APP = wx.App()
+        MAIN_FRAME = MainFrame(parent=None, title="Warning dialog")
+        SCREEN_APP.MainLoop()
+
+Note that I have had to include a **quit** command in the *close* event as the method 'captures' the event and does not allow tha **quit** to pass to the operating system.
+
+Let us assume that we wish the user to confirm that they really did wish to close the frame. To implement this we need to insert a call to the *dialog* in the **on_close_click** method:
+
+.. code-block:: python
+   :linenos:
+
+    def on_close_click(self, event):
+        warning_dialog = wx.MessageDialog(self, message="Close frame?",
+                                            style=wx.ICON_QUESTION|wx.YES_NO)
+        result = warning_dialog.ShowModal()
+        if result == wx.ID_YES:
+            print("Now closing")
+            quit()
+
+This is a *MessageDialog*. Note that:
+
+1. the *style* flags enable us to define the icon and the buttons that will be utilised;
+2. the dialog is shown in *Modal* mode. This means that neither the main frame, nor any of its widgets, can be accessed while the dialog is open;
+3. the dialog returns a value which we can test to decide what further action to take.
+
+The full code for this application can be found  at `warning_dialog.py <snippets/warning_dialog.py>`_.
+
+The file open dialog
+--------------------
+
+The *file open* dialog uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system. It is a slight misnomer: it does not open a file, but rather returns the path the a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:
+
+.. code-block:: python
+   :linenos:

@@ -22,6 +22,10 @@ Index
 
 ----
 
+`Dialog <post10.html#a-simple-dialog>`_
+
+----
+
 `Event <post07.html#the-event-object>`_
 
 ----

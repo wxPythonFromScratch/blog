@@ -12,7 +12,7 @@ The code required to create a *text box* (called a `TextCtrl <https://wxpython.o
 
 .. code-block:: python
 
-    txt_name = wx.TextCtrl(self)
+    txt_name = wx.TextCtrl(parent=self)
 
 This makes a TextCtrl of default size (enough to enter six "m"s and high enough for one line of text).
 
@@ -29,7 +29,7 @@ We can adjust the size by defining the relevant argument at instantiation:
 
 .. code-block:: python
 
-    txt_name = wx.TextCtrl(self, size=(150, -1))
+    txt_name = wx.TextCtrl(parent=self, size=(150, -1))
 
 This TextCtrl will now have a width of 150, The -1 value for height retains the default value; this is optimised for a single line of text.
 
@@ -40,7 +40,7 @@ Placing a `button <https://wxpython.org/Phoenix/docs/html/wx.Button.html>`_ on t
 
 .. code-block:: python
 
-        cmd_cancel = wx.Button(self, wx.ID_CANCEL)
+        cmd_cancel = wx.Button(parent=self, id=wx.ID_CANCEL)
 
 In this case I have used a wxPython `StandardID <https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html>`_ to define the  button appearance; it applies the text "Cancel" and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).
 
@@ -56,7 +56,7 @@ The advantvantage of using wxPython IDs is that you will get a consistent look o
 
 .. code-block:: python
 
-        cmd_cancel = wx.Button(self, label="Cancel")
+        cmd_cancel = wx.Button(parent=self, label="Cancel")
 
 This would not have created the icon on the button, and would not provide multi-lingual support.
 
@@ -71,10 +71,10 @@ In the previous post we placed the label in the sizer and gave it a border to en
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
-            lbl_name = wx.StaticText(self, label="Name:")
-            txt_name = wx.TextCtrl(self, size=(150, -1))
-            cmd_cancel = wx.Button(self, wx.ID_CANCEL)
-            sizer = wx.BoxSizer(wx.VERTICAL)
+            lbl_name = wx.StaticText(parent=self, label="Name:")
+            txt_name = wx.TextCtrl(parent=self, size=(150, -1))
+            cmd_cancel = wx.Button(parent=self, id=wx.ID_CANCEL)
+            sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_name, flag=wx.ALL, border=10)
             sizer.Add(txt_name, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
             sizer.Add(cmd_cancel, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
@@ -123,11 +123,11 @@ In this posting we have seen how to create a TextCtrl and a buuton. They have be
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
-            lbl_name = wx.StaticText(self, label="Name:")
-            txt_name = wx.TextCtrl(self, size=(150, -1))
-            cmd_cancel = wx.Button(self, wx.ID_CANCEL)
+            lbl_name = wx.StaticText(parent=self, label="Name:")
+            txt_name = wx.TextCtrl(parent=self, size=(150, -1))
+            cmd_cancel = wx.Button(parent=self, id=wx.ID_CANCEL)
             cmd_cancel.Bind(wx.EVT_BUTTON, self.on_cmd_cancel_click)
-            sizer = wx.BoxSizer(wx.VERTICAL)
+            sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_name, flag=wx.ALL, border=10)
             sizer.Add(txt_name, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
             sizer.Add(cmd_cancel, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)

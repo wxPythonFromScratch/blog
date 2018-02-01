@@ -15,7 +15,7 @@ To produce a *panel*, create an instance of *wx.Panel* using a reference to the 
    class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
-            panel = wx.Panel(self)
+            panel = wx.Panel(parent=self)
             self.Show()
 
 As there will (usually) be many widgets used in the application, it makes sense to abtract the *panel* into its own class. This has the advantage that we will separate into its own class all of the code for the creation, display, and events relating to its widgets. This will reduce the complexity of code in the *frame* and deliver separation of concerns: the user experience from other processing.
@@ -28,7 +28,7 @@ To achieve this, I will create a *panel* class that inherits wx.Panel and calls 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
-            panel = MainPanel(self)
+            panel = MainPanel(parent=self)
             self.Show()
 
 
@@ -56,7 +56,7 @@ Finally we can add some widgets to the panel. The first will be a *label* (calle
 
 .. code-block:: python
 
-    lbl_hello = wx.StaticText(self, label="Hello")
+    lbl_hello = wx.StaticText(parent=self, label="Hello")
 
 This produces a label which the system places in the top left corner of the frame.
 
@@ -73,7 +73,7 @@ Let's now create the sizer and put the label into it. The code for this is:
 .. code-block:: python
    :linenos:
 
-    sizer = wx.BoxSizer(wx.VERTICAL)
+    sizer = wx.BoxSizer(orient=wx.VERTICAL)
     sizer.Add(lbl_hello)
     self.SetSizer(sizer)
 
@@ -91,8 +91,8 @@ The complete code for the panel is now:
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
-            lbl_hello = wx.StaticText(self, label="Hello")
-            sizer = wx.BoxSizer(wx.VERTICAL)
+            lbl_hello = wx.StaticText(parent=self, label="Hello")
+            sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_hello)
             self.SetSizer(sizer)
 
@@ -125,7 +125,7 @@ So, in the frame class, I will create a BoxSizer (using the default orientation 
 .. code-block:: python
    :linenos:
 
-    sizer = wx.BoxSizer()
+    sizer = wx.BoxSizer(orient=wx.VERTICAL)
     sizer.Add(panel)
     self.SetSizerAndFit(sizer)
 
@@ -145,8 +145,8 @@ The full code is now (`label.py <snippets/label.py>`_):
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
-            panel = MainPanel(self)
-            sizer = wx.BoxSizer()
+            panel = MainPanel(parent=self)
+            sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(panel)
             self.SetSizerAndFit(sizer)
             self.Show()
@@ -155,15 +155,15 @@ The full code is now (`label.py <snippets/label.py>`_):
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
-            lbl_hello = wx.StaticText(self, label="Hello")
-            sizer = wx.BoxSizer(wx.VERTICAL)
+            lbl_hello = wx.StaticText(parent=self, label="Hello")
+            sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_hello, flag=wx.ALL, border=10)
             self.SetSizer(sizer)
 
 
     if __name__ == "__main__":
         screen_app = wx.App()
-        main_frame = MainFrame(None, title="Frame with label")
+        main_frame = MainFrame(parent=None, title="Frame with label")
         screen_app.MainLoop()
 
 At this stage the application produces:

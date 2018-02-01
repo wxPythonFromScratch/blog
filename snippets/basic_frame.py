@@ -8,5 +8,5 @@ class MainFrame(wx.Frame):
 
 if __name__ == "__main__":
     SCREEN_APP = wx.App()
-    MAIN_FRAME = MainFrame(None, title="Basic frame")
+    MAIN_FRAME = MainFrame(parent=None, title="Basic frame")
     SCREEN_APP.MainLoop()

@@ -18,26 +18,24 @@ class MainFrame(wx.Frame):
 class MenuBar(wx.MenuBar):
     def __init__(self):
         wx.MenuBar.__init__(self)
-        file_menu = FileMenu()
-        help_menu = HelpMenu()
+        file_menu = self.create_file_menu()
+        help_menu = self.create_help_menu()
         self.Append(file_menu, '&File')
         self.Append(help_menu, '&Help')
 
+    def create_file_menu(self):
+        menu = wx.Menu()
+        clear_menu_item = wx.MenuItem(parentMenu=menu, id=wx.ID_CLEAR)
+        save_menu_item = wx.MenuItem(parentMenu=menu, id=wx.ID_SAVE)
+        quit_menu_item = wx.MenuItem(parentMenu=menu, id=wx.ID_EXIT)
+        menu.Append(clear_menu_item)
+        menu.Append(save_menu_item)
+        menu.Append(quit_menu_item)
+        return menu
 
-class FileMenu(wx.Menu):
-    def __init__(self):
-        wx.Menu.__init__(self)
-        clear_menu_item = wx.MenuItem(self, wx.ID_CLEAR)
-        save_menu_item = wx.MenuItem(self, wx.ID_SAVE)
-        quit_menu_item = wx.MenuItem(self, wx.ID_EXIT)
-        self.Append(clear_menu_item)
-        self.Append(save_menu_item)
-        self.Append(quit_menu_item)
-
-
-class HelpMenu(wx.Menu):
-    def __init__(self):
-        wx.Menu.__init__(self)
+    def create_help_menu(self):
+        help_menu = wx.Menu()
+        return help_menu
 
 
 class MainPanel(wx.Panel):
@@ -61,39 +59,39 @@ class MainPanel(wx.Panel):
                       "Luton", "Swindon", "Warrington", "Dudley", "York"]
         self.cities = sorted(cities_raw)
 
-        self.person_panel = PersonPanel(self)
-        self.extras_panel = ExtrasPanel(self)
-        self.room_panel = RoomPanel(self)
-        self.city_panel = CityPanel(self)
-        self.date_panel = DatePanel(self)
-        button_panel = ButtonPanel(self)
+        person_sizer = self.create_person_sizer()
+        extras_sizer = self.create_extras_sizer()
+        room_sizer = self.create_room_sizer()
+        city_sizer = self.create_city_sizer()
+        date_sizer = self.create_date_sizer()
+        button_sizer = self.create_button_sizer()
 
-        preferences_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        preferences_sizer.Add(self.extras_panel, flag=wx.RIGHT, border=10)
-        preferences_sizer.Add(self.room_panel)
+        preferences_sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
+        preferences_sizer.Add(extras_sizer, flag=wx.RIGHT, border=10)
+        preferences_sizer.Add(room_sizer)
         sizer = wx.GridBagSizer(10, 10)
-        sizer.Add(self.person_panel, pos=(0, 0), flag=wx.TOP|wx.LEFT, border=10)
+        sizer.Add(person_sizer, pos=(0, 0), flag=wx.TOP|wx.LEFT, border=10)
         sizer.Add(preferences_sizer, pos=(0, 1), flag=wx.TOP, border=10)
-        sizer.Add(self.city_panel, pos=(1, 0), flag=wx.LEFT, border=10)
-        sizer.Add(self.date_panel, pos=(1, 1), flag=wx.RIGHT, border=10)
-        sizer.Add(button_panel, pos=(2, 0), span=(1, 2),
+        sizer.Add(city_sizer, pos=(1, 0), flag=wx.LEFT, border=10)
+        sizer.Add(date_sizer, pos=(1, 1), flag=wx.RIGHT, border=10)
+        sizer.Add(button_sizer, pos=(2, 0), span=(1, 2),
                   flag=wx.LEFT|wx.BOTTOM|wx.RIGHT|wx.EXPAND,
                   border=10)
         self.SetSizer(sizer)
         self.clear_controls()
 
     def clear_controls(self):
-        self.person_panel.txt_first_name.SetValue('')
-        self.person_panel.txt_last_name.SetValue('')
-        self.person_panel.txt_email.SetValue('')
-        for cb_extra in self.extras_panel.cb_extras_list:
+        self.txt_first_name.SetValue('')
+        self.txt_last_name.SetValue('')
+        self.txt_email.SetValue('')
+        for cb_extra in self.cb_extras_list:
             cb_extra.SetValue(False)
-        self.room_panel.room_box.SetSelection(0)
-        self.city_panel.lst_cities.SetSelection(0)
-        self.city_panel.lst_cities.SetSelection(-1)
-        self.date_panel.cmb_day.SetValue('Day')
-        self.date_panel.cmb_month.SetValue('Month')
-        self.date_panel.cmb_year.SetValue('Year')
+        self.room_box.SetSelection(0)
+        self.lst_cities.SetSelection(0)
+        self.lst_cities.SetSelection(-1)
+        self.cmb_day.SetValue('Day')
+        self.cmb_month.SetValue('Month')
+        self.cmb_year.SetValue('Year')
 
     def on_cmd_clear_click(self, event):
         del event
@@ -101,17 +99,17 @@ class MainPanel(wx.Panel):
 
     def on_cmd_save_click(self, event):
         del event
-        print('First name: %s' % self.person_panel.txt_first_name.GetValue())
-        print('Last name: %s' % self.person_panel.txt_first_name.GetValue())
-        print('Email: %s' % self.person_panel.txt_first_name.GetValue())
-        for index, cb_extra in enumerate(self.extras_panel.cb_extras_list):
+        print('First name: %s' % self.txt_first_name.GetValue())
+        print('Last name: %s' % self.txt_first_name.GetValue())
+        print('Email: %s' % self.txt_first_name.GetValue())
+        for index, cb_extra in enumerate(self.cb_extras_list):
             print(self.extras_list[index]+': %s' % str(cb_extra.GetValue()))
-        print('Room type: %s' % self.room_types[self.room_panel.room_box.GetSelection()])
-        print('City: %s' % self.cities[self.city_panel.lst_cities.GetSelection()])
+        print('Room type: %s' % self.room_types[self.room_box.GetSelection()])
+        print('City: %s' % self.cities[self.lst_cities.GetSelection()])
         date_string = 'Date: {day} {month} {year}'
-        print(date_string.format(day=self.date_panel.cmb_day.GetValue(),
-                                 month=self.date_panel.cmb_month.GetValue(),
-                                 year=self.date_panel.cmb_year.GetValue()))
+        print(date_string.format(day=self.cmb_day.GetValue(),
+                                 month=self.cmb_month.GetValue(),
+                                 year=self.cmb_year.GetValue()))
         print('----------------')
         self.clear_controls()
 
@@ -120,16 +118,13 @@ class MainPanel(wx.Panel):
         del event
         quit()
 
-
-class PersonPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        lbl_first_name = wx.StaticText(self, label="First name")
-        lbl_last_name = wx.StaticText(self, label="Last name")
-        lbl_email = wx.StaticText(self, label="Email")
-        self.txt_first_name = wx.TextCtrl(self, size=(150, -1))
-        self.txt_last_name = wx.TextCtrl(self, size=(150, -1))
-        self.txt_email = wx.TextCtrl(self, size=(250, -1))
+    def create_person_sizer(self):
+        lbl_first_name = wx.StaticText(parent=self, label="First name")
+        lbl_last_name = wx.StaticText(parent=self, label="Last name")
+        lbl_email = wx.StaticText(parent=self, label="Email")
+        self.txt_first_name = wx.TextCtrl(parent=self, size=(150, -1))
+        self.txt_last_name = wx.TextCtrl(parent=self, size=(150, -1))
+        self.txt_email = wx.TextCtrl(parent=self, size=(250, -1))
         sizer = wx.GridBagSizer(5, 5)
         sizer.Add(lbl_first_name, pos=(0, 0))
         sizer.Add(lbl_last_name, pos=(1, 0))
@@ -137,79 +132,62 @@ class PersonPanel(wx.Panel):
         sizer.Add(self.txt_first_name, pos=(0, 1))
         sizer.Add(self.txt_last_name, pos=(1, 1))
         sizer.Add(self.txt_email, pos=(2, 1))
-        self.SetSizer(sizer)
+        return sizer
 
-
-class ExtrasPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        extras_box = wx.StaticBox(self, label="Extras")
-        sizer = wx.StaticBoxSizer(extras_box, wx.VERTICAL)
+    def create_extras_sizer(self):
+        extras_box = wx.StaticBox(parent=self, label="Extras")
+        sizer = wx.StaticBoxSizer(box=extras_box, orient=wx.VERTICAL)
         self.cb_extras_list = []
-        cb_extras_list = []
-        for extras in parent.extras_list:
-            cb_extras = wx.CheckBox(extras_box, label=extras, name=extras)
-            cb_extras_list.append(cb_extras)
+        for extras in self.extras_list:
+            cb_extras = wx.CheckBox(parent=extras_box, label=extras, name=extras)
             sizer.Add(cb_extras, flag=wx.ALL, border=0)
             self.cb_extras_list.append(cb_extras)
-        self.SetSizer(sizer)
+        return sizer
 
-
-class RoomPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        self.room_box = wx.RadioBox(self, label="Room",
-                                    choices=parent.room_types,
+    def create_room_sizer(self):
+        self.room_box = wx.RadioBox(parent=self, label="Room",
+                                    choices=self.room_types,
                                     style=wx.RA_SPECIFY_ROWS)
-        sizer = wx.BoxSizer(wx.HORIZONTAL)
+        sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
         sizer.Add(self.room_box)
-        self.SetSizer(sizer)
+        return sizer
 
-
-class CityPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        city_box = wx.StaticBox(self, label="Destination")
-        sizer = wx.StaticBoxSizer(city_box, wx.HORIZONTAL)
-        self.lst_cities = wx.ListBox(self, size=(300, 150), choices=parent.cities)
+    def create_city_sizer(self):
+        city_box = wx.StaticBox(parent=self, label="Destination")
+        sizer = wx.StaticBoxSizer(box=city_box, orient=wx.HORIZONTAL)
+        self.lst_cities = wx.ListBox(parent=self, size=(300, 150), choices=self.cities)
         sizer.Add(self.lst_cities)
-        self.SetSizer(sizer)
+        return sizer
 
-
-class DatePanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        date_box = wx.StaticBox(self, label="Booking date")
-        sizer = wx.StaticBoxSizer(date_box, wx.HORIZONTAL)
-        self.cmb_day = wx.ComboBox(self, size=(100, -1), choices=parent.days)
-        self.cmb_month = wx.ComboBox(self, size=(100, -1), choices=parent.months)
-        self.cmb_year = wx.ComboBox(self, size=(100, -1), choices=parent.years)
+    def create_date_sizer(self):
+        date_box = wx.StaticBox(parent=self, label="Booking date")
+        sizer = wx.StaticBoxSizer(box=date_box, orient=wx.HORIZONTAL)
+        self.cmb_day = wx.ComboBox(parent=self, size=(100, -1), choices=self.days)
+        self.cmb_month = wx.ComboBox(parent=self, size=(100, -1), choices=self.months)
+        self.cmb_year = wx.ComboBox(parent=self, size=(100, -1), choices=self.years)
         sizer.Add(self.cmb_day, flag=wx.ALL, border=10)
         sizer.Add(self.cmb_month, flag=wx.TOP|wx.BOTTOM, border=10)
         sizer.Add(self.cmb_year, flag=wx.ALL, border=10)
-        self.SetSizer(sizer)
+        return sizer
 
+    def create_button_sizer(self):
+        cmd_clear = wx.Button(parent=self, id=wx.ID_CLEAR)
+        cmd_save = wx.Button(parent=self, id=wx.ID_SAVE)
+        cmd_quit = wx.Button(parent=self, id=wx.ID_EXIT)
 
-class ButtonPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        cmd_clear = wx.Button(self, wx.ID_CLEAR)
-        cmd_save = wx.Button(self, wx.ID_SAVE)
-        cmd_quit = wx.Button(self, wx.ID_EXIT)
+        cmd_clear.Bind(wx.EVT_BUTTON, self.on_cmd_clear_click)
+        cmd_save.Bind(wx.EVT_BUTTON, self.on_cmd_save_click)
+        cmd_quit.Bind(wx.EVT_BUTTON, self.on_cmd_quit_click)
 
-        cmd_clear.Bind(wx.EVT_BUTTON, parent.on_cmd_clear_click)
-        cmd_save.Bind(wx.EVT_BUTTON, parent.on_cmd_save_click)
-        cmd_quit.Bind(wx.EVT_BUTTON, parent.on_cmd_quit_click)
-
-        sizer = wx.BoxSizer(wx.HORIZONTAL)
+        sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
         sizer.Add(cmd_clear)
         sizer.Add(cmd_save)
         sizer.Add((0, 0), proportion=1)
         sizer.Add(cmd_quit, flag=wx.ALIGN_RIGHT)
-        self.SetSizer(sizer)
+        return sizer
 
 
 if __name__ == "__main__":
     SCREEN_APP = wx.App()
-    MAIN_FRAME = MainFrame(None, title="Hotel booking")
+    MAIN_FRAME = MainFrame(parent=None, title="Hotel booking")
     SCREEN_APP.MainLoop()

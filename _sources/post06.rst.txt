@@ -12,24 +12,24 @@ To create a single RadioButton:
 
 .. code-block:: python
 
-    rb_colour = wx.RadioButton(colour_box, label="red", name="red")
+    rb_colour = wx.RadioButton(parent=colour_box, label="red", name="red")
 
 This is almost identical to the CheckBox code in the last post. However, wxPython provides a special widget to contain RadioButtons: the RadioBox, and in a RadioBox we do not need to create the buttons explicitely.
 
-Firstly, this is how the buttons would be created in its own panel using just a StaticBox:
+Firstly, this is how the buttons would be created in its own sizer using just a StaticBox:
 
 .. code-block:: python
    :linenos:
 
-    colour_box = wx.StaticBox(self, label="Colours")
-    sizer = wx.StaticBoxSizer(colour_box, wx.VERTICAL)
-    parent.rb_colours = []
+    colour_box = wx.StaticBox(parent=self, label="Colours")
+    sizer = wx.StaticBoxSizer(box=colour_box, orient=wx.VERTICAL)
+    self.rb_colours = []
     colours = ["red", "green", "blue"]
     for colour in colours:
-        rb_colour = wx.RadioButton(colour_box, label=colour, name=colour)
-        rb_colour.Bind(wx.EVT_RADIOBUTTON, parent.on_rb_colour_click)
+        rb_colour = wx.RadioButton(parent=colour_box, label=colour, name=colour)
+        rb_colour.Bind(wx.EVT_RADIOBUTTON, self.on_rb_colour_click)
         sizer.Add(rb_colour, flag=wx.LEFT|wx.RIGHT, border=10)
-        parent.rb_colours.append(rb_colour)
+        self.rb_colours.append(rb_colour)
 
 And this is how it can be create using the RadioBox in the MainPanel:
 
@@ -37,7 +37,7 @@ And this is how it can be create using the RadioBox in the MainPanel:
    :linenos:
 
     self.colours = ["red", "green", "blue"]
-    self.colour_box = wx.RadioBox(self, label="Colours",
+    self.colour_box = wx.RadioBox(parent=self, label="Colours",
                                   choices=self.colours,
                                   style=wx.RA_SPECIFY_ROWS)
     self.colour_box.Bind(wx.EVT_RADIOBOX, self.on_rb_colour_click)
@@ -71,9 +71,9 @@ The GridBagSizer
 .. code-block:: python
    :linenos:
 
-    lbl_heading = wx.StaticText(self, label="Heading")
-    lbl_column_one = wx.StaticText(self, label="Column one")
-    lbl_column_two = wx.StaticText(self, label="Column two")
+    lbl_heading = wx.StaticText(parent=self, label="Heading")
+    lbl_column_one = wx.StaticText(parent=self, label="Column one")
+    lbl_column_two = wx.StaticText(parent=self, label="Column two")
 
     sizer = wx.GridBagSizer(5, 5)
     sizer.Add(lbl_heading, pos=(0, 0), span=(1, 2), flag=wx.TOP|wx.ALIGN_CENTER, border=10)

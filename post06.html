@@ -137,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-function">Abstracting widgets to their own function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -184,6 +184,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="post09.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -259,11 +264,11 @@
 <h2>The RadioButton<a class="headerlink" href="#the-radiobutton" title="Permalink to this headline">¶</a></h2>
 <p>It is conventional in GUI applications to use RadioButtons to select an item from a set of mutually exclusive choices; it is also usual to ensure that at least one of the choices is always selected.</p>
 <p>To create a single RadioButton:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This is almost identical to the CheckBox code in the last post. However, wxPython provides a special widget to contain RadioButtons: the RadioBox, and in a RadioBox we do not need to create the buttons explicitely.</p>
-<p>Firstly, this is how the buttons would be created in its own panel using just a StaticBox:</p>
+<p>Firstly, this is how the buttons would be created in its own sizer using just a StaticBox:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -272,15 +277,15 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">)</span>
- <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
- <span class="n">parent</span><span class="o">.</span><span class="n">rb_colours</span> <span class="o">=</span> <span class="p">[]</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">)</span>
+ <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">box</span><span class="o">=</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">rb_colours</span> <span class="o">=</span> <span class="p">[]</span>
  <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
  <span class="k">for</span> <span class="n">colour</span> <span class="ow">in</span> <span class="n">colours</span><span class="p">:</span>
-     <span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
-     <span class="n">rb_colour</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBUTTON</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
+     <span class="n">rb_colour</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioButton</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">colour_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">colour</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">colour</span><span class="p">)</span>
+     <span class="n">rb_colour</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
      <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">rb_colour</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-     <span class="n">parent</span><span class="o">.</span><span class="n">rb_colours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rb_colour</span><span class="p">)</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">rb_colours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rb_colour</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>And this is how it can be create using the RadioBox in the MainPanel:</p>
@@ -289,7 +294,7 @@
 3
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="bp">self</span><span class="o">.</span><span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">]</span>
- <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioBox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">,</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">RadioBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Colours&quot;</span><span class="p">,</span>
                                <span class="n">choices</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">colours</span><span class="p">,</span>
                                <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RA_SPECIFY_ROWS</span><span class="p">)</span>
  <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
@@ -320,9 +325,9 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lbl_heading</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Heading&quot;</span><span class="p">)</span>
- <span class="n">lbl_column_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column one&quot;</span><span class="p">)</span>
- <span class="n">lbl_column_two</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column two&quot;</span><span class="p">)</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lbl_heading</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Heading&quot;</span><span class="p">)</span>
+ <span class="n">lbl_column_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column one&quot;</span><span class="p">)</span>
+ <span class="n">lbl_column_two</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Column two&quot;</span><span class="p">)</span>
 
  <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">GridBagSizer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
  <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_heading</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TOP</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">ALIGN_CENTER</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>

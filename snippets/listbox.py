@@ -5,7 +5,7 @@ class MainFrame(wx.Frame):
     def __init__(self, *args, **kwargs):
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
-        sizer = wx.BoxSizer()
+        sizer = wx.BoxSizer(orient=wx.VERTICAL)
         sizer.Add(panel)
         self.SetSizerAndFit(sizer)
         self.Show()
@@ -24,27 +24,24 @@ class MainPanel(wx.Panel):
                       "Milton Keynes", "Aberdeen", "Reading", "Northampton",
                       "Luton", "Swindon", "Warrington", "Dudley", "York"]
         self.cities = sorted(cities_raw)
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        self.city_panel = CityPanel(self)
-        sizer.Add(self.city_panel, flag=wx.ALL, border=10)
+        sizer = wx.BoxSizer(orient=wx.VERTICAL)
+        city_sizer = self.create_city_sizer()
+        sizer.Add(city_sizer, flag=wx.ALL, border=10)
         self.SetSizer(sizer)
 
     def on_lst_cities_click(self, event):
         lst_cities = event.GetEventObject()
         print(self.cities[lst_cities.GetSelection()])
 
-
-class CityPanel(wx.Panel):
-    def __init__(self, parent, *args, **kwargs):
-        wx.Panel.__init__(self, parent, *args, **kwargs)
-        city_box = wx.StaticBox(self, label="Destination")
-        sizer = wx.StaticBoxSizer(city_box, wx.HORIZONTAL)
-        lst_cities = wx.ListBox(self, size=(300, 150), choices=sorted(parent.cities))
-        lst_cities.Bind(wx.EVT_LISTBOX, parent.on_lst_cities_click)
+    def create_city_sizer(self):
+        city_box = wx.StaticBox(parent=self, label="Destination")
+        sizer = wx.StaticBoxSizer(box=city_box, orient=wx.HORIZONTAL)
+        lst_cities = wx.ListBox(parent=self, size=(300, 150), choices=sorted(self.cities))
+        lst_cities.Bind(wx.EVT_LISTBOX, self.on_lst_cities_click)
         sizer.Add(lst_cities, flag=wx.ALL, border=10)
-        self.SetSizer(sizer)
+        return sizer
 
 if __name__ == "__main__":
     SCREEN_APP = wx.App()
-    MAIN_FRAME = MainFrame(None, title="Frame with a listbox")
+    MAIN_FRAME = MainFrame(parent=None, title="Frame with a listbox")
     SCREEN_APP.MainLoop()
