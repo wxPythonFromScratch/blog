@@ -5,8 +5,8 @@ In previous postings we have seen how to construct a GUI application by creating
 
 In this posting we will see, firstly, how to use a simple pop-up dialog, and then look in some more detail at a more powerful dialog: the *file open dialog*.
 
-A simple nessaegdialog
-----------------------
+A simple message dialog
+-----------------------
 
 In order to demonstrate the use of a `dialog <https://wxpython.org/Phoenix/docs/html/wx.MessageDialog.html#wx.MessageDialog>`_, I will take the simple case of asking the user to confirm that they wish to close the frame. (I should say that it is considered good practise not to use this sort of dialog as they often annoy users ... "Are you sure?" ... "Are you really sure?" ... "Are you absolutely sure?" ...)
 
