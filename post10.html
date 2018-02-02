@@ -189,6 +189,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dialogs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -300,7 +301,7 @@
      <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>Note that I have had to include a <strong>quit</strong> command in the <em>close</em> event as the method ‘captures’ the event and does not allow tha <strong>quit</strong> to pass to the operating system.</p>
+<p>Note that I have had to include a <strong>quit</strong> command in the <em>close</em> event as the method ‘captures’ the event and does not allow the <strong>quit</strong> to pass to the operating system.</p>
 <p>Let us assume that we wish the user to confirm that they really did wish to close the frame. To implement this we need to insert a call to the <em>dialog</em> in the <strong>on_quit_click</strong> method:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -321,7 +322,7 @@
 <ol class="arabic simple">
 <li>the <em>style</em> flags enable us to define the icon and the buttons that will be utilised;</li>
 <li>the dialog is shown in <em>Modal</em> mode. This means that neither the main frame, nor any of its widgets, can be accessed while the dialog is open;</li>
-<li>the dialog returns a value which we can test to decide what further action to take.</li>
+<li>the dialog returns a value which we can test before deciding what further action to take.</li>
 </ol>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/warning_dialog.png"><img alt="A warning dialog" src="_images/warning_dialog.png" style="width: 399px; height: 251px;" /></a>
@@ -331,12 +332,12 @@
 </div>
 <div class="section" id="the-file-open-dialog">
 <h2>The file open dialog<a class="headerlink" href="#the-file-open-dialog" title="Permalink to this headline">¶</a></h2>
-<p>The <em>file open</em> <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html">dialog</a> uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system.</p>
+<p>The <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html">file dialog</a> uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/file_dialog.png"><img alt="A file open dialog" src="_images/file_dialog.png" style="width: 491px; height: 330px;" /></a>
 </div>
 <p>Fig 2. A file open dialog</p>
-<p>‘<em>File open</em>’ is a slight misnomer: it does not open a file, but rather returns the path the a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:</p>
+<p>‘<em>File open</em>’ is a slight misnomer: it does not open a file, but rather returns the path to a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -497,6 +498,10 @@
 </td></tr></table></div>
 <p>This code (<a class="reference external" href="snippets/file_dialog.py">file_dialog.py</a>) should be self explanatory except for the <strong>file_types</strong> string which is assigned to the <strong>wildcard</strong> argument. The string is delimited by the pipe character (“|”). The delimited strings must be taken in pairs. So, if we look at the pair “<strong>python files (*.py)|*.py</strong>”, the first element (“<strong>python files (*.py)</strong>”) is the string that will appear in the select file combobox in the dialog and the second (“<strong>*.py</strong>”)is the wildcard that will be applied when the selection is made.</p>
 <p>The <strong>style</strong> argument defines the behaviour of the dialog and which buttons will appear. A similar dialog can be created for saving files using the style <strong>FD_SAVE</strong>.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this post I hace described the use of two of the wxPython dialogs. The nextrt post will deal with two important controls, the Date Picker control used for selecting a date and the ObjectListView used for displaying data in a list format</p>
 </div>
 </div>
 

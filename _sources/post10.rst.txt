@@ -33,7 +33,7 @@ I will use the `basic frame <post01.html#summary>`_ as a starting point, and bin
         MAIN_FRAME = MainFrame(parent=None, title="Warning dialog")
         SCREEN_APP.MainLoop()
 
-Note that I have had to include a **quit** command in the *close* event as the method 'captures' the event and does not allow tha **quit** to pass to the operating system.
+Note that I have had to include a **quit** command in the *close* event as the method 'captures' the event and does not allow the **quit** to pass to the operating system.
 
 Let us assume that we wish the user to confirm that they really did wish to close the frame. To implement this we need to insert a call to the *dialog* in the **on_quit_click** method:
 
@@ -52,7 +52,7 @@ This is a *MessageDialog*. Note that:
 
 1. the *style* flags enable us to define the icon and the buttons that will be utilised;
 2. the dialog is shown in *Modal* mode. This means that neither the main frame, nor any of its widgets, can be accessed while the dialog is open;
-3. the dialog returns a value which we can test to decide what further action to take.
+3. the dialog returns a value which we can test before deciding what further action to take.
 
 .. figure:: /images/warning_dialog.png
    :height: 251
@@ -67,7 +67,7 @@ The full code for this application can be found  at `warning_dialog.py <snippets
 The file open dialog
 --------------------
 
-The *file open* `dialog <https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html>`_ uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system.
+The `file dialog <https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html>`_ uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system.
 
 
 .. figure:: /images/file_dialog.png
@@ -79,7 +79,7 @@ The *file open* `dialog <https://wxpython.org/Phoenix/docs/html/wx.FileDialog.ht
 Fig 2. A file open dialog
 
 
-'*File open*' is a slight misnomer: it does not open a file, but rather returns the path the a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:
+'*File open*' is a slight misnomer: it does not open a file, but rather returns the path to a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:
 
 .. code-block:: python
    :linenos:
@@ -178,3 +178,8 @@ and the **get_file_path** function:
 This code (`file_dialog.py <snippets/file_dialog.py>`_) should be self explanatory except for the **file_types** string which is assigned to the **wildcard** argument. The string is delimited by the pipe character ("|"). The delimited strings must be taken in pairs. So, if we look at the pair "**python files (*.py)|*.py**", the first element ("**python files (*.py)**") is the string that will appear in the select file combobox in the dialog and the second ("***.py**")is the wildcard that will be applied when the selection is made.
 
 The **style** argument defines the behaviour of the dialog and which buttons will appear. A similar dialog can be created for saving files using the style **FD_SAVE**.
+
+Summary
+-------
+
+In this post I hace described the use of two of the wxPython dialogs. The nextrt post will deal with two important controls, the Date Picker control used for selecting a date and the ObjectListView used for displaying data in a list format
