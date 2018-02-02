@@ -182,4 +182,4 @@ The **style** argument defines the behaviour of the dialog and which buttons wil
 Summary
 -------
 
-In this post I hace described the use of two of the wxPython dialogs. The nextrt post will deal with two important controls, the Date Picker control used for selecting a date and the ObjectListView used for displaying data in a list format
+In this post I have described the use of two of the wxPython dialogs. The next post will deal with two important controls: the Date Picker control, used for selecting a date, and the ObjectListView used for displaying data in a list format.
