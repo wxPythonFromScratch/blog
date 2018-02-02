@@ -30,6 +30,8 @@ Index
 
 ----
 
+`File open dialog <post10.html#the-file-open-dialog>`_
+
 
 `Frame <post01.html#the-wxpython-frame>`_
 
@@ -54,6 +56,8 @@ Index
 `Menu items <post08.html#menu-items>`_
 
 `Menus <post08.html#menus>`_
+
+`Message dialog <post10.html#a-simple-dialog>`_
 
 ----
 

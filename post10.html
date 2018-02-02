@@ -263,7 +263,7 @@
 <p>In this posting we will see, firstly, how to use a simple pop-up dialog, and then look in some more detail at a more powerful dialog: the <em>file open dialog</em>.</p>
 <div class="section" id="a-simple-dialog">
 <h2>A simple dialog<a class="headerlink" href="#a-simple-dialog" title="Permalink to this headline">¶</a></h2>
-<p>In order to demonstrate the use of a dialog, I will take the simple case of asking the user to confirm that they wish to close the frame. (I should say that it is considered good practise not to use this sort of dialog as they often annoy users … “Are you sure?” … “Are you really sure?” … “Are you absolutely sure?” …)</p>
+<p>In order to demonstrate the use of a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.MessageDialog.html#wx.MessageDialog">dialog</a>, I will take the simple case of asking the user to confirm that they wish to close the frame. (I should say that it is considered good practise not to use this sort of dialog as they often annoy users … “Are you sure?” … “Are you really sure?” … “Are you absolutely sure?” …)</p>
 <p>I will use the <a class="reference external" href="post01.html#summary">basic frame</a> as a starting point, and bind the frame’s close event to a method:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -323,14 +323,180 @@
 <li>the dialog is shown in <em>Modal</em> mode. This means that neither the main frame, nor any of its widgets, can be accessed while the dialog is open;</li>
 <li>the dialog returns a value which we can test to decide what further action to take.</li>
 </ol>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/warning_dialog.png"><img alt="A warning dialog" src="_images/warning_dialog.png" style="width: 399px; height: 251px;" /></a>
+</div>
+<p>Fig 1. A warning dialog</p>
 <p>The full code for this application can be found  at <a class="reference external" href="snippets/warning_dialog.py">warning_dialog.py</a>.</p>
 </div>
 <div class="section" id="the-file-open-dialog">
 <h2>The file open dialog<a class="headerlink" href="#the-file-open-dialog" title="Permalink to this headline">¶</a></h2>
-<p>The <em>file open</em> dialog uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system. It is a slight misnomer: it does not open a file, but rather returns the path the a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>
+<p>The <em>file open</em> <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html">dialog</a> uses a similar structure, but performs a more specific task. It is used when we want the user to select a file from the system.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/file_dialog.png"><img alt="A file open dialog" src="_images/file_dialog.png" style="width: 491px; height: 330px;" /></a>
+</div>
+<p>Fig 2. A file open dialog</p>
+<p>It is a slight misnomer: it does not open a file, but rather returns the path the a file. In the following example, I will use the dialog to retrieve a path and place it in text box. First I will show the code for the application before we add the dialog:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+ <span class="kn">import</span> <span class="nn">os</span>
+
+
+ <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="sd">&quot;&quot;&quot;Initialise the MainFrame class.&quot;&quot;&quot;</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="n">panel</span> <span class="o">=</span> <span class="n">MainPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizerAndFit</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+
+
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/home/jeff/&quot;</span>
+
+         <span class="n">path_sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_path_sizer</span><span class="p">()</span>
+         <span class="n">button_sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_button_sizer</span><span class="p">()</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">path_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_path_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+
+     <span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+         <span class="k">del</span> <span class="n">event</span>
+         <span class="n">quit</span><span class="p">()</span>
+
+     <span class="k">def</span> <span class="nf">create_path_sizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">lbl_path</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Path:&quot;</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">txt_path</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+         <span class="n">cmd_path</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_OPEN</span><span class="p">)</span>
+         <span class="n">cmd_path</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_path_click</span><span class="p">)</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_path</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">txt_path</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_path</span><span class="p">)</span>
+         <span class="k">return</span> <span class="n">sizer</span>
+
+     <span class="k">def</span> <span class="nf">create_button_sizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
+         <span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proportion</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">)</span>
+         <span class="k">return</span> <span class="n">sizer</span>
+
+ <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__</span>
+     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open file dialog&quot;</span><span class="p">)</span>
+     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
+<p>This contains only elements that we have seen before. I have imported <em>os</em> because this will be required later. The panel has a sizer to hold the path widgets: a label, a textbox and a button; and a sizer to hold the <strong>Quit</strong> button.</p>
+<p>The code to invoke the file open dialog  and place the selected path in the <strong>txt_path</strong> text box is:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_cmd_path_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="k">del</span> <span class="n">event</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file_path</span><span class="p">()</span>
+     <span class="bp">self</span><span class="o">.</span><span class="n">txt_path</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>and the <strong>get_file_path</strong> function:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">get_file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
+     <span class="n">file_types</span> <span class="o">=</span> <span class="s2">&quot;python files (*.py)|*.py|All files (*.*)|*.*&quot;</span>
+     <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                                 <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Open file&#39;</span><span class="p">,</span>
+                                 <span class="n">defaultDir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+                                 <span class="n">defaultFile</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+                                 <span class="n">wildcard</span><span class="o">=</span><span class="n">file_types</span><span class="p">,</span>
+                                 <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">FD_OPEN</span><span class="p">)</span>
+     <span class="k">if</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">:</span>
+         <span class="n">path</span> <span class="o">=</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
+     <span class="n">file_dialog</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">path</span>
+</pre></div>
+</td></tr></table></div>
+<p>This code (<a class="reference external" href="snippets/file_dialog.py">file_dialog.py</a>) should be self explanatory except for the <strong>file_types</strong> string which is assigned to the <strong>wildcard</strong> argument. The string is delimited by the pipe character (“|”). The delimited strings must be taken in pairs. So, if we look at the pair “<strong>python files (*.py)|*.py</strong>”, the first element (“<strong>python files (*.py)</strong>”) is the string that will appear in the select file combobox in the dialog and the second (“<strong>*.py</strong>”)is the wildcard that will be applied when the selection is made.</p>
+<p>The <strong>style</strong> argument defines the behaviour of the dialog and which buttons will appear. A similar dialog can be created for saving files using the style <strong>FD_SAVE</strong>.</p>
 </div>
 </div>
 
