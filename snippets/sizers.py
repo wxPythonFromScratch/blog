@@ -1,8 +1,12 @@
+"""Demonstrate the basic use of wxPython BoxSizers."""
+
 import wx
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
+        """Initialise the MainFrame class."""
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer()
@@ -12,26 +16,30 @@ class MainFrame(wx.Frame):
 
 
 class MainPanel(wx.Panel):
+    """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, parent, *args, **kwargs)
         lbl_name = wx.StaticText(parent=self, label="Name:")
         txt_name = wx.TextCtrl(parent=self, size=(150, -1))
-        cmd_cancel = wx.Button(parent=self, id=wx.ID_CANCEL)
-        cmd_cancel.Bind(wx.EVT_BUTTON, self.on_cmd_cancel_click)
+        cmd_quit = wx.Button(parent=self, id=wx.ID_CANCEL)
+        cmd_quit.Bind(wx.EVT_BUTTON, self.on_cmd_quit_click)
         horizontal_sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
         vertical_sizer = wx.BoxSizer(orient=wx.VERTICAL)
         horizontal_sizer.Add(lbl_name, flag=wx.RIGHT|wx.ALIGN_CENTER, border=10)
         horizontal_sizer.Add(txt_name)
         vertical_sizer.Add((250, 0))
         vertical_sizer.Add(horizontal_sizer, flag=wx.ALL, border=10)
-        vertical_sizer.Add(cmd_cancel, flag=wx.RIGHT|wx.BOTTOM, border=10)
+        vertical_sizer.Add(cmd_quit, flag=wx.RIGHT|wx.BOTTOM, border=10)
         self.SetSizer(vertical_sizer)
 
-    def on_cmd_cancel_click(self, event):
+    def on_cmd_quit_click(self, event):
+        """Tear down processes and quit the application."""
         del event
         quit()
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Frame with widgets")
     SCREEN_APP.MainLoop()

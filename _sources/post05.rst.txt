@@ -152,7 +152,7 @@ In this post we have seen how to use a more complex widget: a StaticBox, which i
                     contact_string = ", ".join([contact_string, cb_contact.GetName()])
             print("Contact methods: {}".format(contact_string[2:]))
 
-        def on_cmd_cancel_click(self, event):
+        def on_cmd_quit_click(self, event):
             del event
             quit()
 

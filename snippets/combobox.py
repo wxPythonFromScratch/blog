@@ -1,8 +1,13 @@
+"""Demonstrate the creation of a wxComboBox widget."""
+
+
 import wx
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
+        """Initialise the MainFrame class."""
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer(orient=wx.VERTICAL)
@@ -12,7 +17,9 @@ class MainFrame(wx.Frame):
 
 
 class MainPanel(wx.Panel):
+    """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, parent, *args, **kwargs)
         self.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -22,6 +29,7 @@ class MainPanel(wx.Panel):
         self.SetSizer(sizer)
 
     def create_month_sizer(self):
+        """Return a sizer containing the month combobox."""
         date_box = wx.StaticBox(parent=self, label="Expiry date")
         sizer = wx.StaticBoxSizer(box=date_box, orient=wx.HORIZONTAL)
         cmb_month = wx.ComboBox(parent=self, size=(100, -1), value="Month", choices=self.months)
@@ -29,6 +37,7 @@ class MainPanel(wx.Panel):
         return sizer
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Frame with a combobox")
     SCREEN_APP.MainLoop()

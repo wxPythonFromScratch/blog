@@ -1,9 +1,13 @@
+"""Demonstrate the creation of a wxPython FileDialog object."""
+
 import wx
 import os
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
+        """Initialise the MainFrame class."""
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer(orient=wx.VERTICAL)
@@ -13,7 +17,9 @@ class MainFrame(wx.Frame):
 
 
 class MainPanel(wx.Panel):
+    """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, parent, *args, **kwargs)
         self.path = "/home/jeff/"
 
@@ -26,15 +32,18 @@ class MainPanel(wx.Panel):
         self.SetSizer(sizer)
 
     def on_cmd_path_click(self, event):
+        """Retrieve a path and assign it to the txt_path control."""
         del event
         self.path = self.get_file_path()
         self.txt_path.SetValue(self.path)
 
     def on_cmd_quit_click(self, event):
+        """Tear down processes and quit the application."""
         del event
         quit()
 
     def create_path_sizer(self):
+        """Return a sizer containing the txt_path controls."""
         lbl_path = wx.StaticText(parent=self, label="Path:")
         self.txt_path = wx.TextCtrl(parent=self, size=(300, -1))
         cmd_path = wx.Button(parent=self, id=wx.ID_OPEN)
@@ -47,6 +56,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_button_sizer(self):
+        """Return a sizer containing the buttons."""
         cmd_quit = wx.Button(parent=self, id=wx.ID_EXIT)
         cmd_quit.Bind(wx.EVT_BUTTON, self.on_cmd_quit_click)
         sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
@@ -55,6 +65,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def get_file_path(self):
+        """Display the File Open dialog and return the selected path."""
         path = self.path
         file_types = 'txt files (*.txt)| All files (*.*)|*.*|'
         file_dialog = wx.FileDialog(parent=self,
@@ -71,6 +82,7 @@ class MainPanel(wx.Panel):
         return path
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Open file dialog")
     SCREEN_APP.MainLoop()

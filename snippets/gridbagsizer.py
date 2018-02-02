@@ -1,8 +1,12 @@
+"""Demonstrate the creation of a wxPython GridBagSizer."""
+
 import wx
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
+        """Initialise the MainFrame class."""
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer(orient=wx.VERTICAL)
@@ -12,7 +16,9 @@ class MainFrame(wx.Frame):
 
 
 class MainPanel(wx.Panel):
+    """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, parent, *args, **kwargs)
         lbl_heading = wx.StaticText(parent=self, label="Heading")
         lbl_column_one = wx.StaticText(parent=self, label="Column one")
@@ -26,6 +32,7 @@ class MainPanel(wx.Panel):
 
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Frame with GridBagSizer")
     SCREEN_APP.MainLoop()

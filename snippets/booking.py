@@ -1,10 +1,14 @@
+"""Demonstrate the use of wxPython in a larger application."""
+
+
 from datetime import datetime
 import wx
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
-        wx.Frame.__init__(self, *args, **kwargs)
+        """Initialise the MainFrame class."""
         panel = MainPanel(self)
         self.SetMenuBar(MenuBar())
         self.status_bar = self.CreateStatusBar()
@@ -39,7 +43,9 @@ class MenuBar(wx.MenuBar):
 
 
 class MainPanel(wx.Panel):
-    def __init__(self, *args, **kwargs):
+    """Create a panel to hold application widgets."""
+    def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, *args, **kwargs)
         self.days = [str(day) for day in range(1, 32)]
         this_year = datetime.now().year
@@ -81,6 +87,7 @@ class MainPanel(wx.Panel):
         self.clear_controls()
 
     def clear_controls(self):
+        """Reset all controls to their default values."""
         self.txt_first_name.SetValue('')
         self.txt_last_name.SetValue('')
         self.txt_email.SetValue('')
@@ -94,10 +101,12 @@ class MainPanel(wx.Panel):
         self.cmb_year.SetValue('Year')
 
     def on_cmd_clear_click(self, event):
+        """Handle the cmd_clear click event."""
         del event
         self.clear_controls()
 
     def on_cmd_save_click(self, event):
+        """Print the values of all controls."""
         del event
         print('First name: %s' % self.txt_first_name.GetValue())
         print('Last name: %s' % self.txt_first_name.GetValue())
@@ -115,10 +124,12 @@ class MainPanel(wx.Panel):
 
     @staticmethod
     def on_cmd_quit_click(event):
+        """Tear down processes and quit the application."""
         del event
         quit()
 
     def create_person_sizer(self):
+        """Return a sizer containing all controls relating to personal details."""
         lbl_first_name = wx.StaticText(parent=self, label="First name")
         lbl_last_name = wx.StaticText(parent=self, label="Last name")
         lbl_email = wx.StaticText(parent=self, label="Email")
@@ -135,6 +146,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_extras_sizer(self):
+        """Return a sizer containing all controls relating to extras details."""
         extras_box = wx.StaticBox(parent=self, label="Extras")
         sizer = wx.StaticBoxSizer(box=extras_box, orient=wx.VERTICAL)
         self.cb_extras_list = []
@@ -145,6 +157,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_room_sizer(self):
+        """Return a sizer containing all controls relating to room details."""
         self.room_box = wx.RadioBox(parent=self, label="Room",
                                     choices=self.room_types,
                                     style=wx.RA_SPECIFY_ROWS)
@@ -153,6 +166,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_city_sizer(self):
+        """Return a sizer containing all controls relating to city selection."""
         city_box = wx.StaticBox(parent=self, label="Destination")
         sizer = wx.StaticBoxSizer(box=city_box, orient=wx.HORIZONTAL)
         self.lst_cities = wx.ListBox(parent=self, size=(300, 150), choices=self.cities)
@@ -160,6 +174,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_date_sizer(self):
+        """Return a sizer containing all controls relating to date selection."""
         date_box = wx.StaticBox(parent=self, label="Booking date")
         sizer = wx.StaticBoxSizer(box=date_box, orient=wx.HORIZONTAL)
         self.cmb_day = wx.ComboBox(parent=self, size=(100, -1), choices=self.days)
@@ -171,6 +186,7 @@ class MainPanel(wx.Panel):
         return sizer
 
     def create_button_sizer(self):
+        """Return a sizer containing the main buttons."""
         cmd_clear = wx.Button(parent=self, id=wx.ID_CLEAR)
         cmd_save = wx.Button(parent=self, id=wx.ID_SAVE)
         cmd_quit = wx.Button(parent=self, id=wx.ID_EXIT)
@@ -188,6 +204,7 @@ class MainPanel(wx.Panel):
 
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Hotel booking")
     SCREEN_APP.MainLoop()

@@ -137,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-function">Abstracting widgets to their own function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -174,12 +174,12 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
@@ -281,7 +281,7 @@
 <div class="section" id="a-button">
 <h2>A button<a class="headerlink" href="#a-button" title="Permalink to this headline">¶</a></h2>
 <p>Placing a <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Button.html">button</a> on the panel is simlar to the other widgets we have seen so far:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this case I have used a wxPython <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html">StandardID</a> to define the  button appearance; it applies the text “Cancel” and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).</p>
@@ -290,7 +290,7 @@
 </div>
 <p>Fig 2. A button</p>
 <p>The advantvantage of using wxPython IDs is that you will get a consistent look over your application, provide multi-lingual support, and is generally compatible with other applications. It would have been possible to create the button using the <em>label</em> argument:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This would not have created the icon on the button, and would not provide multi-lingual support.</p>
@@ -313,11 +313,11 @@
          <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
          <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-         <span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+         <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
          <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_cancel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
@@ -330,12 +330,12 @@
 <div class="section" id="the-click-button-event">
 <h2>The click button event<a class="headerlink" href="#the-click-button-event" title="Permalink to this headline">¶</a></h2>
 <p>Many user actions can be <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/events_overview.html">detected</a> by wxPython and action taken as appropriate. To introduce this concept, consider what heppens when you move the mouse over the button and left-click on the mouse. If you do this at this stage the button will react to show that it has been clicked, but we have not yet programmed any behaviour. To do this we need to <em>bind</em> the event to a method in the program:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_cancel</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_cancel_click</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This line uses the <em>Bind</em> method for the button passing in the type of the event (in this case the left button click on the mouse, identified by “wx.EVT_BUTTON”), and the method to be called (“self.on_cmd_cancel_click”)when the event takes place.</p>
+<p>This line uses the <em>Bind</em> method for the button passing in the type of the event (in this case the left button click on the mouse, identified by “wx.EVT_BUTTON”), and the method to be called (“self.on_cmd_quit_click”)when the event takes place.</p>
 <p>In this case I will simply <em>quit</em> Python when the event binding is initiated:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_cmd_cancel_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">del</span> <span class="n">event</span>
     <span class="n">quit</span><span class="p">()</span>
 </pre></div>
@@ -344,7 +344,7 @@
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>In this posting we have seen how to create a TextCtrl and a buuton. They have been placed in a sizer with appropriate borders. Finally we have bound the click event of the button with a method (<a class="reference external" href="widgets/label.py">widgets.py</a>):</p>
+<p>In this posting we have seen how to create a TextCtrl and a button. They have been placed in a sizer with appropriate borders. Finally we have bound the click event of the button with a method (<a class="reference external" href="widgets/label.py">widgets.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -365,15 +365,15 @@
          <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
          <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-         <span class="n">cmd_cancel</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
-         <span class="n">cmd_cancel</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_cancel_click</span><span class="p">)</span>
+         <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
+         <span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
          <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">lbl_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">txt_name</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_cancel</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
 
-     <span class="k">def</span> <span class="nf">on_cmd_cancel_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
          <span class="k">del</span> <span class="n">event</span>
          <span class="n">quit</span><span class="p">()</span>
 </pre></div>

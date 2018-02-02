@@ -1,8 +1,12 @@
+"""Demonstrate the use of wxPython spacers."""
+
 import wx
 
 
 class MainFrame(wx.Frame):
+    """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
+        """Initialise the MainFrame class."""
         wx.Frame.__init__(self, *args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer()
@@ -12,12 +16,13 @@ class MainFrame(wx.Frame):
 
 
 class MainPanel(wx.Panel):
+    """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
+        """Initialise the MainPanel class."""
         wx.Panel.__init__(self, parent, *args, **kwargs)
 
         lbl_name = wx.StaticText(parent=self, label="Name:")
         self.txt_name = wx.TextCtrl(parent=self, size=(150, -1))
-        cmd_print = wx.Button(parent=self, id=wx.ID_PRINT)
         cmd_quit = wx.Button(parent=self, id=wx.ID_EXIT)
 
         name_sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
@@ -25,7 +30,6 @@ class MainPanel(wx.Panel):
         name_sizer.Add(self.txt_name)
 
         button_sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
-        button_sizer.Add(cmd_print)
         button_sizer.Add((0, 0), proportion=1)
         button_sizer.Add(cmd_quit)
 
@@ -36,6 +40,7 @@ class MainPanel(wx.Panel):
 
 
 if __name__ == "__main__":
+    """Implement the wxPython loop."""
     SCREEN_APP = wx.App()
     MAIN_FRAME = MainFrame(parent=None, title="Align button")
     SCREEN_APP.MainLoop()

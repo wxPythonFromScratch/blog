@@ -21,10 +21,10 @@ I will use the `basic frame <post01.html#summary>`_ as a starting point, and bin
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
-            self.Bind(wx.EVT_CLOSE, self.on_close_click)
+            self.Bind(wx.EVT_CLOSE, self.on_quit_click)
             self.Show()
 
-        def on_close_click(self, event):
+        def on_quit_click(self, event):
             print("Now closing")
             quit()
 
@@ -35,13 +35,13 @@ I will use the `basic frame <post01.html#summary>`_ as a starting point, and bin
 
 Note that I have had to include a **quit** command in the *close* event as the method 'captures' the event and does not allow tha **quit** to pass to the operating system.
 
-Let us assume that we wish the user to confirm that they really did wish to close the frame. To implement this we need to insert a call to the *dialog* in the **on_close_click** method:
+Let us assume that we wish the user to confirm that they really did wish to close the frame. To implement this we need to insert a call to the *dialog* in the **on_quit_click** method:
 
 .. code-block:: python
    :linenos:
 
-    def on_close_click(self, event):
-        warning_dialog = wx.MessageDialog(self, message="Close frame?",
+    def on_quit_click(self, event):
+        warning_dialog = wx.MessageDialog(self, message="Quit frame?",
                                             style=wx.ICON_QUESTION|wx.YES_NO)
         result = warning_dialog.ShowModal()
         if result == wx.ID_YES:
