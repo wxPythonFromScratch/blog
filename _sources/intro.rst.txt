@@ -25,4 +25,6 @@ The code for each topic can be downloaded. A link is provided at the appropriate
 Prerequisites
 +++++++++++++
 
-I am assuming that you have `downloaded  wxPython <https://wxpython.org/pages/downloads/index.html>`_ and that you have a working knowledge of Python; in particular object based programming techniques including `class definition <https://docs.python.org/2/tutorial/classes.html>`_, `inheritance <https://docs.python.org/2/tutorial/classes.html#inheritance>`_ and Python's treatment of a function or method call as an object.
+I am assuming that you have `downloaded  wxPython <https://wxpython.org/pages/downloads/index.html>`_ and that you have a working knowledge of Python; in particular object based programming techniques including `class definition <https://docs.python.org/3/tutorial/classes.html>`_, `inheritance <https://docs.python.org/3/tutorial/classes.html#inheritance>`_ and Python's treatment of a function or method call as an object.
+
+Throughout, I have assumed that you will be using Python 3.

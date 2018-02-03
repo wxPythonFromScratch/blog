@@ -70,6 +70,7 @@ We will start with a basic frame:
         SCREEN_APP = wx.App()
         MAIN_FRAME = MainFrame(parent=None)
         SCREEN_APP.MainLoop()
+    ...
 
 I have imported *datetime* from *datetime*. This will be used in the `DatePanel <#the-date-panel>`_
 
@@ -82,6 +83,7 @@ I will add a menu bar to the basic frame . To simplify the code, I have only use
 .. code-block:: python
    :linenos:
 
+    ...
       class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -114,6 +116,7 @@ I will add a menu bar to the basic frame . To simplify the code, I have only use
         def create_help_menu(self):
             help_menu = wx.Menu()
             return help_menu
+    ...
 
 The status bar
 ++++++++++++++
@@ -123,6 +126,7 @@ The code to implement the status bar is quite straightforward:
 .. code-block:: python
    :linenos:
 
+    ...
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -130,6 +134,7 @@ The code to implement the status bar is quite straightforward:
             self.status_bar = self.CreateStatusBar()
             self.status_bar.SetStatusText('New client')
             self.Show()
+    ...
 
 The panel
 +++++++++
@@ -139,6 +144,7 @@ Next, I will create the main panel and place it in its sizer in the frame:
 .. code-block:: python
    :linenos:
 
+    ...
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -150,6 +156,7 @@ Next, I will create the main panel and place it in its sizer in the frame:
             sizer.Add(panel)
             self.SetSizerAndFit(sizer)
             self.Show()
+    ...
 
 
     class MainPanel(wx.Panel):
@@ -169,6 +176,7 @@ I am going to create the three text boxes and labels relating to name and email 
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             wx.Panel.__init__(self, *args, **kwargs)
@@ -194,6 +202,7 @@ I am going to create the three text boxes and labels relating to name and email 
             sizer.Add(self.txt_last_name, pos=(1, 1))
             sizer.Add(self.txt_email, pos=(2, 1))
             return sizer
+    ...
 
 There is nothing new here, but note that I have created the text boxes as class wide variables. This is essential when we come to handling the values in these fields programatically in the **MainPanel**.
 
@@ -205,6 +214,7 @@ The room sizer is a simple sizer that contains a *StaticBox* and the three *chec
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             ...
@@ -221,6 +231,7 @@ The room sizer is a simple sizer that contains a *StaticBox* and the three *chec
                 sizer.Add(cb_extras, flag=wx.ALL, border=0)
                 self.cb_extras_list.append(cb_extras)
             return sizer
+    ...
 
 Note that here, for convenience in this posting, I have defined the *extras_list* in the **MainPanel**. The coding in the **ExtrasPanel** is very similar that used when we covered `checkboxes <post05.html#the-checkbox>`_.
 
@@ -232,6 +243,7 @@ This sizer contains a *RadioBox*. The code for this was `covered earlier <post06
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             ...
@@ -253,6 +265,7 @@ This sizer contains a *RadioBox*. The code for this was `covered earlier <post06
             sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
             sizer.Add(self.room_box)
             return sizer
+    ...
 
 Here, the **extras_sizer** and **room_sizer** have been placed in a horizontal *BoxSizer* and then added to the *GridBagSizer* in first row and second column.
 
@@ -264,6 +277,7 @@ The code to create a *listbox* has already been `seen <post07.html#the-listbox>`
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             ...
@@ -280,6 +294,7 @@ The code to create a *listbox* has already been `seen <post07.html#the-listbox>`
             self.lst_cities = wx.ListBox(parent=self, size=(300, 150), choices=self.cities)
             sizer.Add(self.lst_cities)
             return sizer
+    ...
 
 The date sizer
 ++++++++++++++
@@ -289,6 +304,7 @@ In this application, the date is selected by three `comboboxes <post07.html#the-
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             ...
@@ -313,6 +329,7 @@ In this application, the date is selected by three `comboboxes <post07.html#the-
             sizer.Add(self.cmb_month, flag=wx.TOP|wx.BOTTOM, border=10)
             sizer.Add(self.cmb_year, flag=wx.ALL, border=10)
             return sizer
+    ...
 
 The button sizer
 ++++++++++++++++
@@ -322,6 +339,7 @@ The last widgets that we need to place on the panel are the *buttons*. Following
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
             ...
@@ -347,6 +365,7 @@ The last widgets that we need to place on the panel are the *buttons*. Following
             sizer.Add((0, 0), proportion=1)
             sizer.Add(cmd_quit, flag=wx.ALIGN_RIGHT)
             return sizer
+    ...
 
 As I want the button sizer to take the whole horizontal width of the *GridBagSizer*, I have spanned two columns.
 
@@ -371,6 +390,7 @@ I have bound the buttons to methods defined in the **ButtonPanel**'s parent, i.e
         def on_cmd_quit_click(self, event):
             del event
             quit()
+        ...
 
 The **clear_controls** method is defined within the **MainPanel**. It is called when the **Clear** button is clicked and when the panel is created to ensure a consistent state.
 
@@ -391,6 +411,7 @@ The **clear_controls** method is defined within the **MainPanel**. It is called 
             self.cmb_day.SetValue('Day')
             self.cmb_month.SetValue('Month')
             self.cmb_year.SetValue('Year')
+        ...
 
 Summary
 -------

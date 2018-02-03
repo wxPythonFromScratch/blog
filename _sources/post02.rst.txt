@@ -12,6 +12,7 @@ To produce a *panel*, create an instance of *wx.Panel* using a reference to the 
 .. code-block:: python
    :linenos:
 
+    ...
    class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -25,6 +26,7 @@ To achieve this, I will create a *panel* class that inherits wx.Panel and calls 
 .. code-block:: python
    :linenos:
 
+    ...
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -35,6 +37,7 @@ To achieve this, I will create a *panel* class that inherits wx.Panel and calls 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
+    ...
 
 Note that *\*args* and *\*\*kwargs* have been included in the dunder-init methods for the panel.
 
@@ -56,7 +59,9 @@ Finally we can add some widgets to the panel. The first will be a *label* (calle
 
 .. code-block:: python
 
+    ...
     lbl_hello = wx.StaticText(parent=self, label="Hello")
+    ...
 
 This produces a label which the system places in the top left corner of the frame.
 
@@ -73,9 +78,11 @@ Let's now create the sizer and put the label into it. The code for this is:
 .. code-block:: python
    :linenos:
 
+    ...
     sizer = wx.BoxSizer(orient=wx.VERTICAL)
     sizer.Add(lbl_hello)
     self.SetSizer(sizer)
+    ...
 
 Note that we have:
 
@@ -88,6 +95,7 @@ The complete code for the panel is now:
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
@@ -95,6 +103,7 @@ The complete code for the panel is now:
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_hello)
             self.SetSizer(sizer)
+    ...
 
 Adding a border to a widget
 ---------------------------
@@ -103,7 +112,9 @@ So far the frame still looks as it did in Figure 1. One of the things that we ca
 
 .. code-block:: python
 
+    ...
     sizer.Add(lbl_hello, flag=wx.ALL, border=10)
+    ...
 
 The `flag <https://wxpython.org/Phoenix/docs/html/wx.Sizer.html#phoenix-title-sizer-flags>`_ argument tells the system to place the *border* of 10 pixels on the top, bottom, left and right of the widget. The frame has now changed subtly:
 
@@ -125,9 +136,11 @@ So, in the frame class, I will create a BoxSizer (using the default orientation 
 .. code-block:: python
    :linenos:
 
+    ...
     sizer = wx.BoxSizer(orient=wx.VERTICAL)
     sizer.Add(panel)
     self.SetSizerAndFit(sizer)
+    ...
 
 The one thing to note here is that I have used the **SetSizerAndFit** method. This will ensure that the frame shrinks or stretches to fit the widgets it holds.
 

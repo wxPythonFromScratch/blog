@@ -187,8 +187,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -267,19 +272,24 @@
 <div class="section" id="creating-a-staticbox">
 <h2>Creating a StaticBox<a class="headerlink" href="#creating-a-staticbox" title="Permalink to this headline">¶</a></h2>
 <p>The code to produce a StaticBox and its StaticBoxSizer is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
 <span class="n">contact_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">box</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>Note that the StaticBox is created with a reference to the panel as its parent and the text for the label is passed through. On the other hand, the StaticBoxSizer uses the StaticBox as its parent. It is simplest to think of the StaticBoxSizer as sitting in the StaticBox. Using the panel code here:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="n">contact_box</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Contact method&quot;</span><span class="p">)</span>
@@ -287,6 +297,7 @@
          <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">contact_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>we get an empty StaticTextBox with its label:</p>
@@ -298,7 +309,9 @@
 <div class="section" id="the-checkbox">
 <h2>The CheckBox<a class="headerlink" href="#the-checkbox" title="Permalink to this headline">¶</a></h2>
 <p>To make a single <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.CheckBox.html">CheckBox</a> the code follows the pattern for other widgets:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>You can see that the parent of the CheckBox is the StaticBox, and I’ve given the CheckBox its label and a name (which will be useful when we come to perform some action if the CheckBox is clicked).</p>
@@ -312,13 +325,17 @@
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
  <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home phone&quot;</span><span class="p">,</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>
  <span class="k">for</span> <span class="n">contact</span> <span class="ow">in</span> <span class="n">contacts</span><span class="p">:</span>
      <span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">contact</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">contact</span><span class="p">)</span>
      <span class="n">cb_contact</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_CHECKBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cb_contact_click</span><span class="p">)</span>
      <span class="n">contact_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
      <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Here, I have created an empty list to hold the CheckBoxes and created a list of strings that will be used as the labels (and names) of the CheckBoxes. Then, in a loop, the CheckBoxes as created (using the StaticBox as their parent), each one bound to the same event which will be triggered when the user clicks on the CheckBox, and the CheckBoxes are added to the StaticBoxSizer and then appended to the list of CheckBoxes.</p>
@@ -333,13 +350,17 @@
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_cb_contact_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">on_cb_contact_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
      <span class="k">del</span> <span class="n">event</span>
      <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
      <span class="k">for</span> <span class="n">cb_contact</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="p">:</span>
          <span class="k">if</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetValue</span><span class="p">():</span>
              <span class="n">contact_string</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">contact_string</span><span class="p">,</span> <span class="n">cb_contact</span><span class="o">.</span><span class="n">GetName</span><span class="p">()])</span>
      <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Contact methods: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contact_string</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -355,7 +376,10 @@
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">create_contact_sizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="n">ntact</span> <span class="n">method</span><span class="s2">&quot;)</span>
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">create_contact_sizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="n">ntact</span> <span class="n">method</span><span class="s2">&quot;)</span>
      <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticBoxSizer</span><span class="p">(</span><span class="n">box</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
      <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span> <span class="o">=</span> <span class="p">[]</span>
      <span class="n">contacts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Home phone&quot;</span><span class="p">,</span> <span class="s2">&quot;Mobile&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">]</span>
@@ -365,6 +389,7 @@
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
      <span class="k">return</span> <span class="n">sizer</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>This greatly simplifies the coding of the MainPanel:</p>
@@ -374,13 +399,17 @@
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
          <span class="n">contact_sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_contact_sizer</span><span class="p">()</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">contact_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -420,9 +449,10 @@
 31
 32
 33
-34</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
 
-
+ <span class="o">...</span>
  <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -454,6 +484,7 @@
              <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
              <span class="bp">self</span><span class="o">.</span><span class="n">cb_contacts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb_contact</span><span class="p">)</span>
          <span class="k">return</span> <span class="n">sizer</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>In the next post I will look at the RadioButton and introduce the most flexible of wxPython’s sizers: the GridBagSizer</p>

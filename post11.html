@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; wxPython From Scratch  documentation</title>
+  <title>The Date Picker control and the ObjectListView &mdash; wxPython From Scratch  documentation</title>
   
 
   
@@ -36,8 +36,10 @@
   
         <link rel="index" title="Index"
               href="genindex.html"/>
-        <link rel="search" title="Search" href="#"/>
-    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/> 
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
+        <link rel="next" title="Index" href="contents_index.html"/>
+        <link rel="prev" title="Dialogs" href="post10.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -69,7 +71,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -87,7 +89,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#why-i-am-writing-this">Why I am writing this</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro.html#why-choose-wx-python">Why choose wx python?</a></li>
@@ -190,8 +192,8 @@
 <li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -241,12 +243,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>The Date Picker control and the ObjectListView</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/post11.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -258,19 +262,101 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="the-date-picker-control-and-the-objectlistview">
+<h1>The Date Picker control and the ObjectListView<a class="headerlink" href="#the-date-picker-control-and-the-objectlistview" title="Permalink to this headline">¶</a></h1>
+<p>In the last post I described the use of two of the wxPython dialogs. In this post will deal with two important controls: the Date Picker control, used for selecting a date, and the ObjectListView used for displaying data in a list format.</p>
+<div class="section" id="the-date-picker-control">
+<h2>The Date Picker control<a class="headerlink" href="#the-date-picker-control" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>wx.adv</strong> module has a <em>DatePicker</em> class.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/datepicker.png"><img alt="A datepicker" src="_images/datepicker.png" style="width: 300px; height: 250px;" /></a>
+</div>
+<p>Fig 1. A datepicker</p>
+<p>The code to generate this is straightforward:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+ <span class="kn">import</span> <span class="nn">wx.adv</span>
+ <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+ <span class="kn">import</span> <span class="nn">locale</span>
 
-  
-  <div id="search-results">
-  
-  </div>
+ <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span><span class="s1">&#39;en_GB.UTF-8&#39;</span><span class="p">)</span>
+ <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+ <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+         <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+         <span class="n">day_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">dte_required</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">adv</span><span class="o">.</span><span class="n">DatePickerCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">day_one</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">dte_required</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">adv</span><span class="o">.</span><span class="n">EVT_DATE_CHANGED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_dte_required_change</span><span class="p">)</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">dte_required</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+ <span class="k">def</span> <span class="nf">on_dte_required_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="n">date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dte_required</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
+     <span class="n">pydate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wxdate2pydate</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+     <span class="k">print</span><span class="p">(</span><span class="n">pydate</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %Y&quot;</span><span class="p">))</span>
+
+ <span class="nd">@staticmethod</span>
+ <span class="k">def</span> <span class="nf">wxdate2pydate</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="p">)</span>
+     <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
+         <span class="n">ymd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">FormatISODate</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)))</span>
+         <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+         <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+         <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+         <span class="k">return</span> <span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="k">return</span> <span class="bp">None</span>
+ <span class="o">...</span>
+</pre></div>
+</td></tr></table></div>
+<p>The points to note are:</p>
+<ol class="arabic simple">
+<li>The datepicker requires its own <strong>wx.DateTime</strong> object (line 13) to set the date;</li>
+<li>the wx.DateTime month starts at zero for January;</li>
+<li>I have used code from <a class="reference external" href="https://www.blog.pythonlibrary.org/2014/08/27/wxpython-converting-wx-datetime-python-datetime/">here</a> to help with the date conversion in the <strong>wxdate2pydate</strong> function.</li>
+</ol>
+</div>
+</div>
+
 
            </div>
            <div class="articleComments">
@@ -278,6 +364,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contents_index.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="post10.html" class="btn btn-neutral" title="Dialogs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -317,7 +412,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -332,14 +426,7 @@
           SphinxRtdTheme.Navigation.enableSticky();
           
       });
-  </script>
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

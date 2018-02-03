@@ -174,12 +174,12 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
@@ -187,8 +187,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -268,8 +273,12 @@
 <p>Fig 1. A ListBox</p>
 <p>Note that as the contents of the ListBox exceed its height, scroll bar functionality is included. Creating a list box follows the usual pattern (<a class="reference external" href="snippets/listbox.py">listbox.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">))</span>
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ListBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">choices</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">))</span>
  <span class="n">lst_cities</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_LISTBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_lst_cities_click</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Two arguments have been provided: the <em>size</em> and <em>choices</em>. The choices argument is a list of strings.</p>
@@ -280,9 +289,13 @@
 <p>In this case, I have obtained a reference to the listbox and then used its <em>GetSelection</em> method which returns the index of the selected item.</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_lst_cities_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">on_lst_cities_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
      <span class="n">lst_cities</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">GetEventObject</span><span class="p">()</span>
      <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cities</span><span class="p">[</span><span class="n">lst_cities</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -294,7 +307,9 @@
 </div>
 <p>Fig 2. A ComboBox</p>
 <p>Again the code takes a familiar form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="n">cmb_month</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">ComboBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">months</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>The <em>value</em> argument consists of a string that will appear in the combobox before a selection is made (<a class="reference external" href="snippets/combobox.py">combobox.py</a>).</p>
@@ -318,7 +333,10 @@
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre>     <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+     <span class="n">lbl_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">StaticText</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Name:&quot;</span><span class="p">)</span>
      <span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
      <span class="n">cmd_print</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_PRINT</span><span class="p">)</span>
      <span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_EXIT</span><span class="p">)</span>
@@ -334,6 +352,7 @@
      <span class="n">main_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
      <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">name_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
      <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <div class="align-center figure">
@@ -342,14 +361,17 @@
 <p>Fig 3. A frame with buttons</p>
 <p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
 <p>I do think the <strong>Quit</strong> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <strong>Quit</strong> button to the right (<a class="reference external" href="snippets/spacers.py">spacers.py</a>).</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre>     <span class="n">button_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+     <span class="n">button_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="p">)</span>
      <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_print</span><span class="p">)</span>
      <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">proportion</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
      <span class="n">button_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">cmd_quit</span><span class="p">)</span>
@@ -357,6 +379,7 @@
      <span class="n">main_sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
      <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">name_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
      <span class="n">main_sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">button_sizer</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">LEFT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">RIGHT</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">BOTTOM</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">EXPAND</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <div class="align-center figure">

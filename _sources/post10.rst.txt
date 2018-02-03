@@ -40,6 +40,7 @@ Let us assume that we wish the user to confirm that they really did wish to clos
 .. code-block:: python
    :linenos:
 
+    ...
     def on_quit_click(self, event):
         warning_dialog = wx.MessageDialog(self, message="Quit frame?",
                                             style=wx.ICON_QUESTION|wx.YES_NO)
@@ -47,6 +48,7 @@ Let us assume that we wish the user to confirm that they really did wish to clos
         if result == wx.ID_YES:
             print("Now closing")
             quit()
+    ...
 
 This is a *MessageDialog*. Note that:
 
@@ -151,16 +153,19 @@ The code to invoke the file open dialog  and place the selected path in the **tx
 .. code-block:: python
    :linenos:
 
+    ...
     def on_cmd_path_click(self, event):
         del event
         self.path = self.get_file_path()
         self.txt_path.SetValue(self.path)
+    ...
 
 and the **get_file_path** function:
 
 .. code-block:: python
    :linenos:
 
+    ...
     def get_file_path(self):
         path = self.path
         file_types = "python files (*.py)|*.py|All files (*.*)|*.*"
@@ -174,6 +179,7 @@ and the **get_file_path** function:
             path = file_dialog.GetPath()
         file_dialog.Destroy()
         return path
+    ...
 
 This code (`file_dialog.py <snippets/file_dialog.py>`_) should be self explanatory except for the **file_types** string which is assigned to the **wildcard** argument. The string is delimited by the pipe character ("|"). The delimited strings must be taken in pairs. So, if we look at the pair "**python files (*.py)|*.py**", the first element ("**python files (*.py)**") is the string that will appear in the select file combobox in the dialog and the second ("***.py**")is the wildcard that will be applied when the selection is made.
 

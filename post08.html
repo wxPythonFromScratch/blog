@@ -137,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-function">Abstracting widgets to their own function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -174,12 +174,12 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
@@ -187,8 +187,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -313,7 +318,10 @@
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
@@ -323,6 +331,7 @@
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="k">pass</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>So far, the menu bar does nothing: no menus have been created yet.</p>
@@ -331,15 +340,18 @@
 <h3>Menus<a class="headerlink" href="#menus" title="Permalink to this headline">¶</a></h3>
 <p>First we need to define the <em>menus</em> that will appear on the menu bar, for example, <strong>File</strong>, <strong>Edit</strong>, <strong>Help</strong>. Then we proceed to create <em>menu items</em>, for example <strong>New</strong>, <strong>Open</strong>, <strong>Save</strong> etc., that will be attached to their respective menus.</p>
 <p>A <em>menu</em> is an instance of <em>wx.Menu</em> which is created and then <strong>appended</strong> to the menu bar. As each menu can, potentially, have many items, I will abstract the creation of each menu to its own class to simplify maintenance and to aid readability and reusability:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -348,6 +360,7 @@
  <span class="k">class</span> <span class="nc">FileMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Now the file menu appears on the frame, but still, it does nothing. We need to add menu items:</p>
@@ -373,7 +386,10 @@
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -388,6 +404,7 @@
 
      <span class="k">def</span> <span class="nf">on_new_menu_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
          <span class="k">print</span><span class="p">(</span><span class="s1">&#39;New clicked&#39;</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note that here, I have not only created the menu item, but bound it to a method and appended it to the menu itself using its <strong>Append</strong> method. When the menu is clicked it now appears as:</p>
@@ -401,11 +418,15 @@
 <div class="section" id="a-status-bar">
 <h2>A Status bar<a class="headerlink" href="#a-status-bar" title="Permalink to this headline">¶</a></h2>
 <p>In order to demonstrate the use of a status bar I will start with the same basic frame used at the top of this post. As the status bar is closely bound to the frame and its implementation is quite simple I will not be abstracting it to a separate class. To create it, simply use the line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <p>To set the text, use the <strong>SetStatusText</strong> method:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;This is the status bar&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;This is the status bar&#39;</span><span class="p">)</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 <div class="align-center figure">

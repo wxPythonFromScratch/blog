@@ -12,7 +12,9 @@ The code required to create a *text box* (called a `TextCtrl <https://wxpython.o
 
 .. code-block:: python
 
+    ...
     txt_name = wx.TextCtrl(parent=self)
+    ...
 
 This makes a TextCtrl of default size (enough to enter six "m"s and high enough for one line of text).
 
@@ -29,7 +31,9 @@ We can adjust the size by defining the relevant argument at instantiation:
 
 .. code-block:: python
 
+    ...
     txt_name = wx.TextCtrl(parent=self, size=(150, -1))
+    ...
 
 This TextCtrl will now have a width of 150, The -1 value for height retains the default value; this is optimised for a single line of text.
 
@@ -40,7 +44,9 @@ Placing a `button <https://wxpython.org/Phoenix/docs/html/wx.Button.html>`_ on t
 
 .. code-block:: python
 
+    ...
         cmd_quit = wx.Button(parent=self, id=wx.ID_CANCEL)
+    ...
 
 In this case I have used a wxPython `StandardID <https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html>`_ to define the  button appearance; it applies the text "Cancel" and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).
 
@@ -56,7 +62,9 @@ The advantvantage of using wxPython IDs is that you will get a consistent look o
 
 .. code-block:: python
 
+    ...
         cmd_quit = wx.Button(parent=self, label="Cancel")
+    ...
 
 This would not have created the icon on the button, and would not provide multi-lingual support.
 
@@ -68,6 +76,7 @@ In the previous post we placed the label in the sizer and gave it a border to en
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
@@ -79,6 +88,7 @@ In the previous post we placed the label in the sizer and gave it a border to en
             sizer.Add(txt_name, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
             sizer.Add(cmd_quit, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM, border=10)
             self.SetSizer(sizer)
+    ...
 
 Note that I have selected to add a border to just the left, right, and bottom of the TextCtrl and the button. The various flags are separated by the pipe symbol "|". The widgets have been placed in the vertical BoxSizer and will appear in the order that they have been added, starting at the top. The widgets are evenly spaced and aligned left within the sizer which has expanded to accommodate the widest element. (Remember that the code in the frame ensures that the frame always expands to fit the contents of the panel.)
 
@@ -98,7 +108,9 @@ Many user actions can be `detected <https://wxpython.org/Phoenix/docs/html/event
 
 .. code-block:: python
 
+    ...
         cmd_quit.Bind(wx.EVT_BUTTON, self.on_cmd_quit_click)
+    ...
 
 This line uses the *Bind* method for the button passing in the type of the event (in this case the left button click on the mouse, identified by "wx.EVT_BUTTON"), and the method to be called ("self.on_cmd_quit_click")when the event takes place.
 
@@ -106,9 +118,11 @@ In this case I will simply *quit* Python when the event binding is initiated:
 
 .. code-block:: python
 
+    ...
     def on_cmd_quit_click(self, event):
         del event
         quit()
+    ...
 
 Every event is passed as an argument to the relevant bound method. This is a wxPython object that contains information about the event that has initiated the call. In this case it is not required and so it has been deleted. Finally, the Python *quit* method is invoked.
 
@@ -120,6 +134,7 @@ In this posting we have seen how to create a TextCtrl and a button. They have be
 .. code-block:: python
    :linenos:
 
+    ...
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
@@ -136,5 +151,6 @@ In this posting we have seen how to create a TextCtrl and a button. They have be
         def on_cmd_quit_click(self, event):
             del event
             quit()
+    ...
 
 In the next posting we will see how BoxSizers can be used to create more complex layouts.
