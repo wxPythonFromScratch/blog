@@ -34,9 +34,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="Text box, button and events" href="post03.html"/>
         <link rel="prev" title="Getting started: the frame" href="post01.html"/> 
@@ -103,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding a panel and a label</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Adding a panel and a label</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-panel">A panel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sizers">Sizers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-label">A label</a></li>
@@ -137,7 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-function">Abstracting widgets to their own function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -174,12 +171,12 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
@@ -187,8 +184,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -244,7 +246,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post02.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post02.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -318,7 +320,7 @@
 <a class="reference internal image-reference" href="_images/frame_03.png"><img alt="A frame with label" src="_images/frame_03.png" style="width: 400px; height: 250px;" /></a>
 </div>
 <p>Fig 1. A frame with a label</p>
-<p>Let’s now create the sizer and put the label into it. The code for this is:</p>
+<p>Let&#8217;s now create the sizer and put the label into it. The code for this is:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre> <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
@@ -486,7 +488,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

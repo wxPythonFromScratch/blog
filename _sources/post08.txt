@@ -55,7 +55,6 @@ In order to use a menu bar it is necessary to call the **SetMenuBar** method for
 .. code-block:: python
    :linenos:
 
-    ...
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)
@@ -66,7 +65,6 @@ In order to use a menu bar it is necessary to call the **SetMenuBar** method for
         def __init__(self, parent):
             wx.MenuBar.__init__(self)
             pass
-    ...
 
 So far, the menu bar does nothing: no menus have been created yet.
 
@@ -80,7 +78,6 @@ A *menu* is an instance of *wx.Menu* which is created and then **appended** to t
 .. code-block:: python
    :linenos:
 
-    ...
     class MenuBar(wx.MenuBar):
         def __init__(self, parent):
             wx.MenuBar.__init__(self)
@@ -90,7 +87,6 @@ A *menu* is an instance of *wx.Menu* which is created and then **appended** to t
     class FileMenu(wx.Menu):
         def __init__(self, parent):
             wx.Menu.__init__(self)
-    ...
 
 Now the file menu appears on the frame, but still, it does nothing. We need to add menu items:
 
@@ -110,7 +106,6 @@ Menu items will drop down when the mouse is clicked on a menu. Typically, there 
 .. code-block:: python
    :linenos:
 
-    ...
     class MenuBar(wx.MenuBar):
         def __init__(self, parent):
             wx.MenuBar.__init__(self)
@@ -126,7 +121,6 @@ Menu items will drop down when the mouse is clicked on a menu. Typically, there 
 
         def on_new_menu_click(self, event):
             print('New clicked')
-    ...
 
 Note that here, I have not only created the menu item, but bound it to a method and appended it to the menu itself using its **Append** method. When the menu is clicked it now appears as:
 
@@ -147,17 +141,13 @@ In order to demonstrate the use of a status bar I will start with the same basic
 
 .. code-block:: python
 
-    ...
     self.status_bar = self.CreateStatusBar()
-    ...
 
 To set the text, use the **SetStatusText** method:
 
 .. code-block:: python
 
-    ...
         self.status_bar.SetStatusText('This is the status bar')
-    ...
 
 .. figure:: /images/statusbar_01.png
    :height: 250

@@ -34,9 +34,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="Getting started: the frame" href="post01.html"/>
         <link rel="prev" title="Welcome to wxPython From Scratch" href="index.html"/> 
@@ -90,7 +87,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#why-i-am-writing-this">Why I am writing this</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-choose-wx-python">Why choose wx python?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#style">Style</a></li>
@@ -137,7 +134,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#retrieving-the-value-of-a-widget">Retrieving the value of a widget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-panel">Abstracting widgets to their own panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post05.html#abstracting-widgets-to-their-own-function">Abstracting widgets to their own function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
@@ -174,16 +171,26 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="post09.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -239,7 +246,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/intro.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -257,11 +264,11 @@
 <p>This series of pages is intended to guide a competent Python programmer through the stages needed to buld GUI programs using the wxPython framework.</p>
 <div class="section" id="why-i-am-writing-this">
 <h2>Why I am writing this<a class="headerlink" href="#why-i-am-writing-this" title="Permalink to this headline">¶</a></h2>
-<p>I taught myself to write GUI applications in <a class="reference external" href="https://www.wxpython.org/">wxPython</a>; a sometimes painful and protracted experience. Here, I want to share with others what little wisdom I have amassed in this process. I wish I’d have had this guide by my side when I started; it would have saved many hours of trial and error.</p>
+<p>I taught myself to write GUI applications in <a class="reference external" href="https://www.wxpython.org/">wxPython</a>; a sometimes painful and protracted experience. Here, I want to share with others what little wisdom I have amassed in this process. I wish I&#8217;d have had this guide by my side when I started; it would have saved many hours of trial and error.</p>
 </div>
 <div class="section" id="why-choose-wx-python">
 <h2>Why choose wx python?<a class="headerlink" href="#why-choose-wx-python" title="Permalink to this headline">¶</a></h2>
-<p>I assume that you are already committed to using <a class="reference external" href="https://www.python.org/">Python</a> to develop applications and that you now need or want to develop GUI applications. There is a “native” python GUI framework, <a class="reference external" href="https://docs.python.org/3/library/tk.html">tkinter</a>, but on my initial investigation I felt that wxPython looked better. I freely admit that I might have been wrong about that. That said, wxPython does have all of the necessary widgets that I want and, in my opinion, looks great on linux, Windows and OSX.</p>
+<p>I assume that you are already committed to using <a class="reference external" href="https://www.python.org/">Python</a> to develop applications and that you now need or want to develop GUI applications. There is a &#8220;native&#8221; python GUI framework, <a class="reference external" href="https://docs.python.org/3/library/tk.html">tkinter</a>, but on my initial investigation I felt that wxPython looked better. I freely admit that I might have been wrong about that. That said, wxPython does have all of the necessary widgets that I want and, in my opinion, looks great on linux, Windows and OSX.</p>
 </div>
 <div class="section" id="style">
 <h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
@@ -272,7 +279,8 @@
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>I am assuming that you have <a class="reference external" href="https://wxpython.org/pages/downloads/index.html">downloaded  wxPython</a> and that you have a working knowledge of Python; in particular object based programming techniques including <a class="reference external" href="https://docs.python.org/2/tutorial/classes.html">class definition</a>, <a class="reference external" href="https://docs.python.org/2/tutorial/classes.html#inheritance">inheritance</a> and Python’s treatment of a function or method call as an object.</p>
+<p>I am assuming that you have <a class="reference external" href="https://wxpython.org/pages/downloads/index.html">downloaded  wxPython</a> and that you have a working knowledge of Python; in particular object based programming techniques including <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html">class definition</a>, <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#inheritance">inheritance</a> and Python&#8217;s treatment of a function or method call as an object.</p>
+<p>Throughout, I have assumed that you will be using Python 3.</p>
 </div>
 </div>
 
@@ -325,7 +333,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

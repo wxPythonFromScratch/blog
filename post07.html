@@ -34,9 +34,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="A menu bar and status bar" href="post08.html"/>
         <link rel="prev" title="RadioButtons and the GridBagSizer" href="post06.html"/> 
@@ -147,7 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post06.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The ListBox, ComboBox and spacers</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">The ListBox, ComboBox and spacers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-listbox">The ListBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-event-object">The Event object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-combobox">The ComboBox</a></li>
@@ -174,12 +171,12 @@
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-menu-bar">The menu bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-status-bar">The status bar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#the-panel">The panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-panel">The person panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-panel">The extras panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-panel">The room panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-panel">The city panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-panel">The date panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-panel">The button panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-person-sizer">The person sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-extras-sizer">The extras sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-room-sizer">The room sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-city-sizer">The city sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-date-sizer">The date sizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="post09.html#the-button-sizer">The button sizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="post09.html#handling-events">Handling events</a></li>
 </ul>
 </li>
@@ -187,8 +184,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post10.html">Dialogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-dialog">A simple dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#a-simple-message-dialog">A simple message dialog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post10.html#the-file-open-dialog">The file open dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -244,7 +246,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post07.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post07.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -341,7 +343,7 @@
 </div>
 <p>Fig 3. A frame with buttons</p>
 <p>In this code I have created four widgets, placed the label and text box in one horizontal BoxSizer and the two buttons in another. Both of these sizers are then place in the main (vertical) sizer.</p>
-<p>I do think the <strong>Quit</strong> button would look better aligned to the right. As I don’t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <strong>Quit</strong> button to the right (<a class="reference external" href="snippets/spacers.py">spacers.py</a>).</p>
+<p>I do think the <strong>Quit</strong> button would look better aligned to the right. As I don&#8217;t know the width taken up by the <em>name_sizer</em> I cannot place a fixed width spacer in the <em>button_sizer</em>. This is where the <em>proportion</em>  and <em>wx.EXPAND</em> flags come in. I will add a spacer (of zero width and zero height) to the <em>button_sizer</em> between the two buttons and set the <em>proportion</em> argument to 1. Then, add the <em>wx.EXPAND</em> flag to the <em>button_sizer</em> and we achieve the effect I wanted: the <em>button_sizer</em> expands to fit the whole width of the <em>main_sizer</em> and the spacer expands, pushing the <strong>Quit</strong> button to the right (<a class="reference external" href="snippets/spacers.py">spacers.py</a>).</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -419,7 +421,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

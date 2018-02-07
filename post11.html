@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started: the frame &mdash; wxPython From Scratch  documentation</title>
+  <title>The Date Picker control and the ObjectListView &mdash; wxPython From Scratch  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
 
   
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
-        <link rel="next" title="Adding a panel and a label" href="post02.html"/>
-        <link rel="prev" title="Introduction" href="intro.html"/> 
+        <link rel="next" title="Index" href="contents_index.html"/>
+        <link rel="prev" title="Dialogs" href="post10.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,10 +94,10 @@
 <li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Getting started: the frame</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-wxpython-main-loop">The wxPython main loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-wxpython-frame">The wxPython Frame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post01.html">Getting started: the frame</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-main-loop">The wxPython main loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#the-wxpython-frame">The wxPython Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post01.html#summary">Summary</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post02.html">Adding a panel and a label</a><ul>
@@ -189,8 +189,8 @@
 <li class="toctree-l2"><a class="reference internal" href="post10.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="post11.html">The Date Picker control and the ObjectListView</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="post11.html#the-date-picker-control">The Date Picker control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">The Date Picker control and the ObjectListView</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-date-picker-control">The Date Picker control</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contents_index.html">Index</a></li>
@@ -240,13 +240,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Getting started: the frame</li>
+      <li>The Date Picker control and the ObjectListView</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post01.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post11.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -259,70 +259,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started-the-frame">
-<h1>Getting started: the frame<a class="headerlink" href="#getting-started-the-frame" title="Permalink to this headline">¶</a></h1>
-<p>Let&#8217;s define a few terms used by wxPython:</p>
-<dl class="docutils">
-<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Frame.html">frame</a>:</dt>
-<dd>the rectangular window that contains all of the GUI elements, (in fact it is usually called a window outside of wxPython (see this wiki <a class="reference external" href="https://en.wikipedia.org/wiki/Window_(computing)">article</a>)). It usually has a title bar with control buttons, an area to display panels, and optionally a menu bar, a tool bar and a status bar;</dd>
-<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/gallery.html">widget</a>:</dt>
-<dd>an element of GUI programming, like a label, a button or, a text box;</dd>
-<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Panel.html">panel</a>:</dt>
-<dd>an area on the frame that contains widgets. For most simple GUI applications you will have one panel and it will cover the whole frame.</dd>
-</dl>
+  <div class="section" id="the-date-picker-control-and-the-objectlistview">
+<h1>The Date Picker control and the ObjectListView<a class="headerlink" href="#the-date-picker-control-and-the-objectlistview" title="Permalink to this headline">¶</a></h1>
+<p>In the last post I described the use of two of the wxPython dialogs. In this post will deal with two important controls: the Date Picker control, used for selecting a date, and the ObjectListView used for displaying data in a list format.</p>
+<div class="section" id="the-date-picker-control">
+<h2>The Date Picker control<a class="headerlink" href="#the-date-picker-control" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>wx.adv</strong> module has a <em>DatePicker</em> class.</p>
 <div class="align-center figure">
-<a class="reference internal image-reference" href="_images/raw_frame.png"><img alt="A basic frame" src="_images/raw_frame.png" style="width: 400px; height: 250px;" /></a>
+<a class="reference internal image-reference" href="_images/datepicker.png"><img alt="A datepicker" src="_images/datepicker.png" style="width: 300px; height: 250px;" /></a>
 </div>
-<p>Fig 1. A basic frame</p>
-<p>Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. (It is created by wxPython using the default size 400x250.) Before we look at how this was constructed, let&#8217;s first consider the wxPython main loop.</p>
-<div class="section" id="the-wxpython-main-loop">
-<span id="main-loop"></span><h2>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h2>
-<p>A moment&#8217;s thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
-<p>In wxPython the loop is handled by the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.App.html">wx.APP</a> class. The most basic code for a wxPython loop is (<a class="reference external" href="snippets/raw_frame.py">raw_frame.py</a>):</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
- <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
- <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw frame&quot;</span><span class="p">)</span>
- <span class="n">MAIN_FRAME</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
- <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
-<p>and I have used this to code produce the frame shown in Figure 1.</p>
-<ol class="arabic simple">
-<li>In the first  line we import the wxPython module;</li>
-<li>then, we create an instance of a wx application (wx.App);</li>
-<li>thirdly, we create an instance of a wx Frame (see below). The <em>None</em> argument is for the frame&#8217;s parent: in this case there is none;</li>
-<li>then tell the system to show the frame;</li>
-<li>and finally we start the wx main loop (app.MainLoop).</li>
-</ol>
-<p>These five lines sum up the whole application; all of the complexity and wizardry is involved in creating the frame.</p>
-</div>
-<div class="section" id="the-wxpython-frame">
-<h2>The wxPython Frame<a class="headerlink" href="#the-wxpython-frame" title="Permalink to this headline">¶</a></h2>
-<p>In this section we will see how to abstract the frame into its own class. Later articles will take this simple basis and build more complex solutions.</p>
-<p>The following code takes the frame definition and places it in a class that inherits wx.Frame:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
-     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>In this snippet, we have:</p>
-<ol class="arabic simple">
-<li>defined the class <strong>MainFrame</strong> which inherits <em>wx.Frame</em>;</li>
-<li>defined the dunder-init method for the class;</li>
-<li>called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;</li>
-<li>called the <strong>Show</strong> method for the frame.</li>
-</ol>
-<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame. One use is the ability to set the frame&#8217;s title in wxPython loop code stub which condenses the frame&#8217;s initialisation argument list.</p>
-<p>And that&#8217;s it. In a few lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>The most basic basic element of a GUI program running wxPython is the <em>frame</em>. A frame is created by instantiating an instance of a wx.Frame class within the wxPython main loop and calling its <strong>Show</strong> method. The full code is presented below (<a class="reference external" href="snippets/basic_frame.py">basic_frame.py</a>):</p>
+<p>Fig 1. A datepicker</p>
+<p>The code to generate this is straightforward:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -334,21 +281,74 @@
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
+ <span class="kn">import</span> <span class="nn">wx.adv</span>
+ <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+ <span class="kn">import</span> <span class="nn">locale</span>
 
+ <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span><span class="s1">&#39;en_GB.UTF-8&#39;</span><span class="p">)</span>
 
- <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
-     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-         <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+ <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+ <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
- <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Basic frame&quot;</span><span class="p">)</span>
-     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+         <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+         <span class="n">day_one</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">dte_required</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">adv</span><span class="o">.</span><span class="n">DatePickerCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">day_one</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">dte_required</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">adv</span><span class="o">.</span><span class="n">EVT_DATE_CHANGED</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_dte_required_change</span><span class="p">)</span>
+
+         <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
+         <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">dte_required</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
+
+ <span class="k">def</span> <span class="nf">on_dte_required_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+     <span class="n">date</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dte_required</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span>
+     <span class="n">pydate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wxdate2pydate</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+     <span class="k">print</span><span class="p">(</span><span class="n">pydate</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %Y&quot;</span><span class="p">))</span>
+
+ <span class="nd">@staticmethod</span>
+ <span class="k">def</span> <span class="nf">wxdate2pydate</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">wx</span><span class="o">.</span><span class="n">DateTime</span><span class="p">)</span>
+     <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">IsValid</span><span class="p">():</span>
+         <span class="n">ymd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">FormatISODate</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)))</span>
+         <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+         <span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+         <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+         <span class="k">return</span> <span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+     <span class="k">else</span><span class="p">:</span>
+         <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
 </td></tr></table></div>
-<p>In the next post I will show how to create a label and introduce the concept of a sizer and I will elaborate on the way that I suggest that code for wxPython is organised.</p>
+<p>The points to note are:</p>
+<ol class="arabic simple">
+<li>The datepicker requires its own <strong>wx.DateTime</strong> object (line 13) to set the date;</li>
+<li>the wx.DateTime month starts at zero for January;</li>
+<li>I have used code from <a class="reference external" href="https://www.blog.pythonlibrary.org/2014/08/27/wxpython-converting-wx-datetime-python-datetime/">here</a> to help with the date conversion in the <strong>wxdate2pydate</strong> function.</li>
+</ol>
 </div>
 </div>
 
@@ -362,10 +362,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="post02.html" class="btn btn-neutral float-right" title="Adding a panel and a label" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="contents_index.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="post10.html" class="btn btn-neutral" title="Dialogs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
