@@ -310,13 +310,17 @@
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">on_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
      <span class="n">warning_dialog</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">MessageDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Quit frame?&quot;</span><span class="p">,</span>
                                          <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ICON_QUESTION</span><span class="o">|</span><span class="n">wx</span><span class="o">.</span><span class="n">YES_NO</span><span class="p">)</span>
      <span class="n">result</span> <span class="o">=</span> <span class="n">warning_dialog</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span>
      <span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_YES</span><span class="p">:</span>
          <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now closing&quot;</span><span class="p">)</span>
          <span class="n">quit</span><span class="p">()</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>This is a <em>MessageDialog</em>. Note that:</p>
@@ -463,10 +467,14 @@
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">on_cmd_path_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">on_cmd_path_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
      <span class="k">del</span> <span class="n">event</span>
      <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_file_path</span><span class="p">()</span>
      <span class="bp">self</span><span class="o">.</span><span class="n">txt_path</span><span class="o">.</span><span class="n">SetValue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>and the <strong>get_file_path</strong> function:</p>
@@ -482,7 +490,10 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">def</span> <span class="nf">get_file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
+ <span class="k">def</span> <span class="nf">get_file_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
      <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
      <span class="n">file_types</span> <span class="o">=</span> <span class="s2">&quot;python files (*.py)|*.py|All files (*.*)|*.*&quot;</span>
      <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">FileDialog</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
@@ -495,6 +506,7 @@
          <span class="n">path</span> <span class="o">=</span> <span class="n">file_dialog</span><span class="o">.</span><span class="n">GetPath</span><span class="p">()</span>
      <span class="n">file_dialog</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
      <span class="k">return</span> <span class="n">path</span>
+ <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>This code (<a class="reference external" href="snippets/file_dialog.py">file_dialog.py</a>) should be self explanatory except for the <strong>file_types</strong> string which is assigned to the <strong>wildcard</strong> argument. The string is delimited by the pipe character (&#8220;|&#8221;). The delimited strings must be taken in pairs. So, if we look at the pair &#8220;<strong>python files (*.py)|*.py</strong>&#8221;, the first element (&#8220;<strong>python files (*.py)</strong>&#8221;) is the string that will appear in the select file combobox in the dialog and the second (&#8220;<strong>*.py</strong>&#8221;)is the wildcard that will be applied when the selection is made.</p>
