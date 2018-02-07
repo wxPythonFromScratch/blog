@@ -315,10 +315,7 @@
  7
  8
  9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
- <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">SetMenuBar</span><span class="p">(</span><span class="n">MenuBar</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
@@ -328,7 +325,6 @@
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="k">pass</span>
- <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>So far, the menu bar does nothing: no menus have been created yet.</p>
@@ -337,18 +333,15 @@
 <h3>Menus<a class="headerlink" href="#menus" title="Permalink to this headline">¶</a></h3>
 <p>First we need to define the <em>menus</em> that will appear on the menu bar, for example, <strong>File</strong>, <strong>Edit</strong>, <strong>Help</strong>. Then we proceed to create <em>menu items</em>, for example <strong>New</strong>, <strong>Open</strong>, <strong>Save</strong> etc., that will be attached to their respective menus.</p>
 <p>A <em>menu</em> is an instance of <em>wx.Menu</em> which is created and then <strong>appended</strong> to the menu bar. As each menu can, potentially, have many items, I will abstract the creation of each menu to its own class to simplify maintenance and to aid readability and reusability:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
- <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -357,7 +350,6 @@
  <span class="k">class</span> <span class="nc">FileMenu</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Menu</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
- <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Now the file menu appears on the frame, but still, it does nothing. We need to add menu items:</p>
@@ -383,10 +375,7 @@
 12
 13
 14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre> <span class="o">...</span>
- <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
+15</pre></div></td><td class="code"><div class="highlight"><pre> <span class="k">class</span> <span class="nc">MenuBar</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">MenuBar</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="n">file_menu</span> <span class="o">=</span> <span class="n">FileMenu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -401,7 +390,6 @@
 
      <span class="k">def</span> <span class="nf">on_new_menu_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
          <span class="k">print</span><span class="p">(</span><span class="s1">&#39;New clicked&#39;</span><span class="p">)</span>
- <span class="o">...</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note that here, I have not only created the menu item, but bound it to a method and appended it to the menu itself using its <strong>Append</strong> method. When the menu is clicked it now appears as:</p>
@@ -415,15 +403,11 @@
 <div class="section" id="a-status-bar">
 <h2>A Status bar<a class="headerlink" href="#a-status-bar" title="Permalink to this headline">¶</a></h2>
 <p>In order to demonstrate the use of a status bar I will start with the same basic frame used at the top of this post. As the status bar is closely bound to the frame and its implementation is quite simple I will not be abstracting it to a separate class. To create it, simply use the line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
-<span class="o">...</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CreateStatusBar</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>To set the text, use the <strong>SetStatusText</strong> method:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">...</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;This is the status bar&#39;</span><span class="p">)</span>
-<span class="o">...</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">status_bar</span><span class="o">.</span><span class="n">SetStatusText</span><span class="p">(</span><span class="s1">&#39;This is the status bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="align-center figure">

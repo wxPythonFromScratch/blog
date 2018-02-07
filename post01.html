@@ -304,8 +304,7 @@
 <h2>The wxPython Frame<a class="headerlink" href="#the-wxpython-frame" title="Permalink to this headline">¶</a></h2>
 <p>In this section we will see how to abstract the frame into its own class. Later articles will take this simple basis and build more complex solutions.</p>
 <p>The following code takes the frame definition and places it in a class that inherits wx.Frame:</p>
-<div class="highlight-python"><div class="highlight"><pre> <span class="o">...</span>
-<span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
