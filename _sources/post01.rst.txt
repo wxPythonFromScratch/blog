@@ -59,7 +59,6 @@ The following code takes the frame definition and places it in a class that inhe
 
 .. code-block:: python
 
-    ...
    class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             wx.Frame.__init__(self, *args, **kwargs)

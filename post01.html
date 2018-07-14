@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="Adding a panel and a label" href="post02.html"/>
         <link rel="prev" title="Introduction" href="intro.html"/> 
@@ -94,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="intro.html#prerequisites">Prerequisites</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Getting started: the frame</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started: the frame</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-wxpython-main-loop">The wxPython main loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-wxpython-frame">The wxPython Frame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
@@ -246,7 +249,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post01.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post01.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -261,7 +264,7 @@
             
   <div class="section" id="getting-started-the-frame">
 <h1>Getting started: the frame<a class="headerlink" href="#getting-started-the-frame" title="Permalink to this headline">¶</a></h1>
-<p>Let&#8217;s define a few terms used by wxPython:</p>
+<p>Let’s define a few terms used by wxPython:</p>
 <dl class="docutils">
 <dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Frame.html">frame</a>:</dt>
 <dd>the rectangular window that contains all of the GUI elements, (in fact it is usually called a window outside of wxPython (see this wiki <a class="reference external" href="https://en.wikipedia.org/wiki/Window_(computing)">article</a>)). It usually has a title bar with control buttons, an area to display panels, and optionally a menu bar, a tool bar and a status bar;</dd>
@@ -274,10 +277,10 @@
 <a class="reference internal image-reference" href="_images/raw_frame.png"><img alt="A basic frame" src="_images/raw_frame.png" style="width: 400px; height: 250px;" /></a>
 </div>
 <p>Fig 1. A basic frame</p>
-<p>Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. (It is created by wxPython using the default size 400x250.) Before we look at how this was constructed, let&#8217;s first consider the wxPython main loop.</p>
+<p>Figure 1. shows a wxPython frame with a title bar. It has no menu bar, tool bar, status bar, nor any widgets. (It is created by wxPython using the default size 400x250.) Before we look at how this was constructed, let’s first consider the wxPython main loop.</p>
 <div class="section" id="the-wxpython-main-loop">
 <span id="main-loop"></span><h2>The wxPython main loop<a class="headerlink" href="#the-wxpython-main-loop" title="Permalink to this headline">¶</a></h2>
-<p>A moment&#8217;s thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
+<p>A moment’s thought will convince you that a GUI application must run some sort of loop. Most of the time, the screen sits there waiting for the user to do something. The application will stay in this loop, reacting to user events, until it is closed down.</p>
 <p>In wxPython the loop is handled by the <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.App.html">wx.APP</a> class. The most basic code for a wxPython loop is (<a class="reference external" href="snippets/raw_frame.py">raw_frame.py</a>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -294,7 +297,7 @@
 <ol class="arabic simple">
 <li>In the first  line we import the wxPython module;</li>
 <li>then, we create an instance of a wx application (wx.App);</li>
-<li>thirdly, we create an instance of a wx Frame (see below). The <em>None</em> argument is for the frame&#8217;s parent: in this case there is none;</li>
+<li>thirdly, we create an instance of a wx Frame (see below). The <em>None</em> argument is for the frame’s parent: in this case there is none;</li>
 <li>then tell the system to show the frame;</li>
 <li>and finally we start the wx main loop (app.MainLoop).</li>
 </ol>
@@ -317,8 +320,8 @@
 <li>called the wx.Frame dunder-init method to ensure that the frame is correctly initialised;</li>
 <li>called the <strong>Show</strong> method for the frame.</li>
 </ol>
-<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame. One use is the ability to set the frame&#8217;s title in wxPython loop code stub which condenses the frame&#8217;s initialisation argument list.</p>
-<p>And that&#8217;s it. In a few lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
+<p>In the dunder-init calls I have include <em>*args</em> and <em>**kwargs</em>. This ensures that all of the functionality of <em>wx.Window</em>, the base-class of <em>wx.Frame</em>,  is inherited by the frame. One use is the ability to set the frame’s title in wxPython loop code stub which condenses the frame’s initialisation argument list.</p>
+<p>And that’s it. In a few lines of code we  have created a frame and displayed it. It can be maximised, minimised and closed using the control buttons. Note that the frame picks up the theme that you have selected for your system (or uses the default if it has not been changed).</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
@@ -401,7 +404,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

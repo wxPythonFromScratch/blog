@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="Using BoxSizers to create complex layouts" href="post04.html"/>
         <link rel="prev" title="Adding a panel and a label" href="post02.html"/> 
@@ -109,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post02.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Text box, button and events</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Text box, button and events</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-text-box">A text box</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-button">A button</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#placing-the-widgets-in-the-sizer">Placing the widgets in the sizer</a></li>
@@ -246,7 +249,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post03.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post03.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -269,7 +272,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">txt_name</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This makes a TextCtrl of default size (enough to enter six &#8220;m&#8221;s and high enough for one line of text).</p>
+<p>This makes a TextCtrl of default size (enough to enter six “m”s and high enough for one line of text).</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/textbox_01.png"><img alt="A TextCtrl" src="_images/textbox_01.png" style="width: 112px; height: 74px;" /></a>
 </div>
@@ -286,7 +289,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_quit</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">ID_CANCEL</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this case I have used a wxPython <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html">StandardID</a> to define the  button appearance; it applies the text &#8220;Cancel&#8221; and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).</p>
+<p>In this case I have used a wxPython <a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.StandardID.enumeration.html">StandardID</a> to define the  button appearance; it applies the text “Cancel” and, on my chosen theme, it also places an icon on the button (it might appear differently on your system).</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/button_01.png"><img alt="A button" src="_images/button_01.png" style="width: 112px; height: 74px;" /></a>
 </div>
@@ -323,7 +326,7 @@
          <span class="bp">self</span><span class="o">.</span><span class="n">SetSizer</span><span class="p">(</span><span class="n">sizer</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Note that I have selected to add a border to just the left, right, and bottom of the TextCtrl and the button. The various flags are separated by the pipe symbol &#8220;|&#8221;. The widgets have been placed in the vertical BoxSizer and will appear in the order that they have been added, starting at the top. The widgets are evenly spaced and aligned left within the sizer which has expanded to accommodate the widest element. (Remember that the code in the frame ensures that the frame always expands to fit the contents of the panel.)</p>
+<p>Note that I have selected to add a border to just the left, right, and bottom of the TextCtrl and the button. The various flags are separated by the pipe symbol “|”. The widgets have been placed in the vertical BoxSizer and will appear in the order that they have been added, starting at the top. The widgets are evenly spaced and aligned left within the sizer which has expanded to accommodate the widest element. (Remember that the code in the frame ensures that the frame always expands to fit the contents of the panel.)</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/vertical_01.png"><img alt="widgets in a sizer" src="_images/vertical_01.png" style="width: 180px; height: 150px;" /></a>
 </div>
@@ -335,7 +338,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cmd_quit</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_BUTTON</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_cmd_quit_click</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This line uses the <em>Bind</em> method for the button passing in the type of the event (in this case the left button click on the mouse, identified by &#8220;wx.EVT_BUTTON&#8221;), and the method to be called (&#8220;self.on_cmd_quit_click&#8221;)when the event takes place.</p>
+<p>This line uses the <em>Bind</em> method for the button passing in the type of the event (in this case the left button click on the mouse, identified by “wx.EVT_BUTTON”), and the method to be called (“self.on_cmd_quit_click”)when the event takes place.</p>
 <p>In this case I will simply <em>quit</em> Python when the event binding is initiated:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_cmd_quit_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">del</span> <span class="n">event</span>
@@ -433,7 +436,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

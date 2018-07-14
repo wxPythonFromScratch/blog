@@ -19,10 +19,8 @@ Note that as the contents of the ListBox exceed its height, scroll bar functiona
 .. code-block:: python
    :linenos:
 
-    ...
     lst_cities = wx.ListBox(parent=self, size=(300, 150), choices=sorted(self.cities))
     lst_cities.Bind(wx.EVT_LISTBOX, self.on_lst_cities_click)
-    ...
 
 Two arguments have been provided: the *size* and *choices*. The choices argument is a list of strings.
 
@@ -36,11 +34,9 @@ In this case, I have obtained a reference to the listbox and then used its *GetS
 .. code-block:: python
    :linenos:
 
-    ...
     def on_lst_cities_click(self, event):
         lst_cities = event.GetEventObject()
         print(self.cities[lst_cities.GetSelection()])
-    ...
 
 The ComboBox
 ------------
@@ -59,9 +55,7 @@ Again the code takes a familiar form:
 
 .. code-block:: python
 
-    ...
     cmb_month = wx.ComboBox(parent=self, size=(100, -1), value="Month", choices=self.months)
-    ...
 
 The *value* argument consists of a string that will appear in the combobox before a selection is made (`combobox.py <snippets/combobox.py>`_).
 
@@ -75,7 +69,6 @@ In the following frame the **Quit** button is placed in a horizontal *BoxSizer* 
 .. code-block:: python
    :linenos:
 
-    ...
         lbl_name = wx.StaticText(parent=self, label="Name:")
         txt_name = wx.TextCtrl(parent=self, size=(150, -1))
         cmd_print = wx.Button(parent=self, id=wx.ID_PRINT)
@@ -92,7 +85,6 @@ In the following frame the **Quit** button is placed in a horizontal *BoxSizer* 
         main_sizer = wx.BoxSizer(orient=wx.VERTICAL)
         main_sizer.Add(name_sizer, flag=wx.ALL, border=10)
         main_sizer.Add(button_sizer, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM border=10)
-    ...
 
 .. figure:: /images/buttons_01.png
    :height: 113
@@ -110,7 +102,6 @@ I do think the **Quit** button would look better aligned to the right. As I don'
 .. code-block:: python
    :linenos:
 
-    ...
         button_sizer = wx.BoxSizer(orient=wx.HORIZONTAL)
         button_sizer.Add(cmd_print)
         button_sizer.Add((0, 0), proportion=1)
@@ -119,7 +110,6 @@ I do think the **Quit** button would look better aligned to the right. As I don'
         main_sizer = wx.BoxSizer(orient=wx.VERTICAL)
         main_sizer.Add(name_sizer, flag=wx.ALL, border=10)
         main_sizer.Add(button_sizer, flag=wx.LEFT|wx.RIGHT|wx.BOTTOM|wx.EXPAND, border=10)
-    ...
 
 
 .. figure:: /images/buttons_02.png

@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="RadioButtons and the GridBagSizer" href="post06.html"/>
         <link rel="prev" title="Using BoxSizers to create complex layouts" href="post04.html"/> 
@@ -129,7 +132,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post04.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Check-boxes, getting and setting values, abstracting panels</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Check-boxes, getting and setting values, abstracting panels</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-a-staticbox">Creating a StaticBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-checkbox">The CheckBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#binding-a-method-to-the-checkbox-click">Binding a method to the CheckBox click</a></li>
@@ -246,7 +249,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post05.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post05.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -303,7 +306,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="n">cb_contact</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">CheckBox</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">contact_box</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can see that the parent of the CheckBox is the StaticBox, and I&#8217;ve given the CheckBox its label and a name (which will be useful when we come to perform some action if the CheckBox is clicked).</p>
+<p>You can see that the parent of the CheckBox is the StaticBox, and I’ve given the CheckBox its label and a name (which will be useful when we come to perform some action if the CheckBox is clicked).</p>
 </div>
 <div class="section" id="binding-a-method-to-the-checkbox-click">
 <h2>Binding a method to the CheckBox click<a class="headerlink" href="#binding-a-method-to-the-checkbox-click" title="Permalink to this headline">¶</a></h2>
@@ -328,7 +331,7 @@
 </div>
 <div class="section" id="retrieving-the-value-of-a-widget">
 <h2>Retrieving the value of a widget<a class="headerlink" href="#retrieving-the-value-of-a-widget" title="Permalink to this headline">¶</a></h2>
-<p>From the user&#8217;s point of view, a CheckBox is either checked or not and wxPython interprets these values as <em>True</em> and <em>False</em> respectively. In the following snippet I show the code that I have written to handle the user clicking on one of the CheckBoxes. It loops through the list of CheckBoxes, finds which are checked using the <em>GetValue</em> function, and generates and prints an appropriate string using the <em>GetName</em> function to retrieve the CheckBoxes name:</p>
+<p>From the user’s point of view, a CheckBox is either checked or not and wxPython interprets these values as <em>True</em> and <em>False</em> respectively. In the following snippet I show the code that I have written to handle the user clicking on one of the CheckBoxes. It loops through the list of CheckBoxes, finds which are checked using the <em>GetValue</em> function, and generates and prints an appropriate string using the <em>GetName</em> function to retrieve the CheckBoxes name:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -456,7 +459,7 @@
          <span class="k">return</span> <span class="n">sizer</span>
 </pre></div>
 </td></tr></table></div>
-<p>In the next post I will look at the RadioButton and introduce the most flexible of wxPython&#8217;s sizers: the GridBagSizer</p>
+<p>In the next post I will look at the RadioButton and introduce the most flexible of wxPython’s sizers: the GridBagSizer</p>
 </div>
 </div>
 
@@ -509,7 +512,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

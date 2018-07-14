@@ -27,7 +27,7 @@ The code to generate this is straightforward:
     import locale
 
     locale.setlocale(locale.LC_ALL,'en_GB.UTF-8')
-    ...
+
     class MainPanel(wx.Panel):
     def __init__(self, parent, *args, **kwargs):
             wx.Panel.__init__(self, parent, *args, **kwargs)
@@ -57,7 +57,6 @@ The code to generate this is straightforward:
             return datetime(year, month, day)
         else:
             return None
-    ...
 
 The points to note are:
 

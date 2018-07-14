@@ -34,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="wxPython From Scratch  documentation" href="index.html"/>
         <link rel="next" title="The ListBox, ComboBox and spacers" href="post07.html"/>
         <link rel="prev" title="Check-boxes, getting and setting values, abstracting panels" href="post05.html"/> 
@@ -138,7 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="post05.html#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">RadioButtons and the GridBagSizer</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RadioButtons and the GridBagSizer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-radiobutton">The RadioButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-gridbagsizer">The GridBagSizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
@@ -246,7 +249,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/post06.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/post06.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -302,12 +305,12 @@
  <span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_RADIOBOX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_rb_colour_click</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>This way we do not have to create a list of radioButtons or even the buttons themselves. Note that the flag &#8220;wx.RA_SPECIFY_ROWS&#8221;, creates a column of buttons. Both sets of code create the same output.</p>
+<p>This way we do not have to create a list of radioButtons or even the buttons themselves. Note that the flag “wx.RA_SPECIFY_ROWS”, creates a column of buttons. Both sets of code create the same output.</p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/radiobuttons_01.png"><img alt="RadioButtons" src="_images/radiobuttons_01.png" style="width: 92px; height: 136px;" /></a>
 </div>
 <p>Fig 1. RadioButtons</p>
-<p>The wx.EVT_RADIOBOX is triggered whenever one of the buttons is clicked. The RadioBox&#8217;s <em>GetSelection()</em> function returns the index on the <em>choices</em> list that has been selected. For example:</p>
+<p>The wx.EVT_RADIOBOX is triggered whenever one of the buttons is clicked. The RadioBox’s <em>GetSelection()</em> function returns the index on the <em>choices</em> list that has been selected. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">on_rb_colour_click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">del</span> <span class="n">event</span>
     <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colours</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">colour_box</span><span class="o">.</span><span class="n">GetSelection</span><span class="p">()])</span>
@@ -407,7 +410,7 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
