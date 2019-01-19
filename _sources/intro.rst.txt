@@ -14,9 +14,9 @@ I assume that you are already committed to using `Python <https://www.python.org
 
 Style
 +++++
-I have chosen to assume that the reader knows nothing about wxPython. A few web searches will find lots of examples of wxPython code snippets, but these have often been put together to demonstrate a point and there treatment is often not rigorous. I am not claiming that my style is optimal, but it does have the advantage of providing solutions that are consistent, effective and compatable with the main PC platforms: linux, Windows and OSX.
+I have chosen to assume that the reader knows nothing about wxPython. A few web searches will find lots of examples of wxPython code snippets, but these have often been put together to demonstrate a point and they assume familiarity with the basics of wxPython. I am not claiming that my style is optimal, but it does have the advantage of providing solutions that are consistent, effective and compatable with the main PC platforms: linux, Windows and OSX.
 
-This series of postings is not intended to cover all aspects of wxPython programming and should not be considered as a reference document. Instead, I hope you will read, follow and implement for yourself the I give examples in detail and in sequence. Each posting should take no more than 30 minutes, and so, if you pace youself over a week, you will gain an mastery of wxPython in very little time. You will really understand how to use it and not just parrot recipes from examples.
+This series of postings is not intended to cover all aspects of wxPython programming and should not be considered as a reference document. Instead, I hope you will read, follow and implement for yourself the examples I give in detail and in sequence. Each posting should take no more than 30 minutes to work through, and so, if you pace youself over a week, you will gain an mastery of wxPython in very little time. You will really understand how to use it and not just parrot recipes from examples.
 
 I have followed the `Style Guide for wxPython code <https://wiki.wxpython.org/wxPython%20Style%20Guide>`_ and `PEP8 <https://www.python.org/dev/peps/pep-0008/>`_ (except on line length and docstrings) wherever possible; I apologise for any lapses.
 

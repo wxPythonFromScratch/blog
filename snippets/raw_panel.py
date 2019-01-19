@@ -6,7 +6,7 @@ class MainFrame(wx.Frame):
     """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
         """Initialise the MainFrame class."""
-        wx.Frame.__init__(self, *args, **kwargs)
+        super(MainFrame, self).__init__(*args, **kwargs)
         panel = wx.Panel(parent=self)
         self.Show()
 

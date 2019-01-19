@@ -20,7 +20,7 @@ I will use the `basic frame <post01.html#summary>`_ as a starting point, and bin
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.Bind(wx.EVT_CLOSE, self.on_quit_click)
             self.Show()
 
@@ -29,9 +29,9 @@ I will use the `basic frame <post01.html#summary>`_ as a starting point, and bin
             quit()
 
     if __name__ == "__main__":
-        SCREEN_APP = wx.App()
-        MAIN_FRAME = MainFrame(parent=None, title="Warning dialog")
-        SCREEN_APP.MainLoop()
+        screen_app = wx.App()
+        main_frame = MainFrame(parent=None, title="Warning dialog")
+        screen_app.MainLoop()
 
 Note that I have had to include a **quit** command in the *close* event as the method 'captures' the event and does not allow the **quit** to pass to the operating system.
 
@@ -91,7 +91,7 @@ Fig 2. A file open dialog
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
             """Initialise the MainFrame class."""
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel(self)
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(panel)
@@ -101,7 +101,7 @@ Fig 2. A file open dialog
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             self.path = "/home/jeff/"
 
             path_sizer = self.create_path_sizer()
@@ -140,9 +140,9 @@ Fig 2. A file open dialog
             return sizer
 
     if __name__ == "__main__
-        SCREEN_APP = wx.App()
-        MAIN_FRAME = MainFrame(parent=None, title="Open file dialog")
-        SCREEN_APP.MainLoop()
+        screen_app = wx.App()
+        main_frame = MainFrame(parent=None, title="Open file dialog")
+        screen_app.MainLoop()
 
 This contains only elements that we have seen before. I have imported *os* because this will be required later. The panel has a sizer to hold the path widgets: a label, a textbox and a button; and a sizer to hold the **Quit** button.
 

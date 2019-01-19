@@ -62,14 +62,14 @@ We will start with a basic frame:
 
     class MainFrame(wx.Frame):
        def __init__(self, *args, **kwargs):
-           wx.Frame.__init__(self, *args, **kwargs)
-           self.Show()
+            super(MainFrame, self).__init__(*args, **kwargs)
+            self.Show()
 
 
     if __name__ == "__main__":
-        SCREEN_APP = wx.App()
-        MAIN_FRAME = MainFrame(parent=None)
-        SCREEN_APP.MainLoop()
+        screen_app = wx.App()
+        main_frame = MainFrame(parent=None)
+        screen_app.MainLoop()
 
 I have imported *datetime* from *datetime*. This will be used in the `DatePanel <#the-date-panel>`_
 
@@ -84,7 +84,7 @@ I will add a menu bar to the basic frame . To simplify the code, I have only use
 
       class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel(self)
             self.SetMenuBar(MenuBar())
             sizer = wx.BoxSizer()
@@ -125,7 +125,7 @@ The code to implement the status bar is quite straightforward:
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.SetMenuBar(MenuBar())
             self.status_bar = self.CreateStatusBar()
             self.status_bar.SetStatusText('New client')
@@ -141,7 +141,7 @@ Next, I will create the main panel and place it in its sizer in the frame:
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel()
             self.SetMenuBar(MenuBar())
             self.status_bar = self.CreateStatusBar()
@@ -154,7 +154,7 @@ Next, I will create the main panel and place it in its sizer in the frame:
 
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
-            wx.Panel.__init__(self, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             sizer = wx.GridBagSizer(5, 5)
             sizer.Add((200, 100), pos=(0, 0))
             self.SetSizer(sizer)
@@ -171,7 +171,7 @@ I am going to create the three text boxes and labels relating to name and email 
 
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
-            wx.Panel.__init__(self, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             sizer = wx.GridBagSizer(5, 5)
             person_sizer = self.create_person_sizer()
 
@@ -401,7 +401,7 @@ In the next post I will cover dialogs.
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel(self)
             self.SetMenuBar(MenuBar())
             self.status_bar = self.CreateStatusBar()
@@ -437,7 +437,7 @@ In the next post I will cover dialogs.
 
     class MainPanel(wx.Panel):
         def __init__(self, *args, **kwargs):
-            wx.Panel.__init__(self, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             self.days = [str(day) for day in range(1, 32)]
             this_year = datetime.now().year
             self.years = [str(year) for year in range(this_year, this_year+10)]
@@ -585,6 +585,6 @@ In the next post I will cover dialogs.
 
 
     if __name__ == "__main__":
-        SCREEN_APP = wx.App()
-        MAIN_FRAME = MainFrame(parent=None, title="Hotel booking")
-        SCREEN_APP.MainLoop()
+        screen_app = wx.App()
+        main_frame = MainFrame(parent=None, title="Hotel booking")
+        screen_app.MainLoop()

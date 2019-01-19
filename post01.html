@@ -272,6 +272,8 @@
 <dd>an element of GUI programming, like a label, a button or, a text box;</dd>
 <dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/wx.Panel.html">panel</a>:</dt>
 <dd>an area on the frame that contains widgets. For most simple GUI applications you will have one panel and it will cover the whole frame.</dd>
+<dt><a class="reference external" href="https://wxpython.org/Phoenix/docs/html/sizers_overview.html">sizer</a>:</dt>
+<dd>an invisible rectangular container for widgets. Sizers can contain sizers and each panel or frame can have at most one designated sizer.</dd>
 </dl>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/raw_frame.png"><img alt="A basic frame" src="_images/raw_frame.png" style="width: 400px; height: 250px;" /></a>
@@ -287,10 +289,10 @@
 3
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kn">import</span> <span class="nn">wx</span>
- <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
- <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw frame&quot;</span><span class="p">)</span>
- <span class="n">MAIN_FRAME</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
- <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+ <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+ <span class="n">main_frame</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw frame&quot;</span><span class="p">)</span>
+ <span class="n">main_frame</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
+ <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>and I have used this to code produce the frame shown in Figure 1.</p>
@@ -309,7 +311,7 @@
 <p>The following code takes the frame definition and places it in a class that inherits wx.Frame:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">MainFrame</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -342,13 +344,13 @@
 
  <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">MainFrame</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
 
  <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Basic frame&quot;</span><span class="p">)</span>
-     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+     <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">main_frame</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Basic frame&quot;</span><span class="p">)</span>
+     <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>In the next post I will show how to create a label and introduce the concept of a sizer and I will elaborate on the way that I suggest that code for wxPython is organised.</p>

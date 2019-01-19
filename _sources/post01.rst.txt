@@ -10,6 +10,8 @@ Let's define a few terms used by wxPython:
     an element of GUI programming, like a label, a button or, a text box;
 `panel <https://wxpython.org/Phoenix/docs/html/wx.Panel.html>`_:
     an area on the frame that contains widgets. For most simple GUI applications you will have one panel and it will cover the whole frame.
+`sizer <https://wxpython.org/Phoenix/docs/html/sizers_overview.html>`_:
+    an invisible rectangular container for widgets. Sizers can contain sizers and each panel or frame can have at most one designated sizer.
 
 .. figure:: /images/raw_frame.png
    :height: 250
@@ -34,10 +36,10 @@ In wxPython the loop is handled by the `wx.APP <https://wxpython.org/Phoenix/doc
    :linenos:
 
     import wx
-    SCREEN_APP = wx.App()
-    MAIN_FRAME = wx.Frame(parent=None, title="Raw frame")
-    MAIN_FRAME.Show()
-    SCREEN_APP.MainLoop()
+    screen_app = wx.App()
+    main_frame = wx.Frame(parent=None, title="Raw frame")
+    main_frame.Show()
+    screen_app.MainLoop()
 
 and I have used this to code produce the frame shown in Figure 1.
 
@@ -61,7 +63,7 @@ The following code takes the frame definition and places it in a class that inhe
 
    class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.Show()
 
 
@@ -90,13 +92,13 @@ The most basic basic element of a GUI program running wxPython is the *frame*. A
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.Show()
 
     if __name__ == "__main__":
-        SCREEN_APP = wx.App()
-        MAIN_FRAME = MainFrame(parent=None, title="Basic frame")
-        SCREEN_APP.MainLoop()
+        screen_app = wx.App()
+        main_frame = MainFrame(parent=None, title="Basic frame")
+        screen_app.MainLoop()
 
 
 In the next post I will show how to create a label and introduce the concept of a sizer and I will elaborate on the way that I suggest that code for wxPython is organised.

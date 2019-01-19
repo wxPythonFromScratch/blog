@@ -28,7 +28,7 @@ Note that the StaticBox is created with a reference to the panel as its parent a
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             contact_box = wx.StaticBox(parent=self, label="Contact method")
             contact_sizer = wx.StaticBoxSizer(box=contact_box, orient=wx.HORIZONTAL)
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
@@ -118,7 +118,7 @@ This greatly simplifies the coding of the MainPanel:
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             sizer = wx.BoxSizer(wx.VERTICAL)
             contact_sizer = self.create_contact_sizer()
             sizer.Add(contact_sizer, flag=wx.ALL, border=10)
@@ -137,7 +137,7 @@ In this post we have seen how to use a more complex widget: a StaticBox, which i
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             contact_sizer = self.create_contact_sizer()
             sizer.Add(contact_sizer, flag=wx.ALL, border=10)

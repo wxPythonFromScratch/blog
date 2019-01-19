@@ -30,7 +30,7 @@ The code to generate this is straightforward:
 
     class MainPanel(wx.Panel):
     def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
 
             now = datetime.today()
             day_one = wx.DateTime(year=now.year, month=0, day=1)

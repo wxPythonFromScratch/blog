@@ -70,7 +70,7 @@ In the previous post we placed the label in the sizer and gave it a border to en
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             lbl_name = wx.StaticText(parent=self, label="Name:")
             txt_name = wx.TextCtrl(parent=self, size=(150, -1))
             cmd_quit = wx.Button(parent=self, id=wx.ID_CANCEL)
@@ -122,7 +122,7 @@ In this posting we have seen how to create a TextCtrl and a button. They have be
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             lbl_name = wx.StaticText(parent=self, label="Name:")
             txt_name = wx.TextCtrl(parent=self, size=(150, -1))
             cmd_quit = wx.Button(parent=self, id=wx.ID_CANCEL)

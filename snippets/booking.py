@@ -46,7 +46,7 @@ class MainPanel(wx.Panel):
     """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
         """Initialise the MainPanel class."""
-        wx.Panel.__init__(self, *args, **kwargs)
+        super(MainPanel, self).__init__(parent, *args, **kwargs)
         self.days = [str(day) for day in range(1, 32)]
         this_year = datetime.now().year
         self.years = [str(year) for year in range(this_year, this_year+10)]

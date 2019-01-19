@@ -42,7 +42,7 @@ Let us start with a simple basic frame containing no panels or widgets:
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.Show()
 
     if __name__ == "__main__":
@@ -57,7 +57,7 @@ In order to use a menu bar it is necessary to call the **SetMenuBar** method for
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.SetMenuBar(MenuBar(self))
             self.Show()
 
@@ -165,7 +165,7 @@ The full code for this frame is (`menu.py <snippets/menu.py>`_):
     import wx
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             self.status_bar = self.CreateStatusBar()
             self.status_bar.SetStatusText('This is the status bar')
             self.Show()

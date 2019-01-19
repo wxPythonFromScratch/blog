@@ -291,7 +291,7 @@
 
  <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">MainFrame</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Bind</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">EVT_CLOSE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_quit_click</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">Show</span><span class="p">()</span>
 
@@ -300,9 +300,9 @@
          <span class="n">quit</span><span class="p">()</span>
 
  <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Warning dialog&quot;</span><span class="p">)</span>
-     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+     <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">main_frame</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Warning dialog&quot;</span><span class="p">)</span>
+     <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note that I have had to include a <strong>quit</strong> command in the <em>close</em> event as the method ‘captures’ the event and does not allow the <strong>quit</strong> to pass to the operating system.</p>
@@ -407,7 +407,7 @@
  <span class="k">class</span> <span class="nc">MainFrame</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
          <span class="sd">&quot;&quot;&quot;Initialise the MainFrame class.&quot;&quot;&quot;</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Frame</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">MainFrame</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="n">panel</span> <span class="o">=</span> <span class="n">MainPanel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
          <span class="n">sizer</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">BoxSizer</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">)</span>
          <span class="n">sizer</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
@@ -417,7 +417,7 @@
 
  <span class="k">class</span> <span class="nc">MainPanel</span><span class="p">(</span><span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-         <span class="n">wx</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+         <span class="nb">super</span><span class="p">(</span><span class="n">MainPanel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/home/jeff/&quot;</span>
 
          <span class="n">path_sizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_path_sizer</span><span class="p">()</span>
@@ -456,9 +456,9 @@
          <span class="k">return</span> <span class="n">sizer</span>
 
  <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__</span>
-     <span class="n">SCREEN_APP</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
-     <span class="n">MAIN_FRAME</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open file dialog&quot;</span><span class="p">)</span>
-     <span class="n">SCREEN_APP</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+     <span class="n">screen_app</span> <span class="o">=</span> <span class="n">wx</span><span class="o">.</span><span class="n">App</span><span class="p">()</span>
+     <span class="n">main_frame</span> <span class="o">=</span> <span class="n">MainFrame</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open file dialog&quot;</span><span class="p">)</span>
+     <span class="n">screen_app</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <p>This contains only elements that we have seen before. I have imported <em>os</em> because this will be required later. The panel has a sizer to hold the path widgets: a label, a textbox and a button; and a sizer to hold the <strong>Quit</strong> button.</p>

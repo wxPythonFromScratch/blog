@@ -1,6 +1,6 @@
 Adding a panel and a label
 ==========================
-We saw in the last post how to create  and display a frame in wxPython. The most robust way to add widgets to your project is first to create a `panel <https://wxpython.org/Phoenix/docs/html/wx.Panel.html>`_ and then add the widgets to the panel. In my experience, this ensures that the results are reproducable on Linux, Windows and Mac.
+We saw in the last post how to create  and display a frame in wxPython. The most robust way to add widgets to your project is first to create a `panel <https://wxpython.org/Phoenix/docs/html/wx.Panel.html>`_, add the widgets to the panel and then add the panel to the frame. In my experience, this ensures that the results are reproducable on Linux, Windows and Mac.
 
 A panel
 -------
@@ -14,7 +14,7 @@ To produce a *panel*, create an instance of *wx.Panel* using a reference to the 
 
    class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(parent, *args, **kwargs)
             panel = wx.Panel(parent=self)
             self.Show()
 
@@ -27,14 +27,14 @@ To achieve this, I will create a *panel* class that inherits wx.Panel and calls 
 
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel(parent=self)
             self.Show()
 
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
 
 Note that *\*args* and *\*\*kwargs* have been included in the dunder-init methods for the panel.
 
@@ -90,7 +90,7 @@ The complete code for the panel is now:
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             lbl_hello = wx.StaticText(parent=self, label="Hello")
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_hello)
@@ -144,7 +144,7 @@ The full code is now (`label.py <snippets/label.py>`_):
     import wx
     class MainFrame(wx.Frame):
         def __init__(self, *args, **kwargs):
-            wx.Frame.__init__(self, *args, **kwargs)
+            super(MainFrame, self).__init__(*args, **kwargs)
             panel = MainPanel(parent=self)
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(panel)
@@ -154,7 +154,7 @@ The full code is now (`label.py <snippets/label.py>`_):
 
     class MainPanel(wx.Panel):
         def __init__(self, parent, *args, **kwargs):
-            wx.Panel.__init__(self, parent, *args, **kwargs)
+            super(MainPanel, self).__init__(parent, *args, **kwargs)
             lbl_hello = wx.StaticText(parent=self, label="Hello")
             sizer = wx.BoxSizer(orient=wx.VERTICAL)
             sizer.Add(lbl_hello, flag=wx.ALL, border=10)

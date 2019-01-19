@@ -7,7 +7,7 @@ class MainFrame(wx.Frame):
     """Create and show the frame for the application."""
     def __init__(self, *args, **kwargs):
         """Initialise the MainFrame class."""
-        wx.Frame.__init__(self, *args, **kwargs)
+        super(MainFrame, self).__init__(*args, **kwargs)
         panel = MainPanel(self)
         sizer = wx.BoxSizer()
         sizer.Add(panel)
@@ -19,7 +19,7 @@ class MainPanel(wx.Panel):
     """Create a panel to hold application widgets."""
     def __init__(self, parent, *args, **kwargs):
         """Initialise the MainPanel class."""
-        wx.Panel.__init__(self, parent, *args, **kwargs)
+        super(MainPanel, self).__init__(parent, *args, **kwargs)
         lbl_name = wx.StaticText(parent=self, label="Name:")
         txt_name = wx.TextCtrl(parent=self, size=(150, -1))
         cmd_quit = wx.Button(parent=self, id=wx.ID_CANCEL)
